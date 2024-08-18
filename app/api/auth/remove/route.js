@@ -1,6 +1,7 @@
 import dbConnect from "@/app/lib/mongoose";
 import User from "@/app/models/User";
 
+//Route that will remove user
 export async function DELETE(request){
     await dbConnect();
     

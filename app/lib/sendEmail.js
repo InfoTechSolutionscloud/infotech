@@ -1,6 +1,6 @@
-//Create SendEmail function from nodemailer
-
 // const nodemailer = require('nodemailer');
+
+//Email functionality using nodemail
 
 // const transporter = nodemailer.createTransport({
 //   service: 'gmail',

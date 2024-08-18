@@ -5,7 +5,9 @@ import bcrypt from 'bcryptjs'
 import dbConnect from "@/app/lib/mongoose";
 import User from "@/app/models/User";
 
+//Login endpoint
 export const authOptions = {
+    //Simple jwt provider
     providers: [
         CredentialsProvider({
             name: "Credentials",

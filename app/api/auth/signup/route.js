@@ -3,6 +3,7 @@ import sendEmail from "@/app/lib/sendEmail";
 import User from "@/app/models/User";
 import bcrypt from "bcryptjs/dist/bcrypt";
 
+//Signup code
 export async function POST(request){
     await dbConnect();
 

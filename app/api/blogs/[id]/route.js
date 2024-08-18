@@ -2,11 +2,9 @@ import dbConnect from "@/app/lib/mongoose";
 import Blog from "@/app/models/Blog";
 import { NextResponse } from "next/server";
 
-
+//Get Specific blog
 export async function GET(request, params) {
-    console.log(params);
-    const { id } = params.params;
-    console.log(id)
+    const { id } = params.params; //Fetch id from params [id]
     try {
         await dbConnect();
         const blog = await Blog.findOne({ blog_slug: id });
@@ -22,6 +20,7 @@ export async function GET(request, params) {
     }
 }
 
+//Update specific blog
 export async function PUT(request, params) {
     try {
         const { id } = params.params;
@@ -47,6 +46,7 @@ export async function PUT(request, params) {
     }
 }
 
+//Delete specific blog
 export async function DELETE(request, params){
     try {
         const { id } = params.params;

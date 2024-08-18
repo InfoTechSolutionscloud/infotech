@@ -2,6 +2,8 @@ import dbConnect from "@/app/lib/mongoose";
 import Blog from "@/app/models/Blog";
 import { NextResponse } from "next/server";
 
+
+//Admin can post blogs
 export async function POST(request) {
     try {
         await dbConnect();
@@ -25,6 +27,7 @@ export async function POST(request) {
     }
 }
 
+//Get All Blogs
 export async function GET(request){
     try {
         await dbConnect();

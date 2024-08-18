@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+// Mongoose connection code
+
 const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
