@@ -1,6 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import '@animxyz/core';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.lato{
+    font-family: 'Lato', sans-serif;
+}
+.merriweather{
+    font-family: 'Merriweather', serif;
+}
+.raleway{
+    font-family: 'Raleway', sans-serif;
+}
 
 .cursor{
     position: fixed;
@@ -15,6 +28,10 @@
     mix-blend-mode: difference;
 }
 
-#sample h3:hover ~ .cursor{
-    transform: scale(4);
+#hero{
+    background-image: url('../public/bg.jpg');
+}
+
+.heroimg{
+    clip-path: polygon(57% 23%, 79% 25%, 91% 41%, 94% 53%, 94% 63%, 92% 76%, 82% 80%, 71% 90%, 42% 85%, 24% 78%, 20% 61%, 21% 48%, 34% 33%, 39% 24%);
 }

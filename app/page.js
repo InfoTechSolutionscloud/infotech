@@ -1,33 +1,47 @@
-"use client";
+"use client"
 import React from "react";
-import { useEffect } from "react";
+import Hero from "./components/Hero";
+import WhyChooseUs from "./components/WhyChooseUs";
+import Services from "./components/Services";
+import Testimonials from "./components/Testimonials";
+import Portfolio from "./components/Portfolio";
+import Blogs from "./components/Blogs";
+import Buttonline from "./components/Buttonline";
+import Contact from "./components/Contact";
+import ScrollAnimation from "./components/ScrollAnimation";
 
 export default function Home() {
-  // useEffect(() =>{
-  //   document.addEventListener('mousemove', (e) => {
-     
-  //   })
-  // })
-  const trackme = (e) =>{
-    const cursor = document.querySelector('.cursor');
-    cursor.style.display = 'block'
-    cursor.style.left = e.pageX + 'px';
-    cursor.style.top = e.pageY + 'px';
-  }
-  const leaveme = (e) =>{
-    const cursor = document.querySelector('.cursor');
-    cursor.style.display = 'none'
-    cursor.style.left = e.pageX + 'px';
-    cursor.style.top = e.pageY + 'px';
-  }
+
+
   return (
-    <main onMouseMove={trackme} onMouseLeave={leaveme} className="flex bg-black h-screen flex-col items-center justify-center p-24">
-      <div id="sample">
-        <h3 className="text-white font-bold text-3xl">I Like Black Color!</h3>
-        <p className="text-gray-200 text-sm text-center">By Sarfaraz Unar</p>
-        <div className="cursor"></div>
-      </div>
+    <main className="bg-black min-h-screen">
+      <ScrollAnimation>
+        <Hero />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <WhyChooseUs />
+        <Buttonline title={"Know More About Us"} link={"/aboutus"} />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <Services />
+        <Buttonline title={"Explore Our Services"} link={"/services"} />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <Testimonials />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <Portfolio />
+        <Buttonline title={"View All Portfolios"} link={"/portfolio"} />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <Blogs />
+        <Buttonline title={"Visit Blogs"} link={"/blogs"} />
+      </ScrollAnimation>
+      <ScrollAnimation>
+      <Contact />
+      </ScrollAnimation>
     </main>
+
   );
 }
 
