@@ -53,7 +53,7 @@ const Testimonials = () => {
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
-                className="text-3xl lg:text-4xl font-bold lato text-white"
+                className="text-3xl lg:text-4xl font-bold lato text-center text-white"
             >
                 What our <span className="text-secondary-400">Customers</span> are saying!
             </motion.h3>

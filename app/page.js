@@ -23,7 +23,7 @@ export default function Home() {
         <Buttonline title={"Know More About Us"} link={"/aboutus"} />
       </ScrollAnimation>
       <ScrollAnimation>
-        <Services />
+        <Services titleSimple={"What we "} hititle={"Offer!"} tagline={"We provide a variety of services! Here are "} hitagline={"Top services"} animate={false} />
         <Buttonline title={"Explore Our Services"} link={"/services"} />
       </ScrollAnimation>
       <ScrollAnimation>
@@ -34,7 +34,7 @@ export default function Home() {
         <Buttonline title={"View All Portfolios"} link={"/portfolio"} />
       </ScrollAnimation>
       <ScrollAnimation>
-        <Blogs />
+        <Blogs qty={6} />
         <Buttonline title={"Visit Blogs"} link={"/blogs"} />
       </ScrollAnimation>
       <ScrollAnimation>

@@ -1,10 +1,18 @@
 import mongoose from "mongoose";
 
 const projectSchema = new mongoose.Schema({
-    clientId:{
-        type: mongoose.Types.ObjectId,
-        ref: 'users'
+    clientEmail:{
+        type: String,
+        required: true
     }, 
+    clientName: {
+        type: String,
+        required: true
+    },
+    projectId: {
+        type: String,
+        requried: true
+    },
     projectTitle: {
         type: String,
         required: true,

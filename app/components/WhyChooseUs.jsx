@@ -5,22 +5,22 @@ import { motion } from "framer-motion";
 const WhyChooseUs = () => {
     let data = [
         {
-            icon: "https://www.svgrepo.com/show/449320/user-expert.svg",
+            icon: "/user-expert.svg",
             heading: "Expertise You Can Trust",
             description: "Our team of experienced professionals has years of expertise in delivering top-notch solutions that meet your needs."
         },
         {
-            icon: "https://www.svgrepo.com/show/532405/chart-mixed-alt.svg",
+            icon: "/chart-mixed-alt.svg",
             heading: "Personalized Approach",
             description: "We take the time to understand your unique requirements and provide tailored solutions that cater to your specific needs."
         },
         {
-            icon: "https://www.svgrepo.com/show/262692/quality-diamond.svg",
+            icon: "/quality-diamond.svg",
             heading: "Quality Guaranteed",
             description: "We strive for excellence in everything we do, ensuring that our services meet the highest standards of quality and reliability."
         },
         {
-            icon: "https://www.svgrepo.com/show/483390/handshake.svg",
+            icon: "/handshake.svg",
             heading: "Customer-Centric",
             description: "Your satisfaction is our top priority. We're dedicated to providing exceptional support and ensuring a seamless experience for you."
         }
@@ -31,7 +31,7 @@ const WhyChooseUs = () => {
             initial={{ y: 100, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.5 }}
+            // viewport={{ once: true, amount: 0.5 }}
             className="flex flex-col items-center bg-gradient-to-tr bg-gray-700/25 justify-center py-20"
         >
             <motion.h3
