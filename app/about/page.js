@@ -21,7 +21,6 @@ const page = () => {
                 </div>
             </section>
             <WhyChooseUs />
-            <Testimonials />
         </div>
     )
 }
