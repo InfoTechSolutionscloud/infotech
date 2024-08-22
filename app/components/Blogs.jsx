@@ -56,6 +56,9 @@ const Blogs = ({qty, title="Our Latest"}) => {
                     {title} <span className="text-secondary-400">Blogs!</span>
                 </motion.h3>
                 <div className="flex justify-center gap-4 flex-wrap">
+                    {blogs.length <= 0 && (
+                        <p className="text-white  text-center text-lg">No Blogs found</p>
+                    )}
                     {blogs.slice(0, qty || blogs.length).map((item, index) => (
                         <motion.div
                             key={index}

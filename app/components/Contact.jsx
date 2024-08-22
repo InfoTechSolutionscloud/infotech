@@ -114,8 +114,8 @@ const Contact = () => {
                                         title: "Contact",
                                         description: (
                                             <>
-                                                <p>Mobile: +92 301 2345678</p>
-                                                <p>Mail: infotech@gmail.com</p>
+                                                <p>Mobile: +92 328 2296963</p>
+                                                <p>Mail: helpline@infotechsolutions.cloud</p>
                                             </>
                                         ),
                                     },
@@ -130,7 +130,8 @@ const Contact = () => {
                                         description: (
                                             <>
                                                 <p>Monday - Friday: 08:00 - 17:00</p>
-                                                <p>Saturday &amp; Sunday: 08:00 - 12:00</p>
+                                                <p>Saturday- 08:00 - 12:00</p>
+                                                <p>Sunday- Closed</p>
                                             </>
                                         ),
                                     },

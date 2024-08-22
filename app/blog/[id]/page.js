@@ -50,7 +50,7 @@ const page = ({ params }) => {
                 <h2 className="text-3xl md:text-6xl font-bold text-center bg-gray-950/50 p-4 rounded-md text-white w-full leading-tight mb-5">
                   {data.blogTitle}
                   <br />
-                  <span className='text-sm md:text-[25px] text-center text-white'>Created By {data.createdBy} <br /> on {new Date(data.createdAt).toLocaleDateString()}</span>
+                  <span className='text-sm md:text-[25px] text-center text-white'>{new Date(data.createdAt).toLocaleDateString()}</span>
                 </h2>
               </div>
             </div>
