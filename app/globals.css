@@ -15,99 +15,64 @@
     font-family: 'Raleway', sans-serif;
 }
 
-.cursor{
-    position: fixed;
-    display: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #fff;
-    transition: 0.1s;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    mix-blend-mode: difference;
+
+
+/* Loader */
+.shapes {
+  width: 57.6px;
+  height: 28.8px;
+  background: #25e2a1;
+  position: relative;
+  animation: shapes-y7kkf3 1.2000000000000002s infinite linear;
 }
 
-header {
-    animation: headeranimate 1s ease-in-out;
-  }
-  
-  .logo {
-    animation: loganimate 0.5s ease-in-out 0.4s;
-  }
-  
-  .buttons {
-    animation: buttonsanimate 0.5s ease-in-out 0.4s;
-  }
-  
-  .links li {
-    animation: linksanimate 0.5s ease-in-out;
-    animation-fill-mode: backwards;
-  }
-  
-  .links li:nth-child(1) {
-    animation-delay: 0.6s;
-  }
-  
-  .links li:nth-child(2) {
-    animation-delay: 0.7s;
-  }
-  
-  .links li:nth-child(3) {
-    animation-delay: 0.8s;
-  }
-  
-  .links li:nth-child(4) {
-    animation-delay: 0.9s;
-  }
-  
-  .links li:nth-child(5) {
-    animation-delay: 1s;
-  }
-  
-  @keyframes headeranimate {
-    0% {
-      background-color: transparent;
-      color: transparent;
-    }
-    20% {
-      background-color: #333;
-    }
-    100% {
-      color: #fff;
-    }
-  }
-  
-  @keyframes loganimate {
-    0% {
-      transform: translateY(-20px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes buttonsanimate {
-    0% {
-      transform: translateY(20px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes linksanimate {
-    0% {
-      transform: translateY(20px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
+.shapes:before,
+.shapes:after {
+  content: "";
+  position: absolute;
+  background: inherit;
+  bottom: 100%;
+  width: 50%;
+  height: 100%;
+  animation: inherit;
+  animation-name: shapes-dh54ub;
+}
+
+.shapes:before {
+  left: 0;
+  transform-origin: bottom left;
+  --s: -1;
+}
+
+.shapes:after {
+  right: 0;
+  transform-origin: bottom right;
+}
+
+@keyframes shapes-y7kkf3 {
+  0%, 10% {
+     transform: translateY(0%)    scaleY(1);
   }
 
+  49.99% {
+     transform: translateY(-50%)  scaleY(1);
+  }
+
+  50% {
+     transform: translateY(-50%)  scaleY(-1);
+  }
+
+  90%, 100% {
+     transform: translateY(-100%) scaleY(-1);
+  }
+}
+
+@keyframes shapes-dh54ub {
+  10%, 90% {
+     transform: rotate(0deg);
+  }
+
+  50% {
+     transform: rotate(calc(var(--s,1)*180deg));
+  }
+}
