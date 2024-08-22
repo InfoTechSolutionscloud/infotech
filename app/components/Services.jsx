@@ -104,19 +104,19 @@ const Services = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =>
                                 item.id === selectedId ? (
                                     <motion.div key={item.id} className="bg-gray-800 p-8 rounded-lg max-w-md w-full">
                                         <motion.h5 className="text-2xl text-white font-bold mb-4">{item.heading}</motion.h5>
-                                        <motion.p className="text-gray-200 mb-4">{item.description}</motion.p>
+                                        <motion.p className="text-gray-200 mb-4">{item.details}</motion.p>
                                         <motion.button
                                             className="bg-secondary-500 text-white hover:bg-secondary-950 px-4 py-2 rounded"
                                             onClick={() => setSelectedId(null)}
                                         >
                                             Close
                                         </motion.button>
-                                        <motion.button
+                                        <motion.a
+                                        href="/get-service"
                                             className="bg-primary-500 mx-2 hover:bg-primary-950 text-white px-4 py-2 rounded"
-                                            onClick={() => setSelectedId(null)}
                                         >
                                             Send a quote
-                                        </motion.button>
+                                        </motion.a>
                                     </motion.div>
                                 ) : null
                             )}

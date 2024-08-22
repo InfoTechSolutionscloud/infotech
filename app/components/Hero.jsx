@@ -9,7 +9,7 @@ const Hero = () => {
     <Template>
       <div
         id="herosection"
-        className="flex md:flex-row flex-col items-center -mt-5 justify-center bg-[url('/bg.jpg')] bg-left min-h-screen w-full px-8 lg:px-20 text-left"
+        className="flex md:flex-row flex-col items-center -mt-5 justify-center bg-[url('/bg.webp')] bg-left min-h-screen w-full px-8 lg:px-20 text-left"
       >
         <motion.div
           initial={{ y: "10vh", opacity: 0 }}
@@ -61,7 +61,7 @@ const Hero = () => {
           className="w-1/2 md:block hidden"
         >
           <Image
-            src={"/techimage.jpg"}
+            src={"/techimage.webp"}
             width={600}
             height={600}
             alt={"tech"}

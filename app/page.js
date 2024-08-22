@@ -19,7 +19,7 @@ export default function Home() {
         <Hero />
       </ScrollAnimation>
       <ScrollAnimation>
-        <WhyChooseUs />
+        <WhyChooseUs qty={4} />
         <Buttonline title={"Know More About Us"} link={"/aboutus"} />
       </ScrollAnimation>
       <ScrollAnimation>

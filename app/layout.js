@@ -6,14 +6,14 @@ import Footer from "./components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "InfoTech",
+  title: "InfoTech - Innovative Solutions, Real Results",
   description: "Infotech is a best agency for tech related service. We provide amazing tech related services.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-
+      
       <body className={inter.className}>
         <Header />
         {children}

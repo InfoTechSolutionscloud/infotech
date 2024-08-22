@@ -22,7 +22,7 @@ export async function POST(request){
     });
     await newproject.save();
 
-    sendEmail(clientEmail, `New Project ${projectTitle} is initialized by Infotech!`, `Hi ${clientName}\n You new project ${projectTitle} is initialized by infotech. To View all details Prject Description / Deadline, Statuses just login to your account now!`);
+    sendEmail(clientEmail, `New Project ${projectTitle} is initialized by Infotech!`, `Hi ${clientName}\n You new project ${projectTitle} is initialized by infotech. To View all details Prject Description / Deadline, Statuses  you can visit track project on our website and add your email and project id ${projectId} to view details. \n Thanks!`);
 
      return new Response(JSON.stringify({message: "Project Created"}), {status: 200});
 }

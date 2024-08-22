@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const WhyChooseUs = () => {
+const WhyChooseUs = ({qty}) => {
     let data = [
         {
             icon: "/user-expert.svg",
@@ -20,10 +20,30 @@ const WhyChooseUs = () => {
             description: "We strive for excellence in everything we do, ensuring that our services meet the highest standards of quality and reliability."
         },
         {
+            icon: "/security.svg",
+            heading: "Security",
+            description: "Our team of ethical hackers uses the latest techniques to ensure that your project is secure and protected from potential threats."
+        },
+        {
             icon: "/handshake.svg",
             heading: "Customer-Centric",
             description: "Your satisfaction is our top priority. We're dedicated to providing exceptional support and ensuring a seamless experience for you."
-        }
+        },
+        {
+            icon: "/dollar.svg",
+            heading: "Cost Effective Solution",
+            description: "We offer cost-effective solutions that are tailored to your specific needs. From small projects to large-scale projects, we can help you achieve your goals."
+        },
+        {
+            icon: "/time.svg",
+            heading: "On Time Delivery",
+            description: "We prioritize on-time delivery and ensure that your project is completed on time. We work closely with you to ensure that your project is completed on time."
+        },
+        {
+            icon: "/support.svg",
+            heading: "Support",
+            description: "We offer 24/7 support to ensure that your project is completed on time. We work closely with you to ensure that your project is completed on time."
+        },
     ];
 
     return (
@@ -46,7 +66,7 @@ const WhyChooseUs = () => {
                 Are you in the search of best company For your <span className="bg-secondary-500 text-black p-2">Digital Work?</span>
             </p>
             <motion.div
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-7xl px-4 lg:px-0"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-7xl px-4"
                 initial="hidden"
                 whileInView="visible"
                 variants={{
@@ -59,7 +79,7 @@ const WhyChooseUs = () => {
                 }}
                 viewport={{ once: true, amount: 0.2 }}
             >
-                {data.map((item, index) => (
+                {data.slice(0, qty || data.length).map((item, index) => (
                     <motion.div
                         key={index}
                         variants={{

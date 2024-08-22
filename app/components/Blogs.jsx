@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import axios from 'axios';
 import Link from 'next/link';
 
-const Blogs = ({qty}) => {
+const Blogs = ({qty, title="Our Latest"}) => {
 
     const [blogs, setBlogs] = useState([]);
     useEffect(() => {
@@ -53,7 +53,7 @@ const Blogs = ({qty}) => {
                     animate="visible"
                     variants={headingVariants}
                 >
-                    Our Latest <span className="text-secondary-400">Blogs!</span>
+                    {title} <span className="text-secondary-400">Blogs!</span>
                 </motion.h3>
                 <div className="flex justify-center gap-4 flex-wrap">
                     {blogs.slice(0, qty || blogs.length).map((item, index) => (

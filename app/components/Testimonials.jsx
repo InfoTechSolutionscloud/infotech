@@ -5,22 +5,22 @@ import Image from 'next/image';
 const Testimonials = () => {
     const data = [
         {
-            img: '/user1.jpg',
+            img: '/user1.webp',
             name: 'Shahid',
             review: 'Infotech is such a great agency! I love their services.'
         },
         {
-            img: '/user4.jpg',
+            img: '/user4.webp',
             name: 'Sher Khan',
             review: 'This company helped me a lot in establishing my business! I love their services.'
         },
         {
-            img: '/user1.jpg',
+            img: '/user1.webp',
             name: 'Sana Javed',
             review: 'Their web development service is next level, especially Sarfaraz\'s service.'
         },
         {
-            img: '/user4.jpg',
+            img: '/user4.webp',
             name: 'Fahad',
             review: 'Their Graphic Design and Digital Marketing services are top-notch.'
         }
