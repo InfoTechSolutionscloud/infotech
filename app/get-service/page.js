@@ -91,19 +91,20 @@ const page = () => {
                             viewport={{ once: true, amount: 0.5 }}
                             variants={textVariants} >
                             <form id="serviceForm" onSubmit={handleSubmit}>
+                                <p className='text-center text-gray-400 py-2'>All Fields are required!</p>
                                 {step == 1 && (
                                     <div className="mb-6">
                                         <div className="mx-0 mb-1 sm:mb-4">
                                             <label htmlFor="clientName" className="pb-1 text-xs uppercase tracking-wider"></label>
-                                            <input type="text" id="clientName" autoComplete="name" placeholder="Name" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="clientName" value={formData.clientName} onChange={onChangeForm} />
+                                            <input type="text" id="clientName" autoComplete="name" placeholder="Name" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="clientName" value={formData.clientName} onChange={onChangeForm} required/>
                                         </div>
                                         <div className="mx-0 mb-1 sm:mb-4">
                                             <label htmlFor="clientEmail" className="pb-1 text-xs uppercase tracking-wider"></label>
-                                            <input type="email" id="clientEmail" autoComplete="email" placeholder="Email" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="clientEmail" value={formData.clientEmail} onChange={onChangeForm} />
+                                            <input type="email" id="clientEmail" autoComplete="email" placeholder="Email" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="clientEmail" value={formData.clientEmail} onChange={onChangeForm} required/>
                                         </div>
                                         <div className="mx-0 mb-1 sm:mb-4">
                                             <label htmlFor="phone" className="pb-1 text-xs uppercase tracking-wider"></label>
-                                            <input type="text" id="clientPhone" autoComplete="phone" placeholder="Your Phone Number" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="clientPhone" value={formData.clientPhone} onChange={onChangeForm} />
+                                            <input type="text" id="clientPhone" autoComplete="phone" placeholder="Your Phone Number" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="clientPhone" value={formData.clientPhone} onChange={onChangeForm} required/>
                                         </div>
                                         <button className='bg-primary-800 my-2 text-white rounded-md px-3 py-2 raleway' onClick={() => setStep(2)}>Next</button>
                                     </div>
@@ -112,7 +113,7 @@ const page = () => {
                                     <div className="mb-6">
                                         <div className="mx-0 mb-1 sm:mb-4">
                                             <label htmlFor="project" className="pb-1 text-xs uppercase tracking-wider"></label>
-                                            <select id="service" name="service" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" value={formData.service} onChange={onChangeForm}>
+                                            <select id="service" name="service" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" value={formData.service} onChange={onChangeForm} required>
                                                 <option value="">Select a service</option>
                                                 {data.map((item) => (
                                                     <option value={item.heading}>{item.heading}</option>
@@ -121,11 +122,11 @@ const page = () => {
                                         </div>
                                         <div className="mx-0 mb-1 sm:mb-4">
                                             <label htmlFor="details" className="pb-1 text-xs uppercase tracking-wider"></label>
-                                            <textarea id="details" placeholder="Enter Project Deatails" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="details" value={formData.details} onChange={onChangeForm} />
+                                            <textarea id="details" placeholder="Enter Project Deatails" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="details" value={formData.details} onChange={onChangeForm} required />
                                         </div>
                                         <div className="mx-0 mb-1 sm:mb-4">
                                             <label htmlFor="budget" className="pb-1 text-xs uppercase tracking-wider"></label>
-                                            <input type="text" id="budget" placeholder="Your Budget" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="budget" value={formData.budget} onChange={onChangeForm} />
+                                            <input type="text" id="budget" placeholder="Your Budget" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="budget" value={formData.budget} onChange={onChangeForm} required />
                                         </div>
                                         <div className="text-center">
                                             {message && <p className="text-center merriweather text-white py-2">{message}</p>}

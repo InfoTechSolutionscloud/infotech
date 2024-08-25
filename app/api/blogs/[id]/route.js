@@ -1,3 +1,4 @@
+import authMiddleware from "@/app/lib/authMiddleware";
 import dbConnect from "@/app/lib/mongoose";
 import Blog from "@/app/models/Blog";
 import { NextResponse } from "next/server";
@@ -21,8 +22,11 @@ export async function GET(request, params) {
 }
 
 //Update specific blog
-export async function PUT(request, params) {
+async function update(request, params) {
     try {
+        const user = request.user;
+        if(user.role !== 'admin') return new Response(JSON.stringify({message: "You are not admin"}), {status: 403})
+
         const { id } = params.params;
         const isExist = await Blog.findOne({ blog_slug: id });
 
@@ -47,10 +51,13 @@ export async function PUT(request, params) {
 }
 
 //Delete specific blog
-export async function DELETE(request, params){
+async function deleteblog(request, {params}){
     try {
-        const { id } = params.params;
-        const blog = await Blog.findOneAndDelete({ blog_slug: id });
+        const user = request.user;
+        if(user.role !== 'admin') return new Response(JSON.stringify({message: "You are not admin"}), {status: 403})
+        const id = params.id;
+        const blog = await Blog.findByIdAndDelete(id);
+
         if (!blog) {
             return NextResponse.json(({ message: "Blog Not Found" }), { status: 404 });
         }
@@ -60,3 +67,6 @@ export async function DELETE(request, params){
         return NextResponse.json(({ message: "Error Occured", error: error.message }), { status: 500 });
     }
 }
+
+export const DELETE = authMiddleware(deleteblog)
+export const PUT = authMiddleware(update)

@@ -25,9 +25,8 @@ const projectSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    worker:{
-        type: mongoose.Types.ObjectId,
-        ref: 'users',
+    workerEmail:{
+        type: String,
         required: true
     },
     statusId:{

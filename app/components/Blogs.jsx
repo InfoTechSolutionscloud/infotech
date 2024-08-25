@@ -1,24 +1,14 @@
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import axios from 'axios';
 import Link from 'next/link';
+import public_fetcher from '../lib/fetcher';
+import useSWR from 'swr';
+import Loading from '../loading';
 
 const Blogs = ({qty, title="Our Latest"}) => {
 
-    const [blogs, setBlogs] = useState([]);
-    useEffect(() => {
-        const getdata = async () =>{
-            try{
-
-                const response = await axios.get('/api/blogs');
-                setBlogs(response.data);
-            } catch (error){
-                console.log(error);
-            }
-        }
-        getdata();
-    }, [])
+    const { data, error, isLoading } = useSWR(`/api/blogs`, public_fetcher);
 
     // Animation variants for the cards
     const cardVariants = {
@@ -45,7 +35,15 @@ const Blogs = ({qty, title="Our Latest"}) => {
     };
 
     return (
-        <section className="py-24 bg-gradient-to-tl from-gray-700/25 via-primary-900 to-gray-700/25">
+        <>
+        {error && (
+            <p className='text-center text-white font-semibold py-5'>Failed to load!</p>
+        )}
+        {isLoading && (
+            <Loading />
+        )}
+
+        {data && (<section className="py-24 bg-gradient-to-tl from-gray-700/25 via-primary-900 to-gray-700/25">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <motion.h3
                     className="text-3xl text-center py-2 pb-20 lg:text-4xl font-bold lato text-white"
@@ -56,10 +54,10 @@ const Blogs = ({qty, title="Our Latest"}) => {
                     {title} <span className="text-secondary-400">Blogs!</span>
                 </motion.h3>
                 <div className="flex justify-center gap-4 flex-wrap">
-                    {blogs.length <= 0 && (
+                    {data.length == 0 && (
                         <p className="text-white  text-center text-lg">No Blogs found</p>
                     )}
-                    {blogs.slice(0, qty || blogs.length).map((item, index) => (
+                    {data.length > 0 && data.slice(0, qty || data.length).map((item, index) => (
                         <motion.div
                             key={index}
                             className="group w-full sm:w-1/2 md:w-1/4 border-2 border-primary-300 bg-white rounded-2xl"
@@ -89,7 +87,8 @@ const Blogs = ({qty, title="Our Latest"}) => {
                     ))}
                 </div>
             </div>
-        </section>
+        </section>)}
+        </>
     );
 };
 

@@ -76,3 +76,36 @@
      transform: rotate(calc(var(--s,1)*180deg));
   }
 }
+
+
+/* CSS For Blog */
+#blogcontent h1,
+#blogcontent h2,
+#blogcontent h3 {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin: 1em 0;
+}
+
+#blogcontent p {
+  margin: 1em 0;
+}
+
+#blogcontent a {
+  color: #25e2a1;
+  text-decoration: none;
+}
+
+#blogcontent a:hover {
+  text-decoration: underline;
+}
+
+#blogcontent ul,
+#blogcontent ol {
+  padding-left: 1.5em;
+  margin: 1em 0;
+}
+
+#blogcontent li {
+  margin: 0.5em 0;
+}

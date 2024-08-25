@@ -166,24 +166,24 @@ const Contact = () => {
                                 <div className="mb-6">
                                     <div className="mx-0 mb-1 sm:mb-4">
                                         <label htmlFor="name" className="pb-1 text-xs uppercase tracking-wider"></label>
-                                        <input type="text" id="name" autoComplete="given-name" placeholder="Your name" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="name" value={formData.name} onChange={onChangeForm} />
+                                        <input type="text" id="name" autoComplete="given-name" placeholder="Your name" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="name" value={formData.name} onChange={onChangeForm} required />
                                     </div>
                                     <div className="mx-0 mb-1 sm:mb-4">
                                         <label htmlFor="email" className="pb-1 text-xs uppercase tracking-wider"></label>
-                                        <input type="email" id="email" autoComplete="email" placeholder="Your email address" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="email" value={formData.email} onChange={onChangeForm} />
+                                        <input type="email" id="email" autoComplete="email" placeholder="Your email address" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="email" value={formData.email} onChange={onChangeForm} required/>
                                     </div>
                                     <div className="mx-0 mb-1 sm:mb-4">
                                         <label htmlFor="phone" className="pb-1 text-xs uppercase tracking-wider"></label>
-                                        <input type="text" id="phone" autoComplete="phone" placeholder="Your Phone number" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="phone" value={formData.phone} onChange={onChangeForm} />
+                                        <input type="text" id="phone" autoComplete="phone" placeholder="Your Phone number" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="phone" value={formData.phone} onChange={onChangeForm} required/>
                                     </div>
                                     <div className="mx-0 mb-1 sm:mb-4">
                                         <label htmlFor="subject" className="pb-1 text-xs uppercase tracking-wider"></label>
-                                        <input type="text" id="subject" placeholder="Subject" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="subject" value={formData.subject} onChange={onChangeForm} />
+                                        <input type="text" id="subject" placeholder="Subject" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="subject" value={formData.subject} onChange={onChangeForm} required/>
                                     </div>
 
                                     <div className="mx-0 mb-1 sm:mb-4">
                                         <label htmlFor="textarea" className="pb-1 text-xs uppercase tracking-wider"></label>
-                                        <textarea id="textarea" name="message" cols="30" rows="5" placeholder="Write your message..." className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" value={formData.message} onChange={onChangeForm}></textarea>
+                                        <textarea id="textarea" name="message" cols="30" rows="5" placeholder="Write your message..." className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" value={formData.message} onChange={onChangeForm} required></textarea>
                                     </div>
                                 </div>
                                 <div className="text-center">
