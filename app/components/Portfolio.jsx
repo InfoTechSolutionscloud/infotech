@@ -47,30 +47,13 @@ const Portfolio = () => {
                         variants={imageVariants}
                     >
                         <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" width={250} height={300} alt="" />
+                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" width={250} height={300} alt="tech portfolio" />
                         </div>
                         <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt="" width={250} height={300} />
+                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt="tech portfolio" width={250} height={300} />
                         </div>
                         <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt="" width={250} height={300} />
-                        </div>
-                    </motion.div>
-                    <motion.div
-                        className="grid gap-4"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.3 }}
-                        variants={imageVariants}
-                    >
-                        <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt="" width={250} height={300} />
-                        </div>
-                        <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt="" width={250} height={300} />
-                        </div>
-                        <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt="" width={250} height={300} />
+                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt="tech portfolio" width={250} height={300} />
                         </div>
                     </motion.div>
                     <motion.div
@@ -81,13 +64,13 @@ const Portfolio = () => {
                         variants={imageVariants}
                     >
                         <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt="" width={250} height={300} />
+                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt="tech portfolio" width={250} height={300} />
                         </div>
                         <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt="" width={250} height={300} />
+                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt="tech portfolio" width={250} height={300} />
                         </div>
                         <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt="" width={250} height={300} />
+                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt="tech portfolio" width={250} height={300} />
                         </div>
                     </motion.div>
                     <motion.div
@@ -98,13 +81,30 @@ const Portfolio = () => {
                         variants={imageVariants}
                     >
                         <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" width={250} height={300} alt="" />
+                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt="tech portfolio" width={250} height={300} />
                         </div>
                         <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" width={250} height={300} alt="" />
+                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt="tech portfolio" width={250} height={300} />
                         </div>
                         <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" width={250} height={300} alt="" />
+                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt="tech portfolio" width={250} height={300} />
+                        </div>
+                    </motion.div>
+                    <motion.div
+                        className="grid gap-4"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.3 }}
+                        variants={imageVariants}
+                    >
+                        <div>
+                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" width={250} height={300} alt="tech portfolio" />
+                        </div>
+                        <div>
+                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" width={250} height={300} alt="tech portfolio" />
+                        </div>
+                        <div>
+                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" width={250} height={300} alt="tech portfolio" />
                         </div>
                     </motion.div>
                 </>

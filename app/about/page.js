@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 import WhyChooseUs from '../components/WhyChooseUs'
 import Head from 'next/head'
-
+import Image from 'next/image';
 const page = () => {
     useEffect(() => {
         document.title = "About Us - Infotech";
@@ -26,8 +26,8 @@ const page = () => {
                             <p>Whether you need a custom website, effective SEO strategies, or a stunning video for your marketing campaigns, we have the skills and expertise to deliver exceptional results. Join us at Infotech and let us harness the power of technology to take your business to new heights.</p>
                         </div>
                         <div className="grid grid-cols-2 gap-4 mt-8">
-                            <img className="w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" alt="office content 1" />
-                            <img className="mt-4 w-full lg:mt-10 rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png" alt="office content 2" />
+                            <Image width={300} height={300} className="w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" alt="office content 1" />
+                            <Image width={300} height={300} className="mt-4 w-full lg:mt-10 rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png" alt="office content 2" />
                         </div>
                     </div>
                 </section>

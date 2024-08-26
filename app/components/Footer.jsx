@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
             <Link href="/" className="flex items-center select-none">
-              <Image src={"/logo.png"} width={300} height={300} className='w-40 ' />
+              <Image src={"/logo.png"} width={300} height={300} className='w-40 ' alt='company logo' />
             </Link>
             <p className="max-w-xs mt-4 text-sm text-gray-200">
               Make Your Business Digital!
