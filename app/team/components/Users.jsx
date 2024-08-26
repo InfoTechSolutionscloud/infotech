@@ -190,7 +190,7 @@ const Users = () => {
                                 <option value="user">User</option>
                                 <option value="admin">Admin</option>
                                 <option value="blogger">Blogger</option>
-                                <option value="projectsmanager">Project Manager</option>
+                                <option value="projectmanager">Project Manager</option>
                               </select>
                             </div>
                           </div>
@@ -262,7 +262,7 @@ const Users = () => {
                                 <option value="user">User</option>
                                 <option value="admin">Admin</option>
                                 <option value="blogger">Blogger</option>
-                                <option value="projectsmanager">Project Manager</option>
+                                <option value="projectmanager">Project Manager</option>
                               </select>
                             </div>
                           </div>

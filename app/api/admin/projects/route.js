@@ -5,7 +5,7 @@ import Project from "@/app/models/Project";
 const projectFetcher = async (request) =>{
     await dbConnect()
     const user = request.user;
-    if(user.role !== 'admin') return new Response(JSON.stringify({message: "Only Admin Can access"}), {status: 403});
+    if(user.role !== 'admin' && user.role !== 'projectmanager') return new Response(JSON.stringify({message: "Only Admin Can access"}), {status: 403});
 
     const projects = await Project.find({});
     if(!projects) return new Response(JSON.stringify({message: "No Project Founds"}), {status: 404})
@@ -18,7 +18,7 @@ const projectFetcher = async (request) =>{
 async function create(request){
     await dbConnect();
     const user = request.user;
-    if(user.role !== 'admin') return new Response(JSON.stringify({message: "Only Admin Can access"}), {status: 403})
+    if(user.role !== 'admin' && user.role !== 'projectmanager') return new Response(JSON.stringify({message: "Only Admin Can access"}), {status: 403})
 
     const {clientEmail, clientName, projectId, projectTitle, projectDescription, project_deadline, workerEmail } = await request.json();
 
@@ -38,7 +38,7 @@ async function create(request){
 export async function update(request){
     await dbConnect();
     const user = request.user;
-    if(user.role !== 'admin') return new Response(JSON.stringify({message: "Only Admin Can access"}), {status: 403})
+    if(user.role !== 'admin' && user.role !== 'projectmanager') return new Response(JSON.stringify({message: "Only Admin Can access"}), {status: 403})
 
     const {_id, clientEmail, clientName, projectId, projectTitle, projectDescription, project_deadline, workerEmail } = await request.json();
 
@@ -60,7 +60,7 @@ export async function update(request){
 export async function remover(request){
     await dbConnect();
     const user = request.user;
-    if(user.role !== 'admin') return new Response(JSON.stringify({message: "Only Admin Can access"}), {status: 403})
+    if(user.role !== 'admin' && user.role !== 'projectmanager') return new Response(JSON.stringify({message: "Only Admin Can access"}), {status: 403})
 
     const id = request.nextUrl.searchParams.get("id");
     const deletit = await Project.findByIdAndDelete(id);

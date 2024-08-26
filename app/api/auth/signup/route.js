@@ -13,7 +13,7 @@ async function signUp(request) {
         return new Response(JSON.stringify({ message: "Only Admin can register!" }), { status: 401 });
     }
 
-    const { email, password, name } = await request.json();
+    const { email, password, name, role } = await request.json();
 
     if (!email || !password || !name) {
         return new Response(JSON.stringify({ message: "Missing Fields" }), {
@@ -30,7 +30,7 @@ async function signUp(request) {
     const newUser = new User({
         email,
         password: hashedPassword,
-        name,
+        name, role
     });
 
     await newUser.save();

@@ -8,6 +8,8 @@ import Status from "@/app/models/Status";
 //Create Status and Update Project with status id
 async function createStatus(request) {
     await dbConnect();
+    if (user.role !== 'admin' && user.role !== 'projectmanager') return new Response(JSON.stringify({ message: "Only Admin Can access" }), { status: 403 });
+
     const { projectId, status, title, description, completion_date } = await request.json();
     console.log(projectId, status, title, description, completion_date)
     const project = await Project.findById(projectId)
@@ -20,7 +22,7 @@ async function createStatus(request) {
     });
 
     await newstatus.save();
-    await Project.findByIdAndUpdate(projectId, {$set: {statusId: newstatus._id }});
+    await Project.findByIdAndUpdate(projectId, { $set: { statusId: newstatus._id } });
     console.log(newstatus._id);
     return new Response(JSON.stringify({ message: "Project Status Posted" }), { status: 200 });
 }
@@ -42,42 +44,30 @@ export async function GET(request) {
 async function updatestatus(request) {
     try {
         await dbConnect();
-    const id = request.nextUrl.searchParams.get("id");
-    console.log(id)
-    const { projectId, status, title, description, completion_date } = await request.json();
+        if (user.role !== 'admin' && user.role !== 'projectmanager') return new Response(JSON.stringify({ message: "Only Admin Can access" }), { status: 403 });
 
-    const project = await Project.findById(projectId);
+        const id = request.nextUrl.searchParams.get("id");
+        console.log(id)
+        const { projectId, status, title, description, completion_date } = await request.json();
 
-    if (!project) {
-        return new Response(JSON.stringify({ message: "Invalid Project Id" }), { status: 400 });
-    }
-    const updatedStatus = await Status.findByIdAndUpdate(id, {
-        $set: {
-            status, title, description, completion_date
+        const project = await Project.findById(projectId);
+
+        if (!project) {
+            return new Response(JSON.stringify({ message: "Invalid Project Id" }), { status: 400 });
         }
-    });
-    if (updatedStatus) {
-        return new Response(JSON.stringify({ message: "Status Updated" }), { status: 200 });
-    }
+        const updatedStatus = await Status.findByIdAndUpdate(id, {
+            $set: {
+                status, title, description, completion_date
+            }
+        });
+        if (updatedStatus) {
+            return new Response(JSON.stringify({ message: "Status Updated" }), { status: 200 });
+        }
     } catch (error) {
         console.log(error);
         return new Response(JSON.stringify({ message: "Some error occured" }), { status: 500 });
     }
-    
-}
 
-
-//Delete a specific status
-export async function DELETE(request) {
-    await dbConnect();
-    const id = request.nextUrl.searchParams.get("id");
-    const deletit = await Status.findByIdAndDelete(id);
-    if (deletit) {
-        return new Response(JSON.stringify({ message: "Status Deleted" }), { status: 200 });
-    } else {
-        return new Response(JSON.stringify({ message: "Some error occured" }), { status: 500 });
-
-    }
 }
 
 export const POST = authMiddleware(createStatus)

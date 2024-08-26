@@ -42,7 +42,7 @@ const Blogs = () => {
 
     return (
         <>
-            <div className='flex justify-between p-3'>
+            <div className='flex justify-between p-3 md:px-20'>
                 <h3 className='text-white font-semibold text-3xl'>Blogs</h3>
                 <Link href="/team/blogs/create" className='bg-primary-500 text-white px-3 rounded-md'>Create</Link>
             </div>

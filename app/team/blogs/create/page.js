@@ -74,14 +74,14 @@ const page = () => {
             <h3 className='text-4xl text-white font-bold py-5 text-left merriweather'>Create Blog</h3>
             
             <p className='text-gray-300 text-sm pb-5 raleway'>Create a best blog that gives you rank on Google!</p>
-            
-            <Image src={blog.blogImage == "" ? "https://placehold.co/600x400/jpeg" : blog.blogImage} width={200} height={200} alt="blogimage" className="mx-auto" />
+           <div className="flex flex-col justify-center items-center gap-y-1 py-2"> 
+            <Image src={blog.blogImage == "" ? "https://placehold.co/600x400/jpeg" : blog.blogImage} width={200} height={200} alt="blogimage" />
                 <label className='text-white font-semibold mr-2 luto'>Upload Image</label>
-                <input type="file" onChange={handleFileChange} className="mb-5" />
+                <input type="file" className="text-white" onChange={handleFileChange} />
                 <button onClick={handleUpload} className="bg-blue-500 text-white px-4 py-2 rounded-md">
                     {pending ? "Uploading..." : "Upload"}
                 </button>
-
+                </div>
             <form onSubmit={(e) => createBlog(e)} className='w-full md:w-2/3 py-5 mx-auto'>
                 <label className='text-2xl text-white font-semibold mr-2 luto'>Blog Title</label>
                 <input className='w-full text-2xl text-white bg-transparent border-2 border-secondary-600 rounded-md mb-4 focus:shadow-md p-2 focus:shadow-secondary-400' type="text" name='blogTitle' value={blog.blogTitle} onChange={(e) => setBlog({ ...blog, [e.target.name]: e.target.value })} />

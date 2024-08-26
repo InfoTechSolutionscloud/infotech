@@ -10,7 +10,8 @@ import Blogs from './components/Blogs';
 
 const page = () => {
     const [data, setData] = useState();
-    const [show, setShow] = useState("users");
+    const [show, setShow] = useState();
+    const [role, setRole] = useState();
     useEffect(() => {
         const getdata = async () => {
             const token = localStorage.getItem('token');
@@ -22,7 +23,9 @@ const page = () => {
                 });
                 if (res.status == 200) {
                     setData(res.data.data);
-
+                    setRole(res.data.data.role)
+                    let showstate = res.data.data.role == "admin" ? "users" : res.data.data.role == "blogger" ? "blogs" : res.data.data.role == "projectmanager" ? "projects" : "user";
+                    setShow(showstate);
                 }
             } catch (error) {
                 if (error.response.status == 401) {
@@ -42,35 +45,36 @@ const page = () => {
                 <div className='bg-gray-800 p-5 rounded-md mx-auto w-full md:w-3/4'>
                     <h3 className='text-white text-3xl pb-5 merriweather font-semibold'>Hi {data.name}</h3>
                     <p className='text-white luto font-normal'>Email: {data.email}</p>
-                    <p className='text-white luto font-normal'>Role: {data.role}</p>
+                    <p className='text-white luto font-normal'>Role: {role}</p>
                 </div>
                 <div className='my-5 overflow-x-scroll md:overflow-hidden'>
                     <div className='flex justify-center gap-3 items-center '>
-                        <button className={`${show == "users" ? "bg-secondary-500 text-black" : "bg-gray-800 text-white"} p-3 rounded-md  luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150`} onClick={() => setShow("users")}>Users</button>
-                        <button className={`${show == "services" ? "bg-secondary-700 text-white" : "bg-gray-800"} p-3 rounded-md text-white luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150`} onClick={() => setShow("services")}>Service Requests</button>
-                        <button className={`${show == "projects" ? "bg-secondary-700 text-white" : "bg-gray-800"} p-3 rounded-md text-white luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150`} onClick={() => setShow("projects")}>Projects</button>
-                        <button className={`${show == "messages" ? "bg-secondary-700 text-white" : "bg-gray-800"} p-3 rounded-md text-white luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150`} onClick={() => setShow("messages")}>Messages</button>
-                        <button className={`${show == "blogs" ? "bg-secondary-700 text-white" : "bg-gray-800"} p-3 rounded-md text-white luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150`} onClick={() => setShow("blogs")}>Blogs</button>
-                        <button className='bg-gray-800 p-3 rounded-md text-white luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150' onClick={() => {localStorage.removeItem('token'); window.location.href = '/team/login'}}>Logout</button>
+                        <button className={`${show == "users" ? "bg-secondary-500 text-black" : "bg-gray-800 text-white"} p-3 rounded-md  luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150 disabled:bg-gray-600 disabled:text-gray-800 disabled:cursor-not-allowed`} disabled={role !== 'admin'} onClick={() => setShow("users")}>Users</button>
+                        <button className={`${show == "services" ? "bg-secondary-700 text-white" : "bg-gray-800"} p-3 rounded-md text-white luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150 disabled:bg-gray-600 disabled:text-gray-800 disabled:cursor-not-allowed`} disabled={role !== 'admin'} onClick={() => setShow("services")}>Service Requests</button>
+                        <button className={`${show == "projects" ? "bg-secondary-700 text-white" : "bg-gray-800"} p-3 rounded-md text-white luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150 disabled:bg-gray-600 disabled:text-gray-800 disabled:cursor-not-allowed`} disabled={role !== 'admin' && role !== 'projectmanager'} onClick={() => setShow("projects")}>Projects</button>
+                        <button className={`${show == "messages" ? "bg-secondary-700 text-white" : "bg-gray-800"} p-3 rounded-md text-white luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150 disabled:bg-gray-600 disabled:text-gray-800 disabled:cursor-not-allowed`} disabled={role !== 'admin'} onClick={() => setShow("messages")}>Messages</button>
+                        <button className={`${show == "blogs" ? "bg-secondary-700 text-white" : "bg-gray-800"} p-3 rounded-md text-white luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150 disabled:bg-gray-600 disabled:text-gray-800 disabled:cursor-not-allowed`} disabled={role !== 'admin' && role !== 'blogger'} onClick={() => setShow("blogs")}>Blogs</button>
+                        <button className='bg-gray-800 p-3 rounded-md text-white luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150 disabled:bg-gray-600 disabled:text-gray-800 disabled:cursor-not-allowed'  onClick={() => { localStorage.removeItem('token'); window.location.href = '/team/login' }}>Logout</button>
                     </div>
                 </div>
                 <div className='h-auto my-2'>
-                    {show == "users" && (
+                    {show == "users" && role == "admin" && (
                         <Users />
                     )}
-                    {show == "services" && (
+                    {show == "services" && role == "admin" && (
                         <Services />
                     )}
-                    {show == "projects" && (
+                    {(show == "projects" && (role == "admin" || role == "projectmanager")) && (
                         <Projects />
                     )}
-                    {show == "messages" && (
+                    {show == "messages" && role == "admin" && (
                         <Messages />
                     )}
-                    {show == "blogs" && (
+                    {(show == "blogs" && (role == "admin" || role == "blogger")) && (
                         <Blogs />
                     )}
                 </div>
+
 
             </div>
 

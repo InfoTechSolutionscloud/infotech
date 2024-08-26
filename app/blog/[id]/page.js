@@ -5,6 +5,7 @@ import React from "react";
 import Head from "next/head";
 import Loading from "@/app/loading";
 import public_fetcher from "@/app/lib/fetcher";
+import Share from "@/app/components/Share";
 
 const Page = ({ params }) => {
   const { data, error, isLoading } = useSWR(`/api/blogs/${params.id}`, public_fetcher);
@@ -31,11 +32,11 @@ const Page = ({ params }) => {
             { className },
             domNode.children.length > 0
               ? Array.from(domNode.childNodes).map((child, index) => {
-                  // Recursively parse each child node
-                  return typeof child === "string"
-                    ? child
-                    : parse(child.outerHTML || "", options);
-                })
+                // Recursively parse each child node
+                return typeof child === "string"
+                  ? child
+                  : parse(child.outerHTML || "", options);
+              })
               : domNode.textContent
           );
         }
@@ -76,8 +77,9 @@ const Page = ({ params }) => {
             </section>
             <section className="container mx-auto px-6 md:px-12 bg-gray-900">
               <div className="mx-auto max-w-md py-20 text-lg text-white">
-                <div id="blogcontent" dangerouslySetInnerHTML={{__html: data.data.blogContent}}></div>
+                <div id="blogcontent" dangerouslySetInnerHTML={{ __html: data.data.blogContent }}></div>
               </div>
+              <Share title={"Read Best Blog" + " " + data.data.blogTitle} description={data.data.blog_description} url={location.href} />
             </section>
           </div>
         </>

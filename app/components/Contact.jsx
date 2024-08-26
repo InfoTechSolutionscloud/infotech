@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/bootstrap.css";
+
 
 const Contact = () => {
 
@@ -115,7 +118,7 @@ const Contact = () => {
                                         description: (
                                             <>
                                                 <p>Mobile: +92 328 2296963</p>
-                                                <p>Mail: helpline@infotechsolutions.cloud</p>
+                                                <p>Mail: infotechcompany85@gmail.com</p>
                                             </>
                                         ),
                                     },
@@ -170,20 +173,34 @@ const Contact = () => {
                                     </div>
                                     <div className="mx-0 mb-1 sm:mb-4">
                                         <label htmlFor="email" className="pb-1 text-xs uppercase tracking-wider"></label>
-                                        <input type="email" id="email" autoComplete="email" placeholder="Your email address" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="email" value={formData.email} onChange={onChangeForm} required/>
+                                        <input type="email" id="email" autoComplete="email" placeholder="Your email address" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="email" value={formData.email} onChange={onChangeForm} required />
                                     </div>
                                     <div className="mx-0 mb-1 sm:mb-4">
                                         <label htmlFor="phone" className="pb-1 text-xs uppercase tracking-wider"></label>
-                                        <input type="text" id="phone" autoComplete="phone" placeholder="Your Phone number" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="phone" value={formData.phone} onChange={onChangeForm} required/>
+                                        <PhoneInput
+                                            country={"eg"}
+                                            enableSearch={true}
+                                            value={formData.phone}
+                                            className=""
+                                            inputStyle={{marginBottom: '0.5rem',
+                                            width: '100%',
+                                            borderRadius: '0.375rem',
+                                            border: '1px solid #25e2a1',
+                                            boxShadow: '0 0 10px rgba(0, 0, 0, 0.12)',
+                                            backgroundColor: "transparent",
+                                            color: '#ffffff'}}
+                                            onChange={(e) => setformdata({ ...formData, phone: e })}
+
+                                        />
                                     </div>
                                     <div className="mx-0 mb-1 sm:mb-4">
                                         <label htmlFor="subject" className="pb-1 text-xs uppercase tracking-wider"></label>
-                                        <input type="text" id="subject" placeholder="Subject" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="subject" value={formData.subject} onChange={onChangeForm} required/>
+                                        <input type="text" id="subject" placeholder="Subject" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" name="subject" value={formData.subject} onChange={onChangeForm} required />
                                     </div>
 
                                     <div className="mx-0 mb-1 sm:mb-4">
                                         <label htmlFor="textarea" className="pb-1 text-xs uppercase tracking-wider"></label>
-                                        <textarea id="textarea" name="message" cols="30" rows="5" placeholder="Write your message..." className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" value={formData.message} onChange={onChangeForm} required></textarea>
+                                        <textarea id="textarea" name="message" cols="30" rows="5" placeholder="Write your message..." className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" value={formData.message} onChange={onChangeForm} required ></textarea>
                                     </div>
                                 </div>
                                 <div className="text-center">

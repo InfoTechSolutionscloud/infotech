@@ -25,7 +25,7 @@ export async function GET(request, params) {
 async function update(request, params) {
     try {
         const user = request.user;
-        if(user.role !== 'admin') return new Response(JSON.stringify({message: "You are not admin"}), {status: 403})
+        if(user.role !== 'admin' && user.role !== 'blogger') return new Response(JSON.stringify({message: "You are not admin"}), {status: 403})
 
         const { id } = params.params;
         const isExist = await Blog.findOne({ blog_slug: id });
@@ -54,7 +54,7 @@ async function update(request, params) {
 async function deleteblog(request, {params}){
     try {
         const user = request.user;
-        if(user.role !== 'admin') return new Response(JSON.stringify({message: "You are not admin"}), {status: 403})
+        if(user.role !== 'admin' && user.role !== 'blogger') return new Response(JSON.stringify({message: "You are not admin"}), {status: 403})
         const id = params.id;
         const blog = await Blog.findByIdAndDelete(id);
 
