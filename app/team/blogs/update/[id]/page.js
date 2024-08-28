@@ -7,7 +7,6 @@ import Image from "next/image";
 import Loading from "@/app/loading";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const page = ({params}) => {
-    console.log(params.id)
     const [blog, setBlog] = useState({
         _id: "",
         blogTitle: "",
@@ -127,7 +126,7 @@ const page = ({params}) => {
                 <label className='text-white font-semibold mr-2 luto'>Created By</label>
                 <input className='w-full text-white bg-transparent border-2 border-secondary-600 rounded-md mb-4 focus:shadow-md p-2 focus:shadow-secondary-400' type="text" name='createdBy' value={blog.createdBy} onChange={(e) => setBlog({ ...blog, [e.target.name]: e.target.value })} />
                 {message && <div className="text-sm font-semibold text-secondary-400 py-2 text-center">{message}</div>}
-                <button type="submit" className="bg-secondary-500 text-white px-3 py-2 rounded-md">Update Blog</button>
+                <button type="submit" className="bg-secondary-800 text-white px-3 py-2 rounded-md">Update Blog</button>
             </form>
         </div>)}
         </>

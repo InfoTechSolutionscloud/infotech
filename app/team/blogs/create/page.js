@@ -55,16 +55,23 @@ const page = () => {
     };
 
     const createBlog = async (e) => {
-        e.preventDefault()
-        const res = await axios.post('/api/blogs', blog, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`
+        setPending(true);
+        try {
+            e.preventDefault()
+            const res = await axios.post('/api/blogs', blog, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+            if (res.status == 200) {
+                setMessage(`Blog created successfully! Visit ${location.origin}/blogs/${res.data.url}`)
+                setPending(false);
             }
-        })
-        console.log(res);
-        if (res.status == 200) {
-            setMessage(`Blog created successfully! Visit ${location.origin}/blogs/${res.data.url}`)
+        } catch (error) {
+            setMessage(`Failed to create blog: ${error.response.data.message}`);
+            setPending(false);
         }
+       
     }
     const handleContentChange = (content) => {
         setBlog({ ...blog, blogContent: content });
@@ -72,16 +79,16 @@ const page = () => {
     return (
         <div className='bg-gray-900 w-full p-5 px-10'>
             <h3 className='text-4xl text-white font-bold py-5 text-left merriweather'>Create Blog</h3>
-            
+
             <p className='text-gray-300 text-sm pb-5 raleway'>Create a best blog that gives you rank on Google!</p>
-           <div className="flex flex-col justify-center items-center gap-y-1 py-2"> 
-            <Image src={blog.blogImage == "" ? "https://placehold.co/600x400/jpeg" : blog.blogImage} width={200} height={200} alt="blogimage" />
+            <div className="flex flex-col justify-center items-center gap-y-1 py-2">
+                <Image src={blog.blogImage == "" ? "https://placehold.co/600x400/jpeg" : blog.blogImage} width={200} height={200} alt="blogimage" />
                 <label className='text-white font-semibold mr-2 luto'>Upload Image</label>
                 <input type="file" className="text-white" onChange={handleFileChange} />
                 <button onClick={handleUpload} className="bg-blue-500 text-white px-4 py-2 rounded-md">
                     {pending ? "Uploading..." : "Upload"}
                 </button>
-                </div>
+            </div>
             <form onSubmit={(e) => createBlog(e)} className='w-full md:w-2/3 py-5 mx-auto'>
                 <label className='text-2xl text-white font-semibold mr-2 luto'>Blog Title</label>
                 <input className='w-full text-2xl text-white bg-transparent border-2 border-secondary-600 rounded-md mb-4 focus:shadow-md p-2 focus:shadow-secondary-400' type="text" name='blogTitle' value={blog.blogTitle} onChange={(e) => setBlog({ ...blog, [e.target.name]: e.target.value })} />
@@ -107,7 +114,7 @@ const page = () => {
                 <label className='text-white font-semibold mr-2 luto'>Created By</label>
                 <input className='w-full text-white bg-transparent border-2 border-secondary-600 rounded-md mb-4 focus:shadow-md p-2 focus:shadow-secondary-400' type="text" name='createdBy' value={blog.createdBy} onChange={(e) => setBlog({ ...blog, [e.target.name]: e.target.value })} />
                 {message && <div className="text-sm font-semibold text-secondary-400 py-2 text-center">{message}</div>}
-                <button type="submit" className="bg-secondary-500 text-white px-3 py-2 rounded-md">Create Blog</button>
+                <button type="submit" className="bg-secondary-800 text-white px-3 py-2 rounded-md disabled:bg-gray-800 disabled:text-gray-500" disabled={pending}>{pending ? "Creating..." : "Create Blog"}</button>
             </form>
         </div>
     )
