@@ -1,15 +1,8 @@
 {
-  "extends": [
-    "next",
-    "next/core-web-vitals"
-  ],
+  "extends": "next",
   "rules": {
-    "react-hooks/rules-of-hooks": "off", // Disable this rule
-    "react-hooks/exhaustive-deps": "warn" // Optionally adjust this rule
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off",
+    "no-unused-vars": "off"
   }
 }
