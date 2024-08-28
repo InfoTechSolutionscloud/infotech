@@ -1,153 +1,141 @@
 "use client";
-import { useState, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import data from "../services/data";
+import { motion } from "framer-motion";
+import useSWR from "swr";
+import Slider from "react-slick";
+import public_fetcher from "../lib/fetcher";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 const Services = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) => {
+  const { data, error, isLoading } = useSWR(`/api/service/all`, public_fetcher);
+  let maxshow;
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: true,
+    pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
 
+  // Determine if animations should be applied
+  const shouldAnimate = animate && data && data.services.length > 3;
 
-    const [selectedId, setSelectedId] = useState(null);
+  return (
+    <div id="services" className="flex flex-col items-center justify-center py-20 bg-gradient-to-tr from-gray-700/25 via-secondary-900 to-gray-700/25 overflow-hidden">
+      {isLoading && (
+        <div className="animate-spin w-10 h-10 mx-auto"></div>
+      )}
+      {error && (
+        <div className="text-xl text-white font-semibold text-center">{error.response.data.message}</div>
+      )}
+      {data && (
+        <div className="w-full max-w-7xl px-4 lg:px-0">
+          {/* Title Animation */}
+          <motion.h3
+            initial={{ opacity: 0, y: shouldAnimate ? -50 : 0 }}
+            whileInView={{ y: shouldAnimate ? 0 : undefined, opacity: 1 }}
+            transition={{ duration: shouldAnimate ? 0.8 : 0, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="text-3xl lg:text-4xl font-bold lato text-white text-center"
+          >
+            {titleSimple}<span className="text-secondary-400">{hititle}</span>
+          </motion.h3>
 
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const cardsToShow = qty || data.length;
-    const totalCards = data.length;
+          {/* Description Animation */}
+          <motion.p
+            initial={{ opacity: 0, y: shouldAnimate ? -20 : 0 }}
+            animate={{ opacity: 1, y: shouldAnimate ? 0 : undefined }}
+            transition={{ duration: shouldAnimate ? 0.8 : 0, delay: shouldAnimate ? 0.3 : 0 }}
+            className="text-center text-sm text-white mb-10 mt-2 raleway"
+          >
+            {tagline}<span className="bg-secondary-500 text-black p-2">{hitagline}</span>
+          </motion.p>
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentIndex((prevIndex) => (prevIndex + 1) % totalCards);
-        }, 4000);
-        return () => clearInterval(interval);
-    }, [totalCards]);
-
-    const goToNextSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % totalCards);
-    };
-
-    const goToPrevSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + totalCards) % totalCards);
-    };
-
-    const calculateTransform = () => {
-        return {
-            transform: `translateX(-${currentIndex * (200 / cardsToShow)}%)`,
-            transition: 'transform 0.5s ease-in-out',
-        };
-    };
-
-    return (
-        <div id='services' className="flex flex-col items-center justify-center py-20 bg-gradient-to-tr from-gray-700/25 via-secondary-900 to-gray-700/25 overflow-hidden">
-            {/* Title Animation */}
-            <motion.h3
-                initial={{ opacity: 0, y: -50 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                viewport={{ once: true, amount: 0.5 }}
-                className="text-3xl lg:text-4xl font-bold lato text-white"
-            >
-                {titleSimple}<span className="text-secondary-400">{hititle}</span>
-            </motion.h3>
-            {/* Description Animation */}
-            <motion.p
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-center text-sm text-white mb-10 mt-2 raleway"
-            >
-                {tagline}<span className='bg-secondary-500  text-black p-2'>{hitagline}</span>
-            </motion.p>
-            {/* Cards with Sliding Animation */}
-            <div className="relative w-full max-w-7xl px-4 lg:px-0">
-                <div className={`flex ${animate && 'flex-wrap '}`} style={{ width: `${totalCards * (100 / cardsToShow)}%`, ...(!animate ? calculateTransform() : {}) }}>
-                    {data.slice(0, cardsToShow).map((item, index) => (
-                        <motion.article
-                            key={item.id} // Ensure unique key is `item.id`
-                            className="flex-shrink-0 w-full md:w-1/3 p-4"
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.5, delay: index * 0.3 }}
-                            layoutId={item.id.toString()} // Use `toString()` to ensure layoutId is a string
-                            onClick={() => setSelectedId(item.id)} // Select the item on click
-                        >
-                            <div className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 bg-cover bg-center max-w-sm mx-auto w-full mt-24"
-                                style={{ backgroundImage: `url(${item.img})` }}>
-                                <div className="absolute inset-0 bg-gradient-to-t from-primary-950 via-primary-900/40"></div>
-                                <motion.h3
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.6 }}
-                                    className="z-10 mt-3 text-3xl merriweather font-bold text-white"
-                                >
-                                    {item.heading}
-                                </motion.h3>
-                                <motion.p
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.6, delay: 0.2 }}
-                                    className="z-10 text-sm leading-6 luto text-gray-300"
-                                >
-                                    {item.description}
-                                </motion.p>
-                            </div>
-                        </motion.article>
-                    ))}
+          {/* Slider or Static Cards */}
+          {data.services.length > 3 ? (
+            <Slider {...settings}>
+              {data.services.slice(0, qty || data.services.length).map((item, index) => (
+                <motion.article
+                  key={item.id} // Ensure unique key is `item.id`
+                  className="p-4"
+                  initial={{ opacity: 0, scale: shouldAnimate ? 0.8 : 1 }}
+                  animate={{ opacity: 1, scale: shouldAnimate ? 1 : undefined }}
+                  transition={{ duration: shouldAnimate ? 0.5 : 0, delay: shouldAnimate ? index * 0.3 : 0 }}
+                >
+                  <div
+                    className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${item.image})` }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary-950 via-primary-900/40"></div>
+                    <motion.a
+                      href={`/services/${item.slug}`}
+                      initial={{ opacity: 0, y: shouldAnimate ? 20 : 0 }}
+                      animate={{ opacity: 1, y: shouldAnimate ? 0 : undefined }}
+                      transition={{ duration: shouldAnimate ? 0.6 : 0 }}
+                      className="z-10 mt-3 text-3xl merriweather font-bold truncate text-white"
+                    >
+                      {item.title}
+                    </motion.a>
+                    <motion.p
+                      initial={{ opacity: 0, y: shouldAnimate ? 20 : 0 }}
+                      animate={{ opacity: 1, y: shouldAnimate ? 0 : undefined }}
+                      transition={{ duration: shouldAnimate ? 0.6 : 0, delay: shouldAnimate ? 0.2 : 0 }}
+                      className="z-10 text-sm leading-6 luto text-gray-300"
+                    >
+                      {item.short_description}
+                    </motion.p>
+                  </div>
+                </motion.article>
+              ))}
+            </Slider>
+          ) : (
+            <div className="flex flex-wrap justify-center">
+              {data.services.slice(0, qty || data.services.length).map((item) => (
+                <div
+                  key={item.id} // Ensure unique key is `item.id`
+                  className="p-4 w-full md:w-1/3"
+                >
+                  <div
+                    className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${item.image})` }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary-950 via-primary-900/40"></div>
+                    <a
+                      href={`/services/${item.slug}`}
+                      className="z-10 mt-3 text-3xl merriweather font-bold text-white truncate"
+                    >
+                      {item.title}
+                    </a>
+                    <p className="z-10 text-sm leading-6 luto text-gray-300">
+                      {item.short_description}
+                    </p>
+                  </div>
                 </div>
-
-                <AnimatePresence>
-                    {selectedId && (
-                        <motion.div
-                            layoutId={selectedId.toString()}
-                            className="absolute top-0 left-0 right-0 bottom-0 h-screen flex items-center backdrop:blur-md justify-center bg-gray-900/50 z-50 p-4"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                        >
-                            {data.map((item) =>
-                                item.id === selectedId ? (
-                                    <motion.div key={item.id} className="bg-gray-800 p-8 rounded-lg max-w-md w-full">
-                                        <motion.h5 className="text-2xl text-white font-bold mb-4">{item.heading}</motion.h5>
-                                        <motion.p className="text-gray-200 mb-4">{item.details}</motion.p>
-                                        <motion.button
-                                            className="bg-secondary-500 text-white hover:bg-secondary-950 px-4 py-2 rounded"
-                                            onClick={() => setSelectedId(null)}
-                                        >
-                                            Close
-                                        </motion.button>
-                                        <motion.a
-                                        href="/get-service"
-                                            className="bg-primary-500 mx-2 hover:bg-primary-950 text-white px-4 py-2 rounded"
-                                        >
-                                            Send a quote
-                                        </motion.a>
-                                    </motion.div>
-                                ) : null
-                            )}
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-
-                {/* Navigation Buttons */}
-                {!animate && (
-                    <>
-                        <motion.button
-                            onClick={goToPrevSlide}
-                            className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white rounded-full p-2"
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                        >
-                            &larr;
-                        </motion.button>
-                        <motion.button
-                            onClick={goToNextSlide}
-                            className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white rounded-full p-2"
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                        >
-                            &rarr;
-                        </motion.button>
-                    </>
-                )}
+              ))}
             </div>
+          )}
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
 export default Services;

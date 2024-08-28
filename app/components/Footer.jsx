@@ -18,31 +18,31 @@ const Footer = () => {
             <div className='mt-4'>
             <div className="flex space-x-4 text-gray-200">
               <Link href="https://www.facebook.com/profile.php?id=61563953222407&mibextid=ZbWKwL" target="_blank">
-                <Image src={"https://www.svgrepo.com/show/503338/facebook.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' />
+                <Image src={"https://www.svgrepo.com/show/503338/facebook.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicon' />
               </Link>
               <Link href="https://www.instagram.com/infotech.solutions.company?igsh=MW5sZWZodm44NnU1" target="_blank">
-                <Image src={"https://www.svgrepo.com/show/494277/instagram-round.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' />
+                <Image src={"https://www.svgrepo.com/show/494277/instagram-round.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicon' />
               </Link>
               <Link href="https://www.linkedin.com/company/infotech-solutions-company/" target="_blank">
-                <Image src={"https://www.svgrepo.com/show/494278/linkedin-round.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' />
+                <Image src={"https://www.svgrepo.com/show/494278/linkedin-round.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicon' />
               </Link>
-              <Link href="https://www.wa.me/+923282296963" target="_blank">
-                <Image src={"https://www.svgrepo.com/show/358411/whatsapp-alt.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' />
+              <Link href="https://wa.link/fl12of" target="_blank">
+                <Image src={"https://www.svgrepo.com/show/358411/whatsapp-alt.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicon' />
               </Link>
              
             </div>
             <div className="flex mt-2 space-x-4 text-gray-200">
             <Link href="https://join.skype.com/invite/vNwELvlS0ZFG" target="_blank">
-                <Image src={"https://www.svgrepo.com/show/494283/skype-round.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' />
+                <Image src={"https://www.svgrepo.com/show/494283/skype-round.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicons' />
               </Link>
               <Link href="#" target="_blank">
-                <Image src={"https://www.svgrepo.com/show/494287/twitter-round.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' />
+                <Image src={"https://www.svgrepo.com/show/494287/twitter-round.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicons' />
               </Link>
               <Link href="#" target="_blank">
-                <Image src={"https://www.svgrepo.com/show/473769/reddit.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' />
+                <Image src={"https://www.svgrepo.com/show/473769/reddit.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicons' />
               </Link>
               <Link href="#" target="_blank">
-                <Image src={"https://www.svgrepo.com/show/494293/youtube-round.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' />
+                <Image src={"https://www.svgrepo.com/show/494293/youtube-round.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicons' />
               </Link>
             </div>
             </div>
@@ -54,11 +54,11 @@ const Footer = () => {
                 Services
               </p>
               <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-200">
-                <a className="hover:opacity-75" href> Web Development </a>
-                <a className="hover:opacity-75" href> Graphic Design </a>
-                <a className="hover:opacity-75" href> Data Entry </a>
-                <a className="hover:opacity-75" href> Digital Marketing </a>
-                <a className="hover:opacity-75" href> SEO Optimisation </a>
+                <p className="hover:opacity-75"> Web Development </p>
+                <p className="hover:opacity-75"> Graphic Design </p>
+                <p className="hover:opacity-75"> Data Entry </p>
+                <p className="hover:opacity-75"> Digital Marketing </p>
+                <p className="hover:opacity-75"> SEO Optimisation </p>
               </nav>
             </div>
 

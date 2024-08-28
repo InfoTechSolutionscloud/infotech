@@ -1,21 +1,17 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
-import Head from 'next/head';
 
-const page = () => {
+const GetService = ({serviceText}) => {
 
-    useEffect(() => {
-        document.title = "Get Services - Infotech"
-    }, [])
     const [formData, setformdata] = useState({
         clientName: "",
         clientEmail: "",
         clientPhone: "",
-        service: "",
+        service: serviceText,
         details: "",
         budget: ""
     })
@@ -75,13 +71,7 @@ const page = () => {
 
     return (
         <>
-            <Head>
-                <title>Get Service - Infotech</title>
-                <meta name="description" content="Get in touch with us today and learn more about how our technology solutions can help your business thrive. We offer a range of services including web development, digital marketing, IT consulting, software development, and more. Fill out the form to send us a message or give us a call." />
-                <meta name="keywords" content="contact us, service request, web development, digital marketing, IT consulting, software development, technology solutions, innovative solutions, real results" />
-                <meta name="author" content="Infotech" />
-            </Head>
-            <section className="bg-slate-800" id="contact">
+            <section className="bg-slate-800" id="serviceform">
                 <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
                     <motion.div
                         initial="hidden"
@@ -93,10 +83,8 @@ const page = () => {
                             <h2
                                 className="font-heading mb-4 font-bold tracking-tight text-white text-3xl sm:text-5xl"
                             >
-                                Welcome to Infotech Services
+                                Need this service? Just Order Now!
                             </h2>
-                            <p className="mx-auto mt-4 max-w-3xl text-xl text-slate-400">
-                                Find the best service that accelerate your business.</p>
                         </div>
                     </motion.div>
                     {intro && (
@@ -149,10 +137,8 @@ const page = () => {
                                         <div className="mb-6">
                                             <div className="mx-0 mb-1 sm:mb-4">
                                                 <label htmlFor="project" className="pb-1 text-xs uppercase tracking-wider"></label>
-                                                <select id="service" name="service" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md bg-gray-800 text-white sm:mb-0" value={formData.service} onChange={onChangeForm} required>
-                                                    <option value="">Select a service</option>
-                                                        <option value={'marketing'}>Digital Marketing</option>
-                                                </select>
+                                                <input type='text' name="service" className="mb-2 w-full rounded-md border border-secondary-400 py-2 pl-2 pr-4 shadow-md disabled:bg-gray-600 disabled:text-gray-300 sm:mb-0" defaultValue={serviceText} disabled>
+                                                </input>
                                             </div>
                                             <div className="mx-0 mb-1 sm:mb-4">
                                                 <label htmlFor="details" className="pb-1 text-xs uppercase tracking-wider"></label>
@@ -181,7 +167,7 @@ const page = () => {
                         <section className={`bg-gray-800 py-8 ${step !== 3 ? 'hidden' : 'block'}`}>
                             <div className="container mx-auto px-6 md:px-12">
                                 <div className="text-center">
-                                    <h3 className="text-3xl text-white font-bold leading-none mb-3">Project Initiated!</h3>
+                                    <h3 className="text-3xl text-white font-bold leading-none mb-3">Order Details Submitted!</h3>
                                     <p className='text-center text-sm text-gray-400'>Thanks for choosing infotech for your project. Our Team will soon connect you for verification and for price.</p>
                                 </div>
                                 <div className="flex flex-wrap justify-center items-center -mx-4">
@@ -234,4 +220,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default GetService;

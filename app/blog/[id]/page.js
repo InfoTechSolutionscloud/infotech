@@ -10,14 +10,6 @@ import Share from "@/app/components/Share";
 const Page = ({ params }) => {
   const { data, error, isLoading } = useSWR(`/api/blogs/${params.id}`, public_fetcher);
 
-  const styles = {
-    h1: "text-5xl font-bold text-gray-900 mb-4",
-    h2: "text-4xl font-semibold text-gray-900 mb-2",
-    h3: "text-3xl font-semibold text-gray-900 mb-2",
-    p: "text-gray-700 mb-2",
-    a: "text-primary-500 hover:text-primary-400",
-  };
-
   // Function to replace HTML elements with custom styled ones
   const options = {
     replace: (domNode) => {

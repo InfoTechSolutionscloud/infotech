@@ -7,6 +7,7 @@ import Services from './components/Services';
 import Messages from './components/Messages';
 import Projects from './components/Projects';
 import Blogs from './components/Blogs';
+import ManageServices from './components/ManageServices';
 
 const page = () => {
     const [data, setData] = useState();
@@ -52,6 +53,7 @@ const page = () => {
                         <button className={`${show == "users" ? "bg-secondary-500 text-black" : "bg-gray-800 text-white"} p-3 rounded-md  luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150 disabled:bg-gray-600 disabled:text-gray-800 disabled:cursor-not-allowed`} disabled={role !== 'admin'} onClick={() => setShow("users")}>Users</button>
                         <button className={`${show == "services" ? "bg-secondary-700 text-white" : "bg-gray-800"} p-3 rounded-md text-white luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150 disabled:bg-gray-600 disabled:text-gray-800 disabled:cursor-not-allowed`} disabled={role !== 'admin'} onClick={() => setShow("services")}>Service Requests</button>
                         <button className={`${show == "projects" ? "bg-secondary-700 text-white" : "bg-gray-800"} p-3 rounded-md text-white luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150 disabled:bg-gray-600 disabled:text-gray-800 disabled:cursor-not-allowed`} disabled={role !== 'admin' && role !== 'projectmanager'} onClick={() => setShow("projects")}>Projects</button>
+                        <button className={`${show == "ourservices" ? "bg-secondary-700 text-white" : "bg-gray-800"} p-3 rounded-md text-white luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150 disabled:bg-gray-600 disabled:text-gray-800 disabled:cursor-not-allowed`} disabled={role !== 'admin'} onClick={() => setShow("ourservices")}>Our Services</button>
                         <button className={`${show == "messages" ? "bg-secondary-700 text-white" : "bg-gray-800"} p-3 rounded-md text-white luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150 disabled:bg-gray-600 disabled:text-gray-800 disabled:cursor-not-allowed`} disabled={role !== 'admin'} onClick={() => setShow("messages")}>Messages</button>
                         <button className={`${show == "blogs" ? "bg-secondary-700 text-white" : "bg-gray-800"} p-3 rounded-md text-white luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150 disabled:bg-gray-600 disabled:text-gray-800 disabled:cursor-not-allowed`} disabled={role !== 'admin' && role !== 'blogger'} onClick={() => setShow("blogs")}>Blogs</button>
                         <button className='bg-gray-800 p-3 rounded-md text-white luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150 disabled:bg-gray-600 disabled:text-gray-800 disabled:cursor-not-allowed'  onClick={() => { localStorage.removeItem('token'); window.location.href = '/team/login' }}>Logout</button>
@@ -66,6 +68,9 @@ const page = () => {
                     )}
                     {(show == "projects" && (role == "admin" || role == "projectmanager")) && (
                         <Projects />
+                    )}
+                    {(show == "ourservices" && role == "admin") && (
+                        <ManageServices />
                     )}
                     {show == "messages" && role == "admin" && (
                         <Messages />
