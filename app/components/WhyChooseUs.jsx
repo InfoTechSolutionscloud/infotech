@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const WhyChooseUs = ({qty}) => {
     let data = [
@@ -90,7 +91,9 @@ const WhyChooseUs = ({qty}) => {
                         className="bg-gray-900 border-2 border-secondary-500 group hover:bg-gradient-to-tl hover:from-transparent hover:to-secondary-700 rounded-2xl py-10 shadow-lg overflow-hidden flex flex-col items-center transition-all duration-300 hover:scale-110"
                     >
                         <div className="h-20 mb-4">
-                            <img
+                            <Image
+                                width={64}
+                                height={64}
                                 src={item.icon}
                                 className="h-16 w-16 filter invert"
                                 alt={item.heading}

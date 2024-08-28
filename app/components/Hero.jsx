@@ -35,7 +35,7 @@ const Hero = () => {
             We are a leading technology agency that specializes in providing the
             best services for businesses to stay ahead of the competition. From
             website development to mobile app development, we have the expertise to
-            transform your business. Join us and let's create something amazing
+            transform your business. Join us and let&apos;s create something amazing
             together.
           </p>
           <motion.div
