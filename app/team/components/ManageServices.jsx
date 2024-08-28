@@ -77,9 +77,6 @@ const ManageServices = () => {
                 <th scope="col" className="px-6 py-3">
                   Short Description
                 </th>
-                <th scope="col" className="px-6 py-3 truncate">
-                  Description
-                </th>
                 <th scope="col" className="px-6 py-3">
                   Action
                 </th>

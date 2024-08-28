@@ -98,9 +98,10 @@ const Services = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =>
                       initial={{ opacity: 0, y: shouldAnimate ? 20 : 0 }}
                       animate={{ opacity: 1, y: shouldAnimate ? 0 : undefined }}
                       transition={{ duration: shouldAnimate ? 0.6 : 0, delay: shouldAnimate ? 0.2 : 0 }}
-                      className="z-10 text-sm leading-6 luto text-gray-300"
+                      className="z-10 text-sm raleway leading-2 text-gray-200"
                     >
-                      {item.short_description}
+                      {item.short_description.split(" ").slice(0, 20).join(" ") +
+                        (item.short_description.split(" ").length > 20 ? "..." : "")}
                     </motion.p>
                   </div>
                 </motion.article>

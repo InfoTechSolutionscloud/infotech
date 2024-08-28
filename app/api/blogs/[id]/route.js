@@ -12,7 +12,7 @@ export async function GET(request, params) {
         if (!blog) {
             return new Response(JSON.stringify({ message: "Blog Not Found" }), { status: 404 });
         }
-
+        await Blog.findByIdAndUpdate(blog._id, { $inc: { views: 1 } });
         return new Response(JSON.stringify({ data: blog }), { status: 200 })
 
     } catch (error) {
