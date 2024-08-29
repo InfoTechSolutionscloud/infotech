@@ -79,8 +79,10 @@ const Blogs = ({qty, title="Our Latest"}) => {
                             </div>
                             <div className="p-4 lg:p-6 transition-all duration-300 rounded-b-2xl group-hover:bg-gray-50">
                                 <span className="text-primary-800 text-sm">{new Date(item.createdAt).toDateString()}</span>
-                                <h4 className="text-lg text-gray-900 font-medium leading-tight mb-1">{item.blogTitle}</h4>
-                                <p className="text-gray-500 leading-tight mb-2">{item.blog_description}</p>
+                                <h4 className="text-lg text-gray-900 font-medium truncate leading-tight mb-1">{item.blogTitle}</h4>
+                                <p className="text-gray-500 leading-tight mb-2">
+                                    {`${item.blog_description.split(' ').slice(0, 20).join(' ')}${item.blog_description.split(' ').length > 20 ? '...' : ''}`}
+                                </p>
                                 <Link href={`/blog/${item.blog_slug}`} className="cursor-pointer text-lg text-indigo-600 font-semibold">Read more..</Link>
                             </div>
                         </motion.div>
