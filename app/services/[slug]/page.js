@@ -54,6 +54,13 @@ const page = ({ params }) => {
                         <meta name="description" content={data.service.short_description} />
                         <meta name="keywords" content={data.service.keywords} />
                         <meta name="author" content="Infotech" />
+                        <meta property="og:title" content={data.service.title} />
+                        <meta property="og:description" content={data.service.short_description} />
+                        <meta property="og:image" content={data.service.image} />
+                        <meta property="og:url" content={location.href} />
+                        <meta name="twitter:title" content={data.service.title} />
+                        <meta name="twitter:description" content={data.service.short_description} />
+                        <meta name="twitter:image" content={data.service.image} />
                     </Head>
                     <div className="bg-gray-900">
                         <div className="bg-gradient-to-br from-gray-950/55 via-primary-800 to-gray-900/60 w-full py-10">

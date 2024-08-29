@@ -48,6 +48,13 @@ const Page = ({ params }) => {
             <title>{data.data.blogTitle}</title>
             <meta name="description" content={data.data.blog_description} />
             <meta name="keywords" content={data.data.tags} />
+            <meta property="og:title" content={data.data.blogTitle} />
+            <meta property="og:description" content={data.data.blog_description} />
+            <meta property="og:image" content={data.data.blogImage} />
+            <meta property="og:url" content={location.href} />
+            <meta name="twitter:title" content={data.data.blogTitle} />
+            <meta name="twitter:description" content={data.data.blog_description} />
+            <meta name="twitter:image" content={data.data.blogImage} />
           </Head>
           <div className="bg-noise flex flex-col">
             <section className="relative">
