@@ -3,8 +3,8 @@ export default function robots() {
       rules: {
         userAgent: '*',
         allow: '/',
-        disallow: '/private/',
+        disallow: '/team/',
       },
-      sitemap: 'https://acme.com/sitemap.xml',
+      sitemap: 'https://infotechsolutions.cloud/sitemap.xml',
     }
   }

@@ -5,6 +5,7 @@ import axios from 'axios';
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
 import Head from 'next/head';
+import CustomHead from '../components/CustomHead';
 
 const page = () => {
 
@@ -75,12 +76,8 @@ const page = () => {
 
     return (
         <>
-            <Head>
-                <title>Get Service - Infotech</title>
-                <meta name="description" content="Get in touch with us today and learn more about how our technology solutions can help your business thrive. We offer a range of services including web development, digital marketing, IT consulting, software development, and more. Fill out the form to send us a message or give us a call." />
-                <meta name="keywords" content="contact us, service request, web development, digital marketing, IT consulting, software development, technology solutions, innovative solutions, real results" />
-                <meta name="author" content="Infotech" />
-            </Head>
+            <CustomHead title={"Get Service - Infotech"} description={"Fill out the form below to request a quote or order a service from us. We offer a range of technology solutions including web development, digital marketing, IT consulting, software development, and more. Our team will get back to you as soon as possible."} keywords={"contact us, service request, web development, digital marketing, IT consulting, software development, technology solutions, innovative solutions, real results"} />
+
             <section className="bg-slate-800" id="contact">
                 <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
                     <motion.div

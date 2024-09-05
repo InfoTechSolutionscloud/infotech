@@ -1,13 +1,11 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
-import Head from 'next/head';
+import CustomHead from '../components/CustomHead';
 
 const page = () => {
-    useEffect(() => {
-        document.title = "Track Project - Infotech";
-    }, [])
+
     const [formData, setformdata] = useState({
         clientEmail: "",
         projectId: "",
@@ -79,12 +77,8 @@ const page = () => {
 
     return (
         <>
-            <Head>
-                <title>Track Project - Infotech</title>
-                <meta name="description" content="Track your project with Infotech. We offer a range of technology solutions to help your business thrive. Fill out the form to send us a message or give us a call." />
-                <meta name="keywords" content="track project, project updates, web development, digital marketing, IT consulting, software development, technology solutions, innovative solutions, real results" />
-                <meta name="author" content="Infotech" />
-            </Head>
+            
+            <CustomHead title={"Track Project - Infotech"} description={"Track your project with Infotech. We offer a range of technology solutions to help your business thrive. Fill out the form to send us a message or give us a call."} keywords={"track project, project updates, web development, digital marketing, IT consulting, software development, technology solutions, innovative solutions, real results"} />
             <section className="bg-slate-800" id="contact">
                 <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
                     <motion.div

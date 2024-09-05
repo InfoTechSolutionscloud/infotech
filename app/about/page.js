@@ -1,12 +1,9 @@
-"use client";
-import React, { useEffect } from 'react'
+import React from 'react'
 import WhyChooseUs from '../components/WhyChooseUs'
 import Head from 'next/head'
 import Image from 'next/image';
 const page = () => {
-    useEffect(() => {
-        document.title = "About Us - Infotech";
-      }, []);
+
     return (
         <>
             <Head>

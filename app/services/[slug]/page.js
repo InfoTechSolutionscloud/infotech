@@ -1,16 +1,37 @@
-"use client";
+import CustomHead from '@/app/components/CustomHead';
 import GetService from '@/app/components/GetService';
 import Share from '@/app/components/Share';
-import public_fetcher from '@/app/lib/fetcher';
 import Loading from '@/app/loading';
-import Head from 'next/head';
+import NotFound from '@/app/not-found';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
-import useSWR from 'swr';
 
-const page = ({ params }) => {
-    const { data, error, isLoading } = useSWR(`/api/service?slug=${params.slug}`, public_fetcher);
+const page = async ({ params }) => {
+
+    let data = null;
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/service?slug=${params.slug}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    if (res.ok) {
+      const jsonData = await res.json();
+      data = jsonData;
+    }
+    if(res.status == 404){
+      return <NotFound />
+    }
+  } catch (error) {
+    console.error('Error fetching data:', error.message);
+  }
+
+  if (!data) {
+    return <Loading />;
+  }
+  const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
 
     // Function to replace HTML elements with custom styled ones
     const options = {
@@ -41,29 +62,12 @@ const page = ({ params }) => {
 
     return (
         <>
-            {isLoading && (
-                <Loading />
-            )}
-            {error && (
-                <div className='bg-gray-900 h-screen w-full p-4 flex justify-center items-center'>{error.response.data.message}</div>
-            )}
             {data && (
                 <>
-                    <Head>
-                        <title>{data.service.title}</title>
-                        <meta name="description" content={data.service.short_description} />
-                        <meta name="keywords" content={data.service.keywords} />
-                        <meta name="author" content="Infotech" />
-                        <meta property="og:title" content={data.service.title} />
-                        <meta property="og:description" content={data.service.short_description} />
-                        <meta property="og:image" content={data.service.image} />
-                        <meta property="og:url" content={location.href} />
-                        <meta name="twitter:title" content={data.service.title} />
-                        <meta name="twitter:description" content={data.service.short_description} />
-                        <meta name="twitter:image" content={data.service.image} />
-                    </Head>
+                    <CustomHead title={data.service.title} description={data.service.short_description} keywords={data.service.keywords} image={data.service.image} fullUrl={fullUrl} />
+
                     <div className="bg-gray-900">
-                        <div className="bg-gradient-to-br from-gray-950/55 via-primary-800 to-gray-900/60 w-full py-10">
+                        <div className="bg-gradient-to-br from-gray-950/55 via-primary-950 to-gray-900/60 w-full py-10">
                             <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6 p-5 md:p-10">
                                 {/* Service Image */}
                                 <div className="w-full md:w-1/2 flex justify-center">
@@ -76,7 +80,7 @@ const page = ({ params }) => {
                                     />
                                 </div>
                                 {/* Service Details */}
-                                <div id="service-details" className="w-full md:w-1/2 text-center md:text-left p-5 md:p-10">
+                                <div id="service-details" className="w-full md:w-3/4 text-center md:text-left p-5 md:p-10">
                                     <h1 className="text-4xl merriweather font-bold text-white pb-4">
                                         {data.service.title}
                                     </h1>
@@ -97,14 +101,13 @@ const page = ({ params }) => {
                                 <Share
                                     title={`Explore Infotech's ${data.service.title} service`}
                                     description={data.service.description}
-                                    url={location.href}
+                                    url={fullUrl}
                                 />
                             </section>
                             {/* Get Service Component */}
                             <GetService serviceText={data.service.title} />
                         </div>
                     </div>
-
                 </>
             )}
         </>

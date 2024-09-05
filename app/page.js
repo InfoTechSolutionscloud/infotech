@@ -13,13 +13,13 @@ export default function Home() {
 
 
   return (
-    <main className="bg-black min-h-screen">
+    <main className="bg-black min-h-screen px-1 md:px-0">
       <ScrollAnimation>
         <Hero />
       </ScrollAnimation>
       <ScrollAnimation>
         <WhyChooseUs qty={4} />
-        <Buttonline title={"Know More About Us"} link={"/aboutus"} />
+        <Buttonline title={"Know More About Us"} link={"/about"} />
       </ScrollAnimation>
       <ScrollAnimation>
         <Services titleSimple={"What we "} hititle={"Offer!"} tagline={"We provide a variety of services! Here are "} hitagline={"Top services"} animate={false} />

@@ -1,88 +1,63 @@
-"use client";
-
-import useSWR from "swr";
 import React from "react";
-import Head from "next/head";
-import Loading from "@/app/loading";
-import public_fetcher from "@/app/lib/fetcher";
+import CustomHead from "@/app/components/CustomHead";
 import Share from "@/app/components/Share";
+import Loading from "@/app/loading";
+import NotFound from "@/app/not-found";
 
-const Page = ({ params }) => {
-  const { data, error, isLoading } = useSWR(`/api/blogs/${params.id}`, public_fetcher);
-
-  // Function to replace HTML elements with custom styled ones
-  const options = {
-    replace: (domNode) => {
-      if (domNode instanceof Element) {
-        const tagName = domNode.tagName.toLowerCase();
-        const className = styles[tagName];
-
-        if (className) {
-          // Return the element with its children and className
-          return React.createElement(
-            tagName,
-            { className },
-            domNode.children.length > 0
-              ? Array.from(domNode.childNodes).map((child, index) => {
-                // Recursively parse each child node
-                return typeof child === "string"
-                  ? child
-                  : parse(child.outerHTML || "", options);
-              })
-              : domNode.textContent
-          );
-        }
+const Page = async ({ params }) => {
+  let data = null;
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blogs/${params.id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
       }
-    },
-  };
+    });
 
+    if (res.ok) {
+      const jsonData = await res.json();
+      data = jsonData.data;
+    }
+    if(res.status == 404){
+      return <NotFound />
+    }
+  } catch (error) {
+    console.error('Error fetching data:', error.status);
+  }
+
+  if (!data) {
+    return <Loading />;
+  }
+  const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
   return (
     <>
-      {error && (
-        <p className="text-3xl text-white text-center py-10">{error.response.data.message}</p>
-      )}
-      {isLoading && <Loading />}
-      {data && (
-        <>
-          <Head>
-            <title>{data.data.blogTitle}</title>
-            <meta name="description" content={data.data.blog_description} />
-            <meta name="keywords" content={data.data.tags} />
-            <meta property="og:title" content={data.data.blogTitle} />
-            <meta property="og:description" content={data.data.blog_description} />
-            <meta property="og:image" content={data.data.blogImage} />
-            <meta property="og:url" content={location.href} />
-            <meta name="twitter:title" content={data.data.blogTitle} />
-            <meta name="twitter:description" content={data.data.blog_description} />
-            <meta name="twitter:image" content={data.data.blogImage} />
-          </Head>
-          <div className="bg-noise flex flex-col">
-            <section className="relative">
-              <div className="absolute inset-0 bg-gray-900"></div>
-              <div
-                className="container mx-auto px-6 md:px-12 relative z-10 flex items-center py-12 md:py-32 bg-cover bg-center"
-                style={{ backgroundImage: `url(${data.data.blogImage})` }}
-              >
-                <div className="mx-auto w-full py-20">
-                  <h2 className="text-3xl md:text-6xl font-bold text-center bg-gray-950/50 p-4 rounded-md text-white w-full leading-tight mb-5">
-                    {data.data.blogTitle}
-                    <br />
-                    <span className="text-sm md:text-[15px] text-center text-white">
-                      {new Date(data.data.createdAt).toLocaleDateString()}
-                    </span>
-                  </h2>
-                </div>
-              </div>
-            </section>
-            <section className="container mx-auto px-6 md:px-12 bg-gray-900">
-              <div className="mx-auto w-full  py-5 md:py-20 px-2 md:px-10 text-lg text-white">
-                <div id="blogcontent" dangerouslySetInnerHTML={{ __html: data.data.blogContent }}></div>
-              </div>
-              <Share title={"Read Best Blog" + " " + data.data.blogTitle} description={data.data.blog_description} url={location.href} />
-            </section>
+    <CustomHead title={data.blogTitle} description={data.blog_description} keywords={data.tags} image={data.blogImage} fullUrl={fullUrl} contentType="article" />
+
+      <div className="bg-noise flex flex-col">
+        <section className="relative">
+          <div className="absolute inset-0 bg-gray-900"></div>
+          <div
+            className="container mx-auto px-6 md:px-12 relative z-10 flex items-center py-12 md:py-32 bg-cover bg-center"
+            style={{ backgroundImage: `url(${data.blogImage})` }}
+          >
+            <div className="mx-auto w-full py-20">
+              <h2 className="text-3xl md:text-6xl font-bold text-center bg-gray-950/50 p-4 rounded-md text-white w-full leading-tight mb-5">
+                {data.blogTitle}
+                <br />
+                <span className="text-sm md:text-[15px] text-center text-white">
+                  {new Date(data.createdAt).toLocaleDateString()}
+                </span>
+              </h2>
+            </div>
           </div>
-        </>
-      )}
+        </section>
+        <section className="container mx-auto px-6 md:px-12 bg-gray-900">
+          <div className="mx-auto w-full  py-5 md:py-20 px-2 md:px-10 text-lg text-white">
+            <div id="blogcontent" dangerouslySetInnerHTML={{ __html: data.blogContent }}></div>
+          </div>
+          <Share title={`Read Best Blog ${data.blogTitle}`} description={data.blog_description} url={typeof window !== "undefined" ? window.location.href : ""} />
+        </section>
+      </div>
     </>
   );
 };
