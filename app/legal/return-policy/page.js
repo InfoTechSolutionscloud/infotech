@@ -1,8 +1,13 @@
+import CustomHead from '@/app/components/CustomHead'
 import Link from 'next/link'
 import React from 'react'
 
 const page = () => {
+  const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
+  
   return (
+    <>
+     <CustomHead title={"Return Policy"} description={"Here is infotech's return policy means if you pay fee to infotech about any service then how you can cancel your service and get your return amount"} keywords={"return-policy, legal"} fullUrl={fullUrl}  />
     <div className="bg-gray-950 p-5 px-2 md:px-20 text-gray-300 raleway">
       <h1 className="text-4xl text-white merriweather font-bold py-2">Returns Policy</h1>
       <p className="text-sm text-white raleway">Last Updated: 26/08/2024</p>
@@ -41,6 +46,7 @@ const page = () => {
       <p>If you have any questions about our Returns Policy, please contact us <Link href="/contact">Here!</Link></p>
       <p>PLEASE NOTE: We do not accept any kind of responsibility for any loss or damage from any transaction. We are just a service provider and not a financial institution. We are not responsible for any kind of financial loss or damage.</p>
     </div>
+    </>
   )
 }
 

@@ -1,8 +1,13 @@
+import CustomHead from '@/app/components/CustomHead'
 import Link from 'next/link'
 import React from 'react'
 
 const page = () => {
+    const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
+
     return (
+        <>
+         <CustomHead title={"Terms and Conditions"} description={"Here is infotech's terms and conditions that can help you to completely understand infotech and can continue service without any issue..."} keywords={"termsconditions, legal"} fullUrl={fullUrl}  />
         <div className='bg-gray-950 p-5 px-2 md:px-20 text-gray-300 raleway '>
             <h1 className='text-4xl text-white merriweather font-bold py-2'>Terms and Conditions</h1>
             <p className='text-sm text-white raleway'>Last Updated: 26/08/2024</p>
@@ -48,6 +53,7 @@ const page = () => {
             <h2 className='text-2xl text-white merriweather pt-5 font-semibold py-2'>10. Contact Us</h2>
             <p>If you have any questions about these Terms, please contact us <Link href="/contact">Here!</Link></p>
         </div>
+        </>
     )
 }
 

@@ -8,11 +8,12 @@ const CustomHead = ({title, description, keywords, image, fullUrl, contentType, 
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content={Array.isArray(keywords) ? keywords.join(',') : keywords} />
+    <link rel='canonical' href={fullUrl} />
     
     {/* Open Graph Meta Tags */}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    {image && <meta property="og:image" content={image} />}
+    <meta property="og:image" content={image ? image : "/logo.png"} />
     {fullUrl && <meta property="og:url" content={fullUrl} />}
     {contentType && <meta property="og:type" content={contentType} /> }
     {author && <meta name="author" content={author} />}

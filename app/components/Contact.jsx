@@ -118,7 +118,7 @@ const Contact = () => {
                                         description: (
                                             <>
                                                 <p>Mobile: +92 328 2296963</p>
-                                                <p>Mail: infotechcompany85@gmail.com</p>
+                                                <p>Email: infotechcompany85@gmail.com</p>
                                             </>
                                         ),
                                     },
@@ -129,12 +129,10 @@ const Contact = () => {
                                                 <path d="M12 7v5l3 3"></path>
                                             </svg>
                                         ),
-                                        title: "Working hours",
+                                        title: "Our Support",
                                         description: (
                                             <>
-                                                <p>Monday - Friday: 08:00 - 17:00</p>
-                                                <p>Saturday- 08:00 - 12:00</p>
-                                                <p>Sunday- Closed</p>
+                                                <p>24/7</p>
                                             </>
                                         ),
                                     },

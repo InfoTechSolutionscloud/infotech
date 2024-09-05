@@ -9,9 +9,6 @@ import CustomHead from '../components/CustomHead';
 
 const page = () => {
 
-    useEffect(() => {
-        document.title = "Get Services - Infotech"
-    }, [])
     const [formData, setformdata] = useState({
         clientName: "",
         clientEmail: "",
@@ -73,10 +70,11 @@ const page = () => {
             },
         }),
     };
+    const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
 
     return (
         <>
-            <CustomHead title={"Get Service - Infotech"} description={"Fill out the form below to request a quote or order a service from us. We offer a range of technology solutions including web development, digital marketing, IT consulting, software development, and more. Our team will get back to you as soon as possible."} keywords={"contact us, service request, web development, digital marketing, IT consulting, software development, technology solutions, innovative solutions, real results"} />
+            <CustomHead title={"Get Service - Infotech"} description={"Fill out the form below to request a quote or order a service from us. We offer a range of technology solutions including web development, digital marketing, IT consulting, software development, and more. Our team will get back to you as soon as possible."} keywords={"contact us, service request, web development, digital marketing, IT consulting, software development, technology solutions, innovative solutions, real results"} fullUrl={fullUrl} />
 
             <section className="bg-slate-800" id="contact">
                 <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">

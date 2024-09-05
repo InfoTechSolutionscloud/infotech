@@ -14,9 +14,7 @@ export default function Home() {
 
   return (
     <main className="bg-black min-h-screen px-1 md:px-0">
-      <ScrollAnimation>
-        <Hero />
-      </ScrollAnimation>
+      <Hero />
       <ScrollAnimation>
         <WhyChooseUs qty={4} />
         <Buttonline title={"Know More About Us"} link={"/about"} />
@@ -34,7 +32,7 @@ export default function Home() {
         <Buttonline title={"Visit Blogs"} link={"/blogs"} />
       </ScrollAnimation>
       <ScrollAnimation>
-      <Contact />
+        <Contact />
       </ScrollAnimation>
     </main>
 

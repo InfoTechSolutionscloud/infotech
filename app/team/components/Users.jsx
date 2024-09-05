@@ -127,7 +127,7 @@ const Users = () => {
                     {item.role}
                   </td>
                   <td className="px-6 py-4">
-                    {item.email === "sarfarazunarr@gmail.com" || item.email === "infotechcompany85@gmail.com" ? (
+                    {item.email === "infotechcompany85@gmail.com" ? (
                       <p className='text-gray-400'>Protected</p>
                     ) : (
                       <>

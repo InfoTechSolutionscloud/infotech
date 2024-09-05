@@ -2,16 +2,13 @@ import React from 'react'
 import WhyChooseUs from '../components/WhyChooseUs'
 import Head from 'next/head'
 import Image from 'next/image';
+import CustomHead from '../components/CustomHead';
 const page = () => {
+    const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
 
     return (
         <>
-            <Head>
-                <title>About Us - Infotech</title>
-                <meta name="description" content="Discover the story behind Infotech, our values, and what drives us to deliver exceptional services to our clients. Learn more about our team, our mission, and why we are the best choice for all your tech-related needs." />
-                <meta name="keywords" content="about us, company, services, values, why choose us, web development, digital marketing, it consulting, software development, technology solutions, infotech, innovative solutions, real results" />
-                <meta name="author" content="Infotech" />
-            </Head>
+            <CustomHead title={"About Us"} description={"Discover the story behind Infotech, our values, and what drives us to deliver exceptional services to our clients. Learn more about our team, our mission, and why we are the best choice for all your tech-related needs."} fullUrl={fullUrl} />
             <div className="bg-black">
                 <section>
 

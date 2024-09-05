@@ -48,7 +48,7 @@ const page = () => {
                     <p className='text-white luto font-normal'>Email: {data.email}</p>
                     <p className='text-white luto font-normal'>Role: {role}</p>
                 </div>
-                <div className='my-5 overflow-x-scroll md:overflow-hidden'>
+                <div className='my-5 mx-3 md:mx-0 overflow-x-scroll md:overflow-hidden'>
                     <div className='flex justify-center gap-3 items-center '>
                         <button className={`${show == "users" ? "bg-secondary-500 text-black" : "bg-gray-800 text-white"} p-3 rounded-md  luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150 disabled:bg-gray-600 disabled:text-gray-800 disabled:cursor-not-allowed`} disabled={role !== 'admin'} onClick={() => setShow("users")}>Users</button>
                         <button className={`${show == "services" ? "bg-secondary-700 text-white" : "bg-gray-800"} p-3 rounded-md text-white luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150 disabled:bg-gray-600 disabled:text-gray-800 disabled:cursor-not-allowed`} disabled={role !== 'admin'} onClick={() => setShow("services")}>Service Requests</button>

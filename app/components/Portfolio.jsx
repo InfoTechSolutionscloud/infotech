@@ -37,77 +37,30 @@ const Portfolio = () => {
                 Some shots of our <span className='bg-secondary-500 text-black p-2'>Previous Work!</span>
             </motion.p>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-3">
-                <>
-                    <motion.div
-                        className="grid gap-4"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.3 }}
-                        variants={imageVariants}
-                    >
-                        <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" width={250} height={300} alt="tech portfolio" />
-                        </div>
-                        <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt="tech portfolio" width={250} height={300} />
-                        </div>
-                        <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt="tech portfolio" width={250} height={300} />
-                        </div>
-                    </motion.div>
-                    <motion.div
-                        className="grid gap-4"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.3 }}
-                        variants={imageVariants}
-                    >
-                        <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt="tech portfolio" width={250} height={300} />
-                        </div>
-                        <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt="tech portfolio" width={250} height={300} />
-                        </div>
-                        <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt="tech portfolio" width={250} height={300} />
-                        </div>
-                    </motion.div>
-                    <motion.div
-                        className="grid gap-4"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.3 }}
-                        variants={imageVariants}
-                    >
-                        <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt="tech portfolio" width={250} height={300} />
-                        </div>
-                        <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt="tech portfolio" width={250} height={300} />
-                        </div>
-                        <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt="tech portfolio" width={250} height={300} />
-                        </div>
-                    </motion.div>
-                    <motion.div
-                        className="grid gap-4"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.3 }}
-                        variants={imageVariants}
-                    >
-                        <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" width={250} height={300} alt="tech portfolio" />
-                        </div>
-                        <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" width={250} height={300} alt="tech portfolio" />
-                        </div>
-                        <div>
-                            <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" width={250} height={300} alt="tech portfolio" />
-                        </div>
-                    </motion.div>
-                </>
+            <div className="flex flex-col md:flex-row flex-wrap px-3">
+                <motion.div
+                    className="w-full "
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                    variants={imageVariants}
+
+                >
+                    {data.map((item) => {
+                        return (
+                            <div className='flex h-96 my-4 hover:bg-secondary-950 hover:shadow-xl flex-col items-center hover:scale-100 md:hover:scale-110 transition-transform duration-150 justify-center bg-gray-900 rounded-md'>
+                                <Image className="h-1/2 object-cover w-full rounded-md mb-2 -mt-11" src={item.img} width={300} height={300} alt={item.title} />
+                                <div className='m-2 px-3'>
+                                    <h3 className='text-xl font-bold text-white'>{item.title}</h3>
+                                    <p className=' text-gray-400'>{item.short_description}</p>
+                                    <p className='bg-primary-600 px-3 my-2 inline-block text-xs text-white py-2 rounded-full'>{item.category}</p>
+                                </div>
+                            </div>
+                        )
+                    })}
+
+
+                </motion.div>
             </div>
         </div>
     );
