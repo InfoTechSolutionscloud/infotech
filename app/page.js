@@ -8,12 +8,15 @@ import Blogs from "./components/Blogs";
 import Buttonline from "./components/Buttonline";
 import Contact from "./components/Contact";
 import ScrollAnimation from "./components/ScrollAnimation";
+import CustomHead from "./components/CustomHead";
 
 export default function Home() {
 
+  const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
 
   return (
     <main className="bg-black min-h-screen px-1 md:px-0">
+      <CustomHead fullUrl={fullUrl} />
       <Hero />
       <ScrollAnimation>
         <WhyChooseUs qty={4} />

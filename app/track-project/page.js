@@ -74,11 +74,12 @@ const page = () => {
             },
         }),
     };
+    const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
 
     return (
         <>
             
-            <CustomHead title={"Track Project - Infotech"} description={"Track your project with Infotech. We offer a range of technology solutions to help your business thrive. Fill out the form to send us a message or give us a call."} keywords={"track project, project updates, web development, digital marketing, IT consulting, software development, technology solutions, innovative solutions, real results"} />
+            <CustomHead title={"Track Project - Infotech"} description={"Track your project with Infotech. We offer a range of technology solutions to help your business thrive. Fill out the form to send us a message or give us a call."} keywords={"track project, project updates, web development, digital marketing, IT consulting, software development, technology solutions, innovative solutions, real results"} fullUrl={fullUrl} />
             <section className="bg-slate-800" id="contact">
                 <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
                     <motion.div
