@@ -9,6 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "InfoTech - Innovative Solutions, Real Results",
   description: "Infotech is a best agency for tech related service. We provide amazing tech related services.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_API_URL),
   openGraph: {
     title: "InfoTech - Innovative Solutions, Real Results",
     description: "Infotech is a best agency for tech related service. We provide amazing tech related services.",
