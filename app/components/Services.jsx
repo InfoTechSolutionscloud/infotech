@@ -70,7 +70,7 @@ const Services = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =>
           </motion.p>
 
           {/* Slider or Static Cards */}
-          {data.services.length > 3 ? (
+          {animate ? (
             <Slider {...settings}>
               {data.services.slice(0, qty || data.services.length).map((item, index) => (
                 <motion.article
@@ -108,12 +108,12 @@ const Services = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =>
               ))}
             </Slider>
           ) : (
+            // Display when animate is false
             <div className="flex flex-wrap justify-center">
               {data.services.slice(0, qty || data.services.length).map((item) => (
                 <div
                   key={item.id} // Ensure unique key is `item.id`
-                  className="p-4 w-full md:w-1/3"
-                >
+                  className="p-4 w-full md:w-1/3" >
                   <div
                     className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 bg-cover bg-center"
                     style={{ backgroundImage: `url(${item.image})` }}

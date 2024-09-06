@@ -28,7 +28,7 @@ const Page = async ({ params }) => {
   if (!data) {
     return <Loading />;
   }
-  const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
+  const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/blog/${params.id}`;
   return (
     <>
     <CustomHead title={data.blogTitle} description={data.blog_description} keywords={data.tags} image={data.blogImage} fullUrl={fullUrl} contentType="article" />

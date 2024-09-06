@@ -31,7 +31,8 @@ const page = async ({ params }) => {
   if (!data) {
     return <Loading />;
   }
-  const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
+  const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/services/${params.slug}`;
+
 
     // Function to replace HTML elements with custom styled ones
     const options = {

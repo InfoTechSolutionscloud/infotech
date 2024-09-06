@@ -12,7 +12,8 @@ import CustomHead from "./components/CustomHead";
 
 export default function Home() {
 
-  const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
+  const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/`;
+
 
   return (
     <main className="bg-black min-h-screen px-1 md:px-0">
@@ -23,7 +24,7 @@ export default function Home() {
         <Buttonline title={"Know More About Us"} link={"/about"} />
       </ScrollAnimation>
       <ScrollAnimation>
-        <Services titleSimple={"What we "} hititle={"Offer!"} tagline={"We provide a variety of services! Here are "} hitagline={"Top services"} animate={false} />
+        <Services titleSimple={"What we "} hititle={"Offer!"} tagline={"We provide a variety of services! Here are "} hitagline={"Top services"} animate={true} />
         <Buttonline title={"Explore Our Services"} link={"/services"} />
       </ScrollAnimation>
       <ScrollAnimation>

@@ -3,7 +3,8 @@ import Link from 'next/link'
 import React from 'react'
 
 const page = () => {
-  const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
+  const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/return-policy`;
+
   
   return (
     <>

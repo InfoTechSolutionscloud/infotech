@@ -4,7 +4,8 @@ import Blogs from '../components/Blogs'
 import CustomHead from '../components/CustomHead';
 
 const page = () => {
-  const fullUrl = typeof window !== 'undefined' ? window.location.href : '';
+  const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/blog`;
+
 
   return (
     <>
