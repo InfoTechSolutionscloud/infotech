@@ -39,7 +39,7 @@ const Portfolio = ({qty}) => {
 
             <div className="flex w-full flex-wrap px-3">
                 <motion.div
-                    className="flex flex-wrap gap-2"
+                    className="flex flex-col md:flex-row flex-wrap gap-2"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
@@ -48,7 +48,7 @@ const Portfolio = ({qty}) => {
                 >
                     {data.map((item) => {
                         return (
-                            <div className='flex w-[32%] mx-auto h-96 my-4 hover:bg-secondary-950 hover:shadow-xl hover:shadow-gray-500 flex-col items-center hover:scale-100 md:hover:scale-110 transition-transform duration-150 justify-center bg-gray-900 rounded-md'>
+                            <div className='flex w-full md:w-[32%] mx-auto h-96 my-4 hover:bg-secondary-950 hover:shadow-xl hover:shadow-gray-500 flex-col items-center hover:scale-100 md:hover:scale-110 transition-transform duration-150 justify-center bg-gray-900 rounded-md'>
                                 <Image className="h-1/2 object-cover w-full rounded-md mb-2 -mt-11" src={item.img} width={300} height={300} alt={item.title} />
                                 <div className='m-2 px-3'>
                                     <h3 className='text-xl font-bold text-white'>{item.title}</h3>
