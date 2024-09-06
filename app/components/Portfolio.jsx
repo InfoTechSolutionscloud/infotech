@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import data from '../portfolio/data';
 
-const Portfolio = () => {
+const Portfolio = ({qty}) => {
     // Animation variants
     const imageVariants = {
         hidden: { opacity: 0, scale: 0.8 },
@@ -37,9 +37,9 @@ const Portfolio = () => {
                 Some shots of our <span className='bg-secondary-500 text-black p-2'>Previous Work!</span>
             </motion.p>
 
-            <div className="flex flex-col md:flex-row flex-wrap px-3">
+            <div className="flex w-full flex-wrap px-3">
                 <motion.div
-                    className="w-full "
+                    className="flex flex-wrap gap-2"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
@@ -48,7 +48,7 @@ const Portfolio = () => {
                 >
                     {data.map((item) => {
                         return (
-                            <div className='flex h-96 my-4 hover:bg-secondary-950 hover:shadow-xl flex-col items-center hover:scale-100 md:hover:scale-110 transition-transform duration-150 justify-center bg-gray-900 rounded-md'>
+                            <div className='flex w-[32%] mx-auto h-96 my-4 hover:bg-secondary-950 hover:shadow-xl hover:shadow-gray-500 flex-col items-center hover:scale-100 md:hover:scale-110 transition-transform duration-150 justify-center bg-gray-900 rounded-md'>
                                 <Image className="h-1/2 object-cover w-full rounded-md mb-2 -mt-11" src={item.img} width={300} height={300} alt={item.title} />
                                 <div className='m-2 px-3'>
                                     <h3 className='text-xl font-bold text-white'>{item.title}</h3>

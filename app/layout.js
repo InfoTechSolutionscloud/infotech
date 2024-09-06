@@ -9,6 +9,22 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "InfoTech - Innovative Solutions, Real Results",
   description: "Infotech is a best agency for tech related service. We provide amazing tech related services.",
+  openGraph: {
+    title: "InfoTech - Innovative Solutions, Real Results",
+    description: "Infotech is a best agency for tech related service. We provide amazing tech related services.",
+    url: process.env.NEXT_PUBLIC_API_URL,
+    siteName: "Infotech",
+    images: [
+      {
+        url: "/logo.png",
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: "en-US",
+    type: "website",
+
+  }
 
 };
 
@@ -16,10 +32,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Head>
-        <meta property="og:title" content={metadata.title} />
-        <meta property="og:description" content={metadata.description} />
-        <meta property="og:image" content={"/logo.png"} />
-        <meta property="og:url" content={process.env.NEXT_PUBLIC_API_URL} />
         <link rel='canonical' href={process.env.NEXT_PUBLIC_API_URL} />
 
         <script
