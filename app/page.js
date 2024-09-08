@@ -8,11 +8,8 @@ import Blogs from "./components/Blogs";
 import Buttonline from "./components/Buttonline";
 import Contact from "./components/Contact";
 import ScrollAnimation from "./components/ScrollAnimation";
-import CustomHead from "./components/CustomHead";
 
 export default function Home() {
-
-  const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/`;
 
 
   return (
@@ -45,7 +42,6 @@ export default function Home() {
         }}
       />}
 
-      <CustomHead fullUrl={fullUrl} />
       <Hero />
       <ScrollAnimation>
         <WhyChooseUs qty={4} />

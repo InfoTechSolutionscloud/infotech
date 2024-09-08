@@ -2,6 +2,24 @@ import React from "react";
 import Share from "@/app/components/Share";
 import Loading from "@/app/loading";
 import NotFound from "@/app/not-found";
+import { metadata as baseMeta } from '../../layout'
+
+
+export const metadata = {
+    ...baseMeta,
+    title: "",
+    description: "",
+    openGraph: {
+      ...baseMeta.openGraph,
+      title: "",
+      description: "",
+      images: [],
+      url: ``,
+    },
+    alternates: {
+      canonical: ``,
+    },
+  };
 
 const Page = async ({ params }) => {
   let data = null;
@@ -16,6 +34,13 @@ const Page = async ({ params }) => {
     if (res.ok) {
       const jsonData = await res.json();
       data = jsonData.data;
+      metadata.title = data.blogTitle + " - InfoTech";
+      metadata.description = data.blog_description;
+      metadata.openGraph.title = data.blogTitle + " - InfoTech";
+      metadata.openGraph.description = data.blog_description;
+      metadata.openGraph.images[0].url = data.blogImage;
+      metadata.openGraph.url = `${process.env.NEXT_PUBLIC_API_URL}/blog/${params.id}`;
+      metadata.alternates.canonical = `${process.env.NEXT_PUBLIC_API_URL}/blog/${params.id}`;
     }
     if(res.status == 404){
       return <NotFound />

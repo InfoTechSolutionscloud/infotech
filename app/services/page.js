@@ -1,7 +1,6 @@
 "use client"
 import React, { useEffect } from 'react'
 import Services from '../components/Services'
-import Head from 'next/head'
 import CustomHead from '../components/CustomHead'
 
 const page = () => {

@@ -1,4 +1,3 @@
-import CustomHead from '@/app/components/CustomHead';
 import GetService from '@/app/components/GetService';
 import Share from '@/app/components/Share';
 import Loading from '@/app/loading';
@@ -6,6 +5,25 @@ import NotFound from '@/app/not-found';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
+import { metadata as baseMeta } from '../../layout'
+
+
+export const metadata = {
+    ...baseMeta,
+    title: "",
+    description: "",
+    openGraph: {
+      ...baseMeta.openGraph,
+      title: "",
+      description: "",
+      images: [],
+      url: ``,
+    },
+    alternates: {
+      canonical: ``,
+    },
+  };
+
 
 const page = async ({ params }) => {
 
@@ -20,6 +38,16 @@ const page = async ({ params }) => {
     if (res.ok) {
       const jsonData = await res.json();
       data = jsonData;
+    
+      
+      metadata.title = data.service.title + " - InfoTech";
+      metadata.description = data.service.short_description;
+      metadata.openGraph.title = data.service.title + " - InfoTech";
+      metadata.openGraph.description = data.service.short_description;
+      metadata.openGraph.images[0].url = data.service.image;
+      metadata.openGraph.url = `${process.env.NEXT_PUBLIC_API_URL}/services/${params.slug}`;
+      metadata.alternates.canonical = `${process.env.NEXT_PUBLIC_API_URL}/services/${params.slug}`;
+      
     }
     if(res.status == 404){
       return <NotFound />
@@ -31,9 +59,6 @@ const page = async ({ params }) => {
   if (!data) {
     return <Loading />;
   }
-  const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/services/${params.slug}`;
-
-
     // Function to replace HTML elements with custom styled ones
     const options = {
         replace: (domNode) => {
@@ -65,8 +90,6 @@ const page = async ({ params }) => {
         <>
             {data && (
                 <>
-                    <CustomHead title={data.service.title} description={data.service.short_description} keywords={data.service.keywords} image={data.service.image} fullUrl={fullUrl} />
-
                     <div className="bg-gray-900">
                         <div className="bg-gradient-to-br from-gray-950/55 via-primary-950 to-gray-900/60 w-full py-10">
                             <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6 p-5 md:p-10">
@@ -102,7 +125,7 @@ const page = async ({ params }) => {
                                 <Share
                                     title={`Explore Infotech's ${data.service.title} service`}
                                     description={data.service.description}
-                                    url={fullUrl}
+                                    url={`${process.env.NEXT_PUBLIC_API_URL}/services/${data.service.slug}`}
                                 />
                             </section>
                             {/* Get Service Component */}

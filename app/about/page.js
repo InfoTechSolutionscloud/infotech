@@ -1,18 +1,21 @@
 import React from 'react'
 import WhyChooseUs from '../components/WhyChooseUs'
 import Image from 'next/image';
-import { baseMetadata } from '../layout';
+import { metadata as baseMeta } from '../layout';
 
 export const metadata = {
-    ...baseMetadata,
+    ...baseMeta,
     title: "About Us - InfoTech",
     description: "Discover the story behind Infotech, our values, and what drives us to deliver exceptional services to our clients. Learn more about our team, our mission, and why we are the best choice for all your tech-related needs.",
     openGraph: {
-      ...baseMetadata.openGraph,
+      ...baseMeta.openGraph,
       title: "Know more about Infotech!",
       description: "Discover the story behind Infotech, our values, and what drives us to deliver exceptional services to our clients. Learn more about our team, our mission, and why we are the best choice for all your tech-related needs.",
       url: `${process.env.NEXT_PUBLIC_API_URL}/about`,
     },
+    alternates: {
+        canonical: process.env.NEXT_PUBLIC_API_URL+"/about",
+      },
   };
 
 const page = () => {
