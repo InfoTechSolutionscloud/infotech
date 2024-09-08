@@ -1,5 +1,4 @@
 import React from "react";
-import CustomHead from "@/app/components/CustomHead";
 import Share from "@/app/components/Share";
 import Loading from "@/app/loading";
 import NotFound from "@/app/not-found";
@@ -31,7 +30,6 @@ const Page = async ({ params }) => {
   const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/blog/${params.id}`;
   return (
     <>
-    <CustomHead title={data.blogTitle} description={data.blog_description} keywords={data.tags} image={data.blogImage} fullUrl={fullUrl} contentType="article" />
 
       <div className="bg-noise flex flex-col">
         <section className="relative">

@@ -1,14 +1,25 @@
 import React from 'react'
 import WhyChooseUs from '../components/WhyChooseUs'
 import Image from 'next/image';
-import CustomHead from '../components/CustomHead';
-const page = () => {
-    const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/about`;
+import { baseMetadata } from '../layout';
 
+export const metadata = {
+    ...baseMetadata,
+    title: "About Us - InfoTech",
+    description: "Discover the story behind Infotech, our values, and what drives us to deliver exceptional services to our clients. Learn more about our team, our mission, and why we are the best choice for all your tech-related needs.",
+    openGraph: {
+      ...baseMetadata.openGraph,
+      title: "Know more about Infotech!",
+      description: "Discover the story behind Infotech, our values, and what drives us to deliver exceptional services to our clients. Learn more about our team, our mission, and why we are the best choice for all your tech-related needs.",
+      url: `${process.env.NEXT_PUBLIC_API_URL}/about`,
+    },
+  };
+
+const page = () => {
+    
 
     return (
         <>
-            <CustomHead title={"About Us"} description={"Discover the story behind Infotech, our values, and what drives us to deliver exceptional services to our clients. Learn more about our team, our mission, and why we are the best choice for all your tech-related needs."} fullUrl={fullUrl} />
             <div className="bg-black">
                 <section>
 
