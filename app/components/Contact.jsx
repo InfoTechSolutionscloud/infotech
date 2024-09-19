@@ -117,8 +117,8 @@ const Contact = () => {
                                         title: "Contact",
                                         description: (
                                             <>
-                                                <p>Mobile: +92 328 2296963</p>
-                                                <p>Email: infotechcompany85@gmail.com</p>
+                                                <a href="tel:+923282296963">Mobile: +92 328 2296963</a>
+                                                <a href="mailto:info@infotechsolutions.cloud">Email: info@infotechsolutions.cloud</a>
                                             </>
                                         ),
                                     },
