@@ -240,7 +240,7 @@ const ResetPassword = ({ params }) => {
                         className="bg-secondary-600 text-white rounded-md w-full px-3 py-2 hover:bg-secondary-800 transition-colors duration-200 disabled:bg-gray-600"
                         disabled={pending}
                     >
-                        {pending ? "Resetting Password..." : "Reset Password"}
+                        {pending ? "Please Wait..." : "Reset Password"}
                     </button>
                     {message && (
                         <p className="text-secondary-500 text-sm text-center py-4">{message}</p>
@@ -249,6 +249,15 @@ const ResetPassword = ({ params }) => {
                         <p className="text-red-500 text-sm text-center">{error}</p>
                     )}
                 </form>
+                <p className="text-center text-gray-300 text-sm py-3">
+                    Remembered your password?{" "}
+                    <Link
+                        href="/team/login"
+                        className="text-secondary-500 hover:underline"
+                    >
+                        Login here
+                    </Link>
+                </p>
             </div>
         </div>
     );

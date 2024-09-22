@@ -99,10 +99,16 @@ async function forgotPassword(request) {
     };
 
     try {
-        const emailSent = await sendEmail(msg.to, msg.subject, msg.text);
+        console.time('sendEmail'); // Start timer
+        const emailSent = await sendEmail(msg.to, msg.subject, msg.text); 
+        const sendEmailTime = console.timeEnd('sendEmail'); // End timer and log time taken
+
         if (!emailSent) {
             throw new Error("Email sending failed");
         }
+        
+        user.emailSendTime = sendEmailTime;
+
         await user.save();
         return new Response(JSON.stringify({ message: "Password reset link sent to your email" }), { status: 200 });
     } catch (error) {
