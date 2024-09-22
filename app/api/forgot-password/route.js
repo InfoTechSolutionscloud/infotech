@@ -87,7 +87,7 @@ async function forgotPassword(request) {
 
     user.resetToken = passwordResetToken;
     user.resetTokenExpiry = resetPasswordExpires;
-    const resetUrl = `http://localhost:3000/team/reset-password/${resetToken}`;
+    const resetUrl = `http://infotech-git-dev-shahzain-umrani-s-projects.vercel.app/team/reset-password/${resetToken}`;
 
     const body = "Reset Password by Clicking on following link: " + resetUrl;
 
