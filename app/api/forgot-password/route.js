@@ -87,7 +87,7 @@ async function forgotPassword(request) {
 
     user.resetToken = passwordResetToken;
     user.resetTokenExpiry = resetPasswordExpires;
-    const resetUrl = `{proccess.env.NEXT_PUBLIC_API_URL}/team/reset-password/${resetToken}`;
+    const resetUrl = `{process.env.NEXT_PUBLIC_API_URL}/team/reset-password/${resetToken}`;
 
     const body = "Reset Password by Clicking on following link: " + resetUrl;
 
