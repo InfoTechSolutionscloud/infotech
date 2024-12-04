@@ -60,14 +60,14 @@ const Hero = () => {
           transition={{ duration: 1 }}
           className="w-1/2 md:block hidden"
         >
-          <Image
+{/*           <Image
             src={"/techimage.webp"}
             width={600}
             height={600}
             alt={"tech"}
             priority
             className="rounded-md shadow-2xl shadow-white"
-          />
+          /> */}
         </motion.div>
       </div>
     </Template>
