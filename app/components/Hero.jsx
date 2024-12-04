@@ -9,7 +9,7 @@ const Hero = () => {
     <Template>
       <div
         id="herosection"
-        className="flex md:flex-row flex-col-12   bg-[url('/bg.webp')] bg-left min-h-screen w-full px-8 lg:px-20 text-left"
+        className="flex md:flex-row flex-col   bg-[url('/bg.webp')] bg-left min-h-screen w-full px-8 lg:px-20 "
       >
         <motion.div
           initial={{ y: "10vh", opacity: 0 }}
