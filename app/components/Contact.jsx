@@ -74,7 +74,7 @@ const Contact = () => {
                         <span className="text-base font-semibold uppercase tracking-wide text-primary-200">Contact</span>
 
                         <h2
-                            className="font-heading mb-4 font-bold tracking-tight text-customGray-900 text-3xl sm:text-5xl"
+                            className="font-heading mb-4 font-bold tracking-tight text-white text-3xl sm:text-5xl"
                         >
                             Get in Touch
                         </h2>
