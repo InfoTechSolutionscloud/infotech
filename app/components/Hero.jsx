@@ -27,7 +27,7 @@ const Hero = () => {
             <span className="text-secondary-400">Infotech</span>!
           </h1>
           <p
-            className="mt-6 text-lg lg:text-xl font-medium raleway text-gray-200 text-center md:text-left"
+            className="mt-6 text-lg lg:text-xl font-medium raleway text-gray-200 text-justify text-center md:text-left"
             initial={{ y: "100vh", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
