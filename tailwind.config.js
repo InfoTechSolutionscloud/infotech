@@ -38,10 +38,11 @@ module.exports = {
   				'800': '#00674c',
   				'900': '#005540',
   				'950': '#003025'
-  			}
+  			
   		},
         customGray: {
           '900': '#fafafa', // Adding custom gray color
+        },
         },
   		borderRadius: {
   			lg: 'var(--radius)',
