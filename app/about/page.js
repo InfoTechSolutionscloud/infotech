@@ -18,10 +18,10 @@ const page = () => {
                             <p className="mb-4 raleway">Our company is your friendly tech partner that makes digital solutions simple. Our team helps
 businesses grow online through website design & development, digital marketing & SEO, logo &
 graphic design, video production & editing, and medical billing services.</p>
-                            <p>What makes us special? We're a close-knit team that gives your project the attention it
+                            <p className="mb-4 raleway">What makes us special? We're a close-knit team that gives your project the attention it
 deserves. We're big enough to handle major projects but small enough to care about every
 detail.</p>
-                            <p>We can build you a custom website that looks great and works smoothly, get your business
+                            <p className="mb-4 raleway">We can build you a custom website that looks great and works smoothly, get your business
 found online through SEO and marketing, create eye-catching designs that make your brand
 stand out, produce professional videos that tell your story, and provide efficient medical billing
 services tailored to your needs. We speak plain language, solve real problems, and keep up
