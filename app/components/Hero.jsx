@@ -23,7 +23,7 @@ const Hero = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            Have an Idea? Make It Digital with{" "}
+            Welcome to{" "}
             <span className="text-secondary-400">Infotech</span>!
           </h1>
           <p
@@ -32,11 +32,18 @@ const Hero = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            We are a leading technology agency that specializes in providing the
-            best services for businesses to stay ahead of the competition. From
-            website development to mobile app development, we have the expertise to
-            transform your business. Join us and let&apos;s create something amazing
-            together.
+Our company is your friendly tech partner that makes digital solutions simple. Our team helps
+businesses grow online through website design & development, digital marketing & SEO, logo &
+graphic design, video production & editing, and medical billing services.
+What makes us special? We're a close-knit team that gives your project the attention it
+deserves. We're big enough to handle major projects but small enough to care about every
+detail.
+We can build you a custom website that looks great and works smoothly, get your business
+found online through SEO and marketing, create eye-catching designs that make your brand
+stand out, produce professional videos that tell your story, and provide efficient medical billing
+services tailored to your needs. We speak plain language, solve real problems, and keep up
+with the latest tech trends so you don't have to.
+Let's work together to make your business shine online!
           </p>
           <motion.div
             initial={{ y: "100vh", opacity: 0 }}
