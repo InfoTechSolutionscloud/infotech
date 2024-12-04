@@ -40,6 +40,9 @@ module.exports = {
   				'950': '#003025'
   			}
   		},
+        customGray: {
+          '900': '#fafafa', // Adding custom gray color
+        },
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
