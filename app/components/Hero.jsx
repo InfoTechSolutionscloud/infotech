@@ -61,21 +61,21 @@ Let's work together to make your business shine online!
             </button>
           </motion.div>
         </motion.div>
-        <motion.div
+{/*         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1 }}
           className="w-1/2 md:block hidden"
         >
-{/*           <Image
+          <Image
             src={"/techimage.webp"}
             width={600}
             height={600}
             alt={"tech"}
             priority
             className="rounded-md shadow-2xl shadow-white"
-          /> */}
-        </motion.div>
+          />
+        </motion.div> */}
       </div>
     </Template>
   );
