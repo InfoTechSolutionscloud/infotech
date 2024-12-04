@@ -4,7 +4,7 @@ import Loading from "../loading";
 import axios from "axios";
 import Users from "./components/Users";
 import Services from "./components/Services";
-import Messages from "./components/Portfolio";
+import Portfolio from '../components/Portfolio'
 import Messages from "./components/Messages";
 import Projects from "./components/Projects";
 import Blogs from "./components/Blogs";
