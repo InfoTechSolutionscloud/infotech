@@ -4,6 +4,7 @@ import Loading from "../loading";
 import axios from "axios";
 import Users from "./components/Users";
 import Services from "./components/Services";
+import Messages from "./components/Portfolio";
 import Messages from "./components/Messages";
 import Projects from "./components/Projects";
 import Blogs from "./components/Blogs";
@@ -81,6 +82,17 @@ const page = () => {
                 onClick={() => setShow("services")}
               >
                 Service Requests
+              </button>
+                   <button
+                className={`${
+                  show == "Portfolio"
+                    ? "bg-secondary-700 text-white"
+                    : "bg-gray-800"
+                } p-3 rounded-md text-white luto font-normal hover:border-secondary-500 hover:border border border-transparent transition-colors duration-150 disabled:bg-gray-600 disabled:text-gray-800 disabled:cursor-not-allowed`}
+                disabled={role !== "admin" && role !== "projectmanager"}
+                onClick={() => setShow("portfolio")}
+              >
+                Portfolio
               </button>
               <button
                 className={`${
