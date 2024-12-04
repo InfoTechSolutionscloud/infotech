@@ -84,7 +84,7 @@ const Contact = () => {
                 </motion.div>
 
                 <div className="flex items-stretch justify-center">
-                    <div className="grid md:grid-cols-2">
+                    <div className="grid md:grid-cols-2" style={{ color: '#fafafa' }} >
                         <motion.div
                             className="h-full pr-6"
                             initial="hidden"
