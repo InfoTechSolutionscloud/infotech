@@ -58,7 +58,7 @@ const Footer = () => {
                 <p className="hover:opacity-75"> Graphic Design </p>
                 <p className="hover:opacity-75"> Data Entry </p>
                 <p className="hover:opacity-75"> Digital Marketing </p>
-                <p className="hover:opacity-75"> SEO Optimisation </p>
+                <p className="hover:opacity-75"> SEO Optimization </p>
               </nav>
             </div>
 
