@@ -143,7 +143,7 @@ const Contact = () => {
                                             {item.icon}
                                         </div>
                                         <div className="ml-4 mb-4">
-                                            <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                                            <h3 className="mb-2 text-lg font-medium leading-6 text-white dark:text-white">
                                                 {item.title}
                                             </h3>
                                             <p className="text-slate-400">
