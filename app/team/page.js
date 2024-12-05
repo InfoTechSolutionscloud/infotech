@@ -146,7 +146,7 @@ const page = () => {
             {show == "users" && role == "admin" && <Users />}
             {show == "services" && role == "admin" && <Services />}
                 {show == "portfolio" &&
-              (role == "admin" || role == "projectmanager") && <portfolio />}
+              (role == "admin" || role == "projectmanager") && <ManageServices />}
             {show == "projects" &&
               (role == "admin" || role == "projectmanager") && <Projects />}
             {show == "ourservices" && role == "admin" && <ManageServices />}
