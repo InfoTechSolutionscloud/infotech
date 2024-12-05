@@ -119,4 +119,4 @@ const ManageServices = () => {
   )
 }
 
-export default portfolio;
+export default ManageServices;
