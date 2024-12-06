@@ -1,66 +1,66 @@
 import dbConnect from "@/app/lib/mongoose";
 import authMiddleware from "@/app/lib/authMiddleware";
-import Ourservices from "@/app/models/Ourservices";
+import portfolio from "@/app/models/portfolio";
 
 
 export const GET = async (request) => {
     await dbConnect()
     const slug = await request.nextUrl.searchParams.get('slug');
     if(!slug) return new Response(JSON.stringify({message: "Invalid Slug"}), {status: 404})
-    const findService = await Ourservices.findOne({slug})
-    if(!findService) return new Response(JSON.stringify({message: "Not Found Service"}), {status: 404})
-    return new Response(JSON.stringify({service: findService}), {status: 200})
+    const findPortfolio = await portfolio.findOne({slug})
+    if(!findPortfolio) return new Response(JSON.stringify({message: "Not Found Portfolio"}), {status: 404})
+    return new Response(JSON.stringify({portfolio: findPortfolio}), {status: 200})
 }
 
-const createService = async(request) => {
+const createPortfolio = async(request) => {
     await dbConnect()
 
     const user = request.user;
-    if(user.role !== 'admin') return new Response(JSON.stringify({message: "Only admin can add services"}), {status: 403})
+    if(user.role !== 'admin') return new Response(JSON.stringify({message: "Only admin can add portfolio"}), {status: 403})
 
     const {image, title, short_description, description, slug} = await request.json();
     if(!title, !short_description, !description) return new Response(JSON.stringify({message: "All Fields are required!"}), {status: 401})
     let newslug;
     if(!slug) newslug = title.toLowerCase().replace(" ", "-"); else newslug = slug;
 
-    const createservice = await new Ourservices({
+    const createportfolio = await new Portfolio({
         image, title, short_description, description, slug: newslug
     });
     try {
-        await createservice.save(); // Add await to ensure the promise is resolved
-        return new Response(JSON.stringify({ message: "Service created Successfully!" }), { status: 200 });
+        await createportfolio.save(); // Add await to ensure the promise is resolved
+        return new Response(JSON.stringify({ message: "Portfolio created Successfully!" }), { status: 200 });
       } catch (error) {
-        return new Response(JSON.stringify({ message: "Failed to create service" }), { status: 403 });
+        return new Response(JSON.stringify({ message: "Failed to create portfolio" }), { status: 403 });
       }
 }
 
-const updateService = async (request) => {
+const updatePortfolio = async (request) => {
     await dbConnect()
 
     const user = request.user;
-    if(user.role !== 'admin') return new Response(JSON.stringify({message: "Only admin can add services"}), {status: 401})
+    if(user.role !== 'admin') return new Response(JSON.stringify({message: "Only admin can add portfolio"}), {status: 401})
     const {_id, image, title, short_description, description, slug } = await request.json();
     if(!_id, !title, !short_description, !description, !slug) return new Response(JSON.stringify({message: "All Feilds are required"}), {status: 403})
 
-    const updateService = await Ourservices.findByIdAndUpdate(_id, {$set:{image, title, short_description, description, slug}});
-    if(!updateService) return new Response(JSON.stringify({message: "Failed to update service"}), {status: 403})
+    const updatePortfolio = await portfolio.findByIdAndUpdate(_id, {$set:{image, title, short_description, description, slug}});
+    if(!updatePortfolio) return new Response(JSON.stringify({message: "Failed to update portfolio"}), {status: 403})
 
-    return new Response(JSON.stringify({message: "Service updated Successfully!"}), {status: 200})
+    return new Response(JSON.stringify({message: "Portfolio updated Successfully!"}), {status: 200})
 }
 
-const deleteService = async (request) => {
+const deletePortfolio = async (request) => {
     await dbConnect()
 
     const user = request.user;
-    if(user.role !== 'admin') return new Response(JSON.stringify({message: "Only admin can add services"}), {status: 401})
+    if(user.role !== 'admin') return new Response(JSON.stringify({message: "Only admin can add portfolio"}), {status: 401})
     const id = await request.nextUrl.searchParams.get('id');
 
-    const deletedata = await Ourservices.findByIdAndDelete(id);
-    if(!deletedata) return new Response(JSON.stringify({message: "Failed to delete service"}), {status: 403})
+    const deletedata = await portfolio.findByIdAndDelete(id);
+    if(!deletedata) return new Response(JSON.stringify({message: "Failed to delete Portfolio"}), {status: 403})
 
-    return new Response(JSON.stringify({message: "Service deleted Successfully!"}), {status: 200})
+    return new Response(JSON.stringify({message: "Portfolio deleted Successfully!"}), {status: 200})
 }
 
-export const POST = authMiddleware(createService)
-export const PUT = authMiddleware(updateService)
-export const DELETE = authMiddleware(deleteService)
+export const POST = authMiddleware(createPortfolio)
+export const PUT = authMiddleware(updatePortfolio)
+export const DELETE = authMiddleware(deletePortfolio)
