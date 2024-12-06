@@ -50,7 +50,7 @@ const ManageServices = () => {
         <div className="flex items-center justify-between mb-4">
           <h1 className="text-2xl text-white font-bold">Services</h1>
           <Link href={'/team/create-service'} className="bg-secondary-600 hover:bg-secondary-900 text-white raleway py-2 px-4 rounded">
-            Create New Service
+            Create New Portfolio
           </Link>
         </div>
         {!services && (
