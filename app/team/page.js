@@ -9,6 +9,7 @@ import Messages from "./components/Messages";
 import Projects from "./components/Projects";
 import Blogs from "./components/Blogs";
 import ManageServices from "./components/ManageServices";
+import ManageServices from "./components/ManagePortfolio";
 import AlertDialogPart from "@/app/components/AlertDialogPart";
 
 //page component arrow function
@@ -146,7 +147,7 @@ const page = () => {
             {show == "users" && role == "admin" && <Users />}
             {show == "services" && role == "admin" && <Services />}
                 {show == "portfolio" &&
-              (role == "admin" || role == "projectmanager") && <ManageServices />}
+              (role == "admin" || role == "admin") && <ManagePortfolio />}
             {show == "projects" &&
               (role == "admin" || role == "projectmanager") && <Projects />}
             {show == "ourservices" && role == "admin" && <ManageServices />}
