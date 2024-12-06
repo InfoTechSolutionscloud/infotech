@@ -20,12 +20,14 @@ const Page = () => {
   const [pending, setPending] = useState(false);
   const [image, setImage] = useState(null);
 
+  // Handle image file input
   const handleFileChange = (event) => {
     if (event.target.files && event.target.files[0]) {
       setImage(event.target.files[0]);
     }
   };
 
+  // Upload image to the server
   const handleUpload = async () => {
     if (!image) return;
     setPending(true);
@@ -41,8 +43,8 @@ const Page = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setPending(false);
         setPortfolio({ ...portfolio, image: data.url });
+        setPending(false);
       } else {
         alert("Image upload failed!");
         setPending(false);
@@ -54,19 +56,15 @@ const Page = () => {
     }
   };
 
+  // Create portfolio item
   const createPortfolio = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "/api/portfolio",
-        portfolio,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-      console.log(res);
+      const res = await axios.post("/api/portfolio", portfolio, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
       if (res.status === 200) {
         setMessage("Portfolio created successfully!");
       }
@@ -76,6 +74,7 @@ const Page = () => {
     }
   };
 
+  // Handle Quill editor content changes
   const handleContentChange = (content) => {
     setPortfolio({ ...portfolio, description: content });
   };
@@ -86,6 +85,7 @@ const Page = () => {
         Create Portfolio
       </h3>
 
+      {/* Image Upload Section */}
       <div className="flex flex-col justify-center items-center gap-y-1 py-2">
         <Image
           src={
@@ -111,8 +111,9 @@ const Page = () => {
         </button>
       </div>
 
+      {/* Portfolio Form */}
       <form
-        onSubmit={(e) => createPortfolio(e)}
+        onSubmit={createPortfolio}
         className="w-full md:w-2/3 py-5 mx-auto"
       >
         <label className="text-2xl text-white font-semibold mr-2 luto">
@@ -133,7 +134,6 @@ const Page = () => {
         </label>
         <textarea
           className="w-full text-white bg-transparent border-2 border-secondary-600 rounded-md mb-4 focus:shadow-md p-2 focus:shadow-secondary-400"
-          type="text"
           name="short_description"
           value={portfolio.short_description}
           onChange={(e) =>
@@ -148,6 +148,7 @@ const Page = () => {
           value={portfolio.description}
           onChange={handleContentChange}
         />
+
         <label className="text-white font-semibold mr-2 luto">Portfolio Slug</label>
         <input
           className="w-full text-white bg-transparent border-2 border-secondary-600 rounded-md mb-4 focus:shadow-md p-2 focus:shadow-secondary-400"
