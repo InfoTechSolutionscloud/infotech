@@ -69,7 +69,7 @@ const page = () => {
     };
     return (
         <div className='bg-gray-900 w-full p-5 px-10'>
-            <h3 className='text-4xl text-white font-bold py-5 text-left merriweather'>Create Service</h3>
+            <h3 className='text-4xl text-white font-bold py-5 text-left merriweather'>Add New Portfolio</h3>
             
            <div className="flex flex-col justify-center items-center gap-y-1 py-2"> 
             <Image src={service.image == "" ? "https://placehold.co/600x400/jpeg" : service.image} width={200} height={200} alt="serviceImage" />
