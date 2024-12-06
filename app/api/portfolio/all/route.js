@@ -1,12 +1,12 @@
 import dbConnect from "@/app/lib/mongoose";
-import ourservices from "@/app/models/Ourservices";
+import portfolio from "@/app/models/portfolio";
 
 export const GET = async (request) => {
     try {
         await dbConnect();
-        const findServices = await ourservices.find({});
+        const findPortfolio = await ourportfolio.find({});
         
-        return new Response(JSON.stringify({services: findServices}), {status: 200});
+        return new Response(JSON.stringify({services: findPortfolio}), {status: 200});
     } catch (error) {
         console.log(error);
         return new Response(JSON.stringify({error: error}), {status: 500})
