@@ -9,7 +9,7 @@ import Messages from "./components/Messages";
 import Projects from "./components/Projects";
 import Blogs from "./components/Blogs";
 import ManageServices from "./components/ManageServices";
-import ManageServices from "./components/ManagePortfolio";
+import ManagePortfolio from "./components/ManagePortfolio";
 import AlertDialogPart from "@/app/components/AlertDialogPart";
 
 //page component arrow function
@@ -146,11 +146,13 @@ const page = () => {
           <div className="h-auto my-2">
             {show == "users" && role == "admin" && <Users />}
             {show == "services" && role == "admin" && <Services />}
-                {show == "portfolio" &&
-              (role == "admin" || role == "admin") && <ManagePortfolio />}
+            {show == "portfolio" && role == "admin" && <portfolio />}
+               
             {show == "projects" &&
               (role == "admin" || role == "projectmanager") && <Projects />}
             {show == "ourservices" && role == "admin" && <ManageServices />}
+            {show == "portfolio" && role == "admin" && <ManagePortfolio />}
+
             {show == "messages" && role == "admin" && <Messages />}
             {show == "blogs" && (role == "admin" || role == "blogger") && (
               <Blogs />
