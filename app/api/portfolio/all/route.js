@@ -1,5 +1,5 @@
 import dbConnect from "@/app/lib/mongoose";
-import portfolio from "@/app/models/portfolio";
+import ourportfolio from "@/app/models/Ourportfolio";
 
 export const GET = async (request) => {
     try {
