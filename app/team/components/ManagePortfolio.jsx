@@ -99,10 +99,10 @@ const ManagePortfolio = () => {
                       <Link href={`/portfolio/${item.slug}`} className="font-bold text-blue-500 hover:underline mr-2">
                         View
                       </Link>
-                      <Link href={`/team/update-service/${item.slug}`} className="font-bold text-blue-500 hover:underline mr-2">
+                      <Link href={`/team/update-portfolio/${item.slug}`} className="font-bold text-blue-500 hover:underline mr-2">
                         Update
                       </Link>
-                      <button className="font-bold text-red-500 hover:underline mr-2" onClick={() => deleteService(item._id)}>
+                      <button className="font-bold text-red-500 hover:underline mr-2" onClick={() => deletePortfolio(item._id)}>
                         Delete
                       </button>
                     </td>
