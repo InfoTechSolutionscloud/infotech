@@ -7,7 +7,7 @@ import Image from "next/image";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const page = () => {
 
-    const [service, setService] = useState({
+    const [portfolio, setPortfolio] = useState({
         title: "",
         image: "",
         short_description: "",
@@ -40,7 +40,7 @@ const page = () => {
 
             if (response.ok) {
                 setPending(false)
-                setService({ ...service, image: data.url });
+                setPortfolio({ ...portfolio, image: data.url });
             } else {
                 alert("Image upload failed!");
                 setPending(false)
@@ -52,35 +52,35 @@ const page = () => {
         }
     };
 
-    const createService = async (e) => {
+    const createPortfolio = async (e) => {
         e.preventDefault()
-        const res = await axios.post('/api/service', service, {
+        const res = await axios.post('/api/portfolio', portfolio, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
         console.log(res);
         if (res.status == 200) {
-            setMessage(`Service created successfully!`)
+            setMessage(`Portfolio created successfully!`)
         }
     }
     const handleContentChange = (content) => {
-        setService({ ...service, description: content });
+        setPortfolio({ ...portfolio, description: content });
     };
     return (
         <div className='bg-gray-900 w-full p-5 px-10'>
             <h3 className='text-4xl text-white font-bold py-5 text-left merriweather'>Create New Portfolio</h3>
             
            <div className="flex flex-col justify-center items-center gap-y-1 py-2"> 
-            <Image src={service.image == "" ? "https://placehold.co/600x400/jpeg" : service.image} width={200} height={200} alt="serviceImage" />
+            <Image src={portfolio.image == "" ? "https://placehold.co/600x400/jpeg" : portfolio.image} width={200} height={200} alt="serviceImage" />
                 <label className='text-white font-semibold mr-2 luto'>Upload Image</label>
                 <input type="file" className="text-white" onChange={handleFileChange} />
                 <button onClick={handleUpload} className="bg-blue-500 text-white px-4 py-2 rounded-md">
                     {pending ? "Uploading..." : "Upload"}
                 </button>
                 </div>
-            <form onSubmit={(e) => createService(e)} className='w-full md:w-2/3 py-5 mx-auto'>
-                <label className='text-2xl text-white font-semibold mr-2 luto'>Service Title</label>
+            <form onSubmit={(e) => setPortfolio(e)} className='w-full md:w-2/3 py-5 mx-auto'>
+                <label className='text-2xl text-white font-semibold mr-2 luto'>Portfolio Title</label>
                 <input className='w-full text-2xl text-white bg-transparent border-2 border-secondary-600 rounded-md mb-4 focus:shadow-md p-2 focus:shadow-secondary-400' type="text" name='title' value={service.title} onChange={(e) => setService({ ...service, [e.target.name]: e.target.value })} />
 
 
@@ -92,13 +92,13 @@ const page = () => {
                 <ReactQuill
                     className='text-black bg-white border-2 border-secondary-600 rounded-md mb-4'
                     theme="snow"
-                    value={service.description}
+                    value={setPortfolio.description}
                     onChange={handleContentChange}
                 />
-                <label className='text-white font-semibold mr-2 luto'>Service Slug</label>
+                <label className='text-white font-semibold mr-2 luto'>Portfolio Slug</label>
                 <input className='w-full text-white bg-transparent border-2 border-secondary-600 rounded-md mb-4 focus:shadow-md p-2 focus:shadow-secondary-400' type="text" name='slug' value={service.slug} onChange={(e) => setService({ ...service, [e.target.name]: e.target.value })} />
                 {message && <div className="text-sm font-semibold text-secondary-400 py-2 text-center">{message}</div>}
-                <button type="submit" className="bg-secondary-500 text-white px-3 py-2 rounded-md">Create Service</button>
+                <button type="submit" className="bg-secondary-500 text-white px-3 py-2 rounded-md">Create Portfolio</button>
             </form>
         </div>
     )
