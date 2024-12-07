@@ -4,7 +4,7 @@ import ourportfolio from "@/app/models/Ourportfolio";
 export const GET = async (request) => {
     try {
         await dbConnect();
-        const findPortfolio = await portfolio.find({});
+        const findPortfolio = await ourportfolio.find({});
         
         return new Response(JSON.stringify({portfolio: findPortfolio}), {status: 200});
     } catch (error) {
