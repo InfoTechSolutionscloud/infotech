@@ -81,11 +81,11 @@ const page = () => {
                 </div>
             <form onSubmit={(e) => setPortfolio(e)} className='w-full md:w-2/3 py-5 mx-auto'>
                 <label className='text-2xl text-white font-semibold mr-2 luto'>Portfolio Title</label>
-                <input className='w-full text-2xl text-white bg-transparent border-2 border-secondary-600 rounded-md mb-4 focus:shadow-md p-2 focus:shadow-secondary-400' type="text" name='title' value={portfolio .title} onChange={(e) => setPortfolio({ ...service, [e.target.name]: e.target.value })} />
+                <input className='w-full text-2xl text-white bg-transparent border-2 border-secondary-600 rounded-md mb-4 focus:shadow-md p-2 focus:shadow-secondary-400' type="text" name='title' value={portfolio .title} onChange={(e) => setPortfolio({ ...portfolio, [e.target.name]: e.target.value })} />
 
 
                 <label className='text-white font-semibold mr-2 luto'>Short Description (Meta Description)</label>
-                <textarea className='w-full text-white bg-transparent border-2 border-secondary-600 rounded-md mb-4 focus:shadow-md p-2 focus:shadow-secondary-400' type="text" name='short_description' value={portfolio .short_description} onChange={(e) => setPortfolio({ ...service, [e.target.name]: e.target.value })} ></textarea>
+                <textarea className='w-full text-white bg-transparent border-2 border-secondary-600 rounded-md mb-4 focus:shadow-md p-2 focus:shadow-secondary-400' type="text" name='short_description' value={portfolio .short_description} onChange={(e) => setPortfolio({ ...portfolio, [e.target.name]: e.target.value })} ></textarea>
 
 
                 <label className='text-white font-semibold mr-2 luto'>Description</label>
@@ -96,7 +96,7 @@ const page = () => {
                     onChange={handleContentChange}
                 />
                 <label className='text-white font-semibold mr-2 luto'>Portfolio Slug</label>
-                <input className='w-full text-white bg-transparent border-2 border-secondary-600 rounded-md mb-4 focus:shadow-md p-2 focus:shadow-secondary-400' type="text" name='slug' value={service.slug} onChange={(e) => setService({ ...service, [e.target.name]: e.target.value })} />
+                <input className='w-full text-white bg-transparent border-2 border-secondary-600 rounded-md mb-4 focus:shadow-md p-2 focus:shadow-secondary-400' type="text" name='slug' value={portfolio.slug} onChange={(e) => setPortfolio({ ...portfolio, [e.target.name]: e.target.value })} />
                 {message && <div className="text-sm font-semibold text-secondary-400 py-2 text-center">{message}</div>}
                 <button type="submit" className="bg-secondary-500 text-white px-3 py-2 rounded-md">Create Portfolio</button>
             </form>
