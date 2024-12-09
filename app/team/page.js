@@ -157,7 +157,7 @@ const page = () => {
           <div className="h-auto my-2">
             {show == "users" && role == "admin" && <Users />}
             {show == "services" && role == "admin" && <Services />}
-            {show == "portfolio" && role == "admin" && <portfolio />}
+            {show == "portfolio" && role == "admin" && <Portfolio />}
                
             {show == "projects" &&
               (role == "admin" || role == "projectmanager") && <Projects />}
