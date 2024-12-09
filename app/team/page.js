@@ -162,7 +162,7 @@ const page = () => {
             {show == "projects" &&
               (role == "admin" || role == "projectmanager") && <Projects />}
             {show == "ourservices" && role == "admin" && <ManageServices />}
-            {show == "ourservices" && role == "admin" && <ManagePortfolio />}
+            {show == "ourportfolio" && role == "admin" && <ManagePortfolio />}
           {show == "messages" && role == "admin" && <Messages />}
             {show == "blogs" && (role == "admin" || role == "blogger") && (
               <Blogs />
