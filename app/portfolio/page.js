@@ -12,14 +12,6 @@ const page = () => {
       <CustomHead title={"Portfolio - Infotech"} description={"Explore our portfolio to see how we have helped numerous businesses achieve their goals with our web development, digital marketing, IT consulting, software development, and other technology solutions."} keywords={"portfolio, web development company, digital marketing agency, IT consulting services, software development company, technology solutions, innovative solutions, real results"} fullUrl={fullUrl} />
       <div className="bg-black">
        <Portfolio titleSimple={"Here are our "} hititle={"Portfolio!"} tagline={"Find the best that accelerate your "} hitagline={"Business!"} animate={false} />
-     <div className="download-button-container text-center mt-5">
-          <button
-            onClick={() => handleDownload('example.pdf')}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Download Portfolio PDF
-          </button>
-        </div>
       </div>
     </>
   )
