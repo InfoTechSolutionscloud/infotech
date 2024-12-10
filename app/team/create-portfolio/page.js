@@ -65,7 +65,7 @@ const page = () => {
         }
     }
     const handleContentChange = (content) => {
-        setPortfolio({ ...Portfolio, description: content });
+        setPortfolio({ ...portfolio, description: content });
     };
     return (
         <div className='bg-gray-900 w-full p-5 px-10'>
