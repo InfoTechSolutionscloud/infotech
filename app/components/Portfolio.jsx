@@ -1,69 +1,142 @@
 "use client";
-import Image from 'next/image';
-import React from 'react';
-import { motion } from 'framer-motion';
-import data from '../portfolio/data';
+import { motion } from "framer-motion";
+import useSWR from "swr";
+import Slider from "react-slick";
+import public_fetcher from "../lib/fetcher";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const Portfolio = ({qty}) => {
-    // Animation variants
-    const imageVariants = {
-        hidden: { opacity: 0, scale: 0.8 },
-        visible: { opacity: 1, scale: 1, transition: { duration: 0.8 } },
-    };
+const Portfolio = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) => {
+  const { data, error, isLoading } = useSWR(`/api/portfolio/all`, public_fetcher);
+  let maxshow;
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: true,
+    pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
 
-    const textVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-    };
+  // Determine if animations should be applied
+  const shouldAnimate = animate && data && data.portfolio.length > 3;
 
-    return (
-        <div id='portfolio' className="flex flex-col items-center justify-center py-20 bg-gradient-to-tr from-gray-700/25 via-primary-900 to-gray-700/25 overflow-hidden">
-            <motion.h3
-                className="text-3xl lg:text-4xl font-bold lato text-white"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.5 }}
-                variants={textVariants}
-            >
-                Our <span className="text-secondary-400">Portfolio!</span>
-            </motion.h3>
-            <motion.p
-                className="text-center text-sm text-white mb-10 mt-2 raleway"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.5 }}
-                variants={textVariants}
-            >
-                Some shots of our <span className='bg-secondary-500 text-black p-2'>Previous Work!</span>
-            </motion.p>
+  return (
+    <div id="portfolio" className="flex flex-col items-center justify-center py-20 bg-gradient-to-tr from-gray-700/25 via-secondary-900 to-gray-700/25 overflow-hidden">
+      {isLoading && (
+        <div className="animate-spin w-10 h-10 mx-auto"></div>
+      )}
+      {error && (
+        <div className="text-xl text-white font-semibold text-center">{error.response.data.message}</div>
+      )}
+      {data && (
+        <div className="w-full max-w-7xl px-4 lg:px-0">
+          {/* Title Animation */}
+          <motion.h3
+            initial={{ opacity: 0, y: shouldAnimate ? -50 : 0 }}
+            whileInView={{ y: shouldAnimate ? 0 : undefined, opacity: 1 }}
+            transition={{ duration: shouldAnimate ? 0.8 : 0, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="text-3xl lg:text-4xl font-bold lato text-white text-center"
+          >
+            {titleSimple}<span className="text-secondary-400">{hititle}</span>
+          </motion.h3>
 
-            <div className="flex w-full flex-wrap px-3">
-                <motion.div
-                    className="flex flex-col md:flex-row flex-wrap gap-2"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
-                    variants={imageVariants}
+          {/* Description Animation */}
+          <motion.p
+            initial={{ opacity: 0, y: shouldAnimate ? -20 : 0 }}
+            animate={{ opacity: 1, y: shouldAnimate ? 0 : undefined }}
+            transition={{ duration: shouldAnimate ? 0.8 : 0, delay: shouldAnimate ? 0.3 : 0 }}
+            className="text-center text-sm text-white mb-10 mt-2 raleway"
+          >
+            {tagline}<span className="bg-secondary-500 text-black p-2">{hitagline}</span>
+          </motion.p>
 
+          {/* Slider or Static Cards */}
+          {animate ? (
+            <Slider {...settings}>
+              {data.portfolio.slice(0, qty || data.portfolio.length).map((item, index) => (
+                <motion.article
+                  key={item.id} // Ensure unique key is `item.id`
+                  className="p-4"
+                  initial={{ opacity: 0, scale: shouldAnimate ? 0.8 : 1 }}
+                  animate={{ opacity: 1, scale: shouldAnimate ? 1 : undefined }}
+                  transition={{ duration: shouldAnimate ? 0.5 : 0, delay: shouldAnimate ? index * 0.3 : 0 }}
                 >
-                    {data.map((item) => {
-                        return (
-                            <div className='flex w-full md:w-[32%] mx-auto h-96 my-4 hover:bg-secondary-950 hover:shadow-xl hover:shadow-gray-500 flex-col items-center hover:scale-100 md:hover:scale-110 transition-transform duration-150 justify-center bg-gray-900 rounded-md'>
-                                <Image className="h-1/2 object-cover w-full rounded-md mb-2 -mt-11" src={item.img} width={300} height={300} alt={item.title} />
-                                <div className='m-2 px-3'>
-                                    <h3 className='text-xl font-bold text-white'>{item.title}</h3>
-                                    <p className=' text-gray-400'>{item.short_description}</p>
-                                    <p className='bg-primary-600 px-3 my-2 inline-block text-xs text-white py-2 rounded-full'>{item.category}</p>
-                                </div>
-                            </div>
-                        )
-                    })}
-
-
-                </motion.div>
+                  <div
+                    className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${item.image})` }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary-950 via-primary-900/40"></div>
+                    <motion.a
+                      href={`/portfolio/${item.slug}`}
+                      initial={{ opacity: 0, y: shouldAnimate ? 20 : 0 }}
+                      animate={{ opacity: 1, y: shouldAnimate ? 0 : undefined }}
+                      transition={{ duration: shouldAnimate ? 0.6 : 0 }}
+                      className="z-10 mt-3 text-3xl merriweather font-bold truncate text-white"
+                    >
+                      {item.title}
+                    </motion.a>
+                    <motion.p
+                      initial={{ opacity: 0, y: shouldAnimate ? 20 : 0 }}
+                      animate={{ opacity: 1, y: shouldAnimate ? 0 : undefined }}
+                      transition={{ duration: shouldAnimate ? 0.6 : 0, delay: shouldAnimate ? 0.2 : 0 }}
+                      className="z-10 text-sm raleway leading-2 text-gray-200"
+                    >
+                      {item.short_description.split(" ").slice(0, 20).join(" ") +
+                        (item.short_description.split(" ").length > 20 ? "..." : "")}
+                    </motion.p>
+                  </div>
+                </motion.article>
+              ))}
+            </Slider>
+          ) : (
+            // Display when animate is false
+            <div className="flex flex-wrap justify-center">
+              {data.portfolio.slice(0, qty || data.portfolio.length).map((item) => (
+                <div
+                  key={item.id} // Ensure unique key is `item.id`
+                  className="p-4 w-full md:w-1/3" >
+                  <div
+                    className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${item.image})` }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary-950 via-primary-900/40"></div>
+                    <a
+                      href={`/portfolio/${item.slug}`}
+                      className="z-10 mt-3 text-3xl merriweather font-bold text-white truncate"
+                    >
+                      {item.title}
+                    </a>
+                    <p className="z-10 text-sm leading-6 luto text-gray-300">
+                      {item.short_description}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
+          )}
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
 export default Portfolio;
