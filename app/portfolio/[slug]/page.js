@@ -1,5 +1,5 @@
 import CustomHead from '@/app/components/CustomHead';
-import GetService from '@/app/components/GetPortfolio';
+import GetPortfolio from '@/app/components/GetPortfolio';
 import Share from '@/app/components/Share';
 import Loading from '@/app/loading';
 import NotFound from '@/app/not-found';
