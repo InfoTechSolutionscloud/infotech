@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import Image from "next/image";
-import Pdf from "next/pdf";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const page = () => {
 
@@ -53,35 +52,7 @@ const page = () => {
             setPending(false)
         }
     };
-  const handlePdfUpload = async () => {
-        if (!pdf) return;
-        setPending(true)
-        const formData = new FormData();
-        formData.append("pdf", pdf);
-
-        try {
-            const response = await fetch("/api/upload", {
-                method: "POST",
-                body: formData,
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                setPending(false)
-                setPortfolio({ ...portfolio, pdf: data.url });
-            } else {
-                alert("Pdf upload failed!");
-                setPending(false)
-            }
-        } catch (error) {
-            console.error("Error uploading pdf:", error);
-            alert("Error uploading pdf!");
-            setPending(false)
-        }
-    };
-
-    const createPortfolio = async (e) => {
+   const createPortfolio = async (e) => {
         e.preventDefault()
         const res = await axios.post('/api/portfolio', portfolio, {
             headers: {
@@ -108,14 +79,7 @@ const page = () => {
                     {pending ? "Uploading..." : "Upload"}
                 </button>
                 </div>
-                 <div className="flex flex-col justify-center items-center gap-y-1 py-2"> 
-            <Image src={portfolio.pdf == "" ? "https://placehold.co/600x400/pdf" : portfolio.pdf} width={200} height={200} alt="portfoliopdf" />
-                <label className='text-white font-semibold mr-2 luto'>Upload Pdf</label>
-                <input type="file" className="text-white" onChange={handleFileChange} />
-                <button onClick={handleUpload} className="bg-blue-500 text-white px-4 py-2 rounded-md">
-                    {pending ? "Uploading..." : "Upload"}
-                </button>
-                </div>
+          
             <form onSubmit={(e) => createPortfolio(e)} className='w-full md:w-2/3 py-5 mx-auto'>
                 <label className='text-2xl text-white font-semibold mr-2 luto'>Portfolio Title</label>
                 <input className='w-full text-2xl text-white bg-transparent border-2 border-secondary-600 rounded-md mb-4 focus:shadow-md p-2 focus:shadow-secondary-400' type="text" name='title' value={portfolio.title} onChange={(e) => setPortfolio({ ...portfolio, [e.target.name]: e.target.value })} />
