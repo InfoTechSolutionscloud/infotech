@@ -11,7 +11,7 @@ const page = () => {
     <>
       <CustomHead title={"Portfolio - Infotech"} description={"Explore our portfolio to see how we have helped numerous businesses achieve their goals with our web development, digital marketing, IT consulting, software development, and other technology solutions."} keywords={"portfolio, web development company, digital marketing agency, IT consulting services, software development company, technology solutions, innovative solutions, real results"} fullUrl={fullUrl} />
  <div className="bg-black">
-        <Services titleSimple={"Here are our "} hititle={"Services!"} tagline={"Find the best service that accelerate your "} hitagline={"Business!"} animate={false} />
+        <Portfolio titleSimple={"Here are our "} hititle={"Portfolio!"} tagline={"Find the best service that accelerate your "} hitagline={"Business!"} animate={false} />
       </div>
     </>
   )
