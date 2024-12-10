@@ -4,12 +4,14 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import Image from "next/image";
+import Image from "next/pdf";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const page = () => {
 
     const [portfolio, setPortfolio] = useState({
         title: "",
         image: "",
+        pdf: "",
         short_description: "",
         description: "",
         slug: ""
@@ -51,6 +53,33 @@ const page = () => {
             setPending(false)
         }
     };
+  const handleUpload = async () => {
+        if (!pdf) return;
+        setPending(true)
+        const formData = new FormData();
+        formData.append("pdf", pdf);
+
+        try {
+            const response = await fetch("/api/upload", {
+                method: "POST",
+                body: formData,
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setPending(false)
+                setPortfolio({ ...portfolio, pdf: data.url });
+            } else {
+                alert("Pdf upload failed!");
+                setPending(false)
+            }
+        } catch (error) {
+            console.error("Error uploading pdf:", error);
+            alert("Error uploading pdf!");
+            setPending(false)
+        }
+    };
 
     const createPortfolio = async (e) => {
         e.preventDefault()
@@ -74,6 +103,14 @@ const page = () => {
            <div className="flex flex-col justify-center items-center gap-y-1 py-2"> 
             <Image src={portfolio.image == "" ? "https://placehold.co/600x400/jpeg" : portfolio.image} width={200} height={200} alt="portfolioImage" />
                 <label className='text-white font-semibold mr-2 luto'>Upload Image</label>
+                <input type="file" className="text-white" onChange={handleFileChange} />
+                <button onClick={handleUpload} className="bg-blue-500 text-white px-4 py-2 rounded-md">
+                    {pending ? "Uploading..." : "Upload"}
+                </button>
+                </div>
+                 <div className="flex flex-col justify-center items-center gap-y-1 py-2"> 
+            <Image src={portfolio.pdf == "" ? "https://placehold.co/600x400/pdf" : portfolio.pdf} width={200} height={200} alt="portfoliopdf" />
+                <label className='text-white font-semibold mr-2 luto'>Upload Pdf</label>
                 <input type="file" className="text-white" onChange={handleFileChange} />
                 <button onClick={handleUpload} className="bg-blue-500 text-white px-4 py-2 rounded-md">
                     {pending ? "Uploading..." : "Upload"}
