@@ -1,6 +1,6 @@
 import authMiddleware from "@/app/lib/authMiddleware";
 import dbConnect from "@/app/lib/mongoose";
-import Portfolio from "@/app/models/Portfolio ";
+import Portfolio from "@/app/models/Portfolio";
 
 
 async function getit(request) {
