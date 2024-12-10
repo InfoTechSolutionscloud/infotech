@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import Image from "next/image";
-import Image from "next/pdf";
+import Pdf from "next/pdf";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const page = () => {
 
@@ -53,7 +53,7 @@ const page = () => {
             setPending(false)
         }
     };
-  const handleUpload = async () => {
+  const handlePdfUpload = async () => {
         if (!pdf) return;
         setPending(true)
         const formData = new FormData();
