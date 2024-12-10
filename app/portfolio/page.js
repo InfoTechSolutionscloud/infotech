@@ -1,6 +1,7 @@
 import React from 'react'
 import Portfolio from '../components/Portfolio'
-import CustomHead from '../components/CustomHead';
+import Head from 'next/head'
+import CustomHead from '../components/CustomHead'
 
 const page = () => {
   const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/portfolio`;
