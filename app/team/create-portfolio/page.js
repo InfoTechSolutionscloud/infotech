@@ -67,6 +67,17 @@ const Page = () => {
     // Upload PDF
     const handlePdfUpload = async () => {
         if (!pdf) return;
+        
+        // Validate PDF file size and type
+        if (pdf.size > 10 * 1024 * 1024) { // Max file size: 10MB
+            alert("PDF file is too large!");
+            return;
+        }
+        if (pdf.type !== "application/pdf") {
+            alert("Only PDF files are allowed!");
+            return;
+        }
+
         setPending(true);
         const formData = new FormData();
         formData.append("pdf", pdf);
