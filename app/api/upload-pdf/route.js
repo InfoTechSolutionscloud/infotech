@@ -7,12 +7,12 @@ export async function POST(request) {
         const pdfFile = formData.get("pdf");
 
         if (!pdfFile) {
-            return NextResponse.json({ message: "No pdf uploaded" }, { status: 400 });
+            return NextResponse.json({ message: "No PDF uploaded" }, { status: 400 });
         }
 
-        // Convert the pdf file to a buffer
+        // Convert the PDF file to a buffer
         const buffer = await pdfFile.arrayBuffer();
-        const base64Pdf = Buffer.from(buffer).toString("base64"); // Correct variable name for the PDF
+        const base64Pdf = Buffer.from(buffer).toString("base64"); // Corrected variable name for the PDF
 
         // PDF API request
         const response = await axios.post("https://api.pdfur.com/3/pdf", {
@@ -24,13 +24,15 @@ export async function POST(request) {
             },
         });
 
+        // Check if the API response was successful
         if (response.data.success) {
-            return NextResponse.json({ message: "Pdf uploaded successfully", url: response.data.data.link }, { status: 200 });
+            return NextResponse.json({ message: "PDF uploaded successfully", url: response.data.data.link }, { status: 200 });
         } else {
-            return NextResponse.json({ message: "Pdf upload failed" }, { status: 500 });
+            return NextResponse.json({ message: "PDF upload failed" }, { status: 500 });
         }
     } catch (error) {
-        console.error(error.message);
-        return NextResponse.json({ message: "Error uploading Pdf", error: error.message }, { status: 500 });
+        // Log the error for debugging
+        console.error("Error uploading PDF:", error.message);
+        return NextResponse.json({ message: "Error uploading PDF", error: error.message }, { status: 500 });
     }
 }
