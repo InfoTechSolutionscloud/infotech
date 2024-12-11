@@ -69,8 +69,8 @@ const Page = () => {
         if (!pdf) return;
         
         // Validate PDF file size and type
-        if (pdf.size > 10 * 1024 * 1024) { // Max file size: 10MB
-            alert("PDF file is too large!");
+        if (pdf.size > 20 * 1024 * 1024) { // Max file size: 20MB
+            alert("PDF file is too large! Max size is 20MB.");
             return;
         }
         if (pdf.type !== "application/pdf") {
