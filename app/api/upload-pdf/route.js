@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { NextResponse } from "next/server";
 
@@ -13,11 +12,11 @@ export async function POST(request) {
 
         // Convert the pdf file to a buffer
         const buffer = await pdfFile.arrayBuffer();
-        const base64Image = Buffer.from(buffer).toString("base64");
+        const base64Pdf = Buffer.from(buffer).toString("base64"); // Correct variable name for the PDF
 
-        // pdf API request
+        // PDF API request
         const response = await axios.post("https://api.pdfur.com/3/pdf", {
-            pdf: base64pdf,
+            pdf: base64Pdf, // Corrected variable name for PDF
             type: "base64",
         }, {
             headers: {
