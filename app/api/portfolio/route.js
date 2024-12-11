@@ -18,13 +18,13 @@ const createPortfolio = async(request) => {
     const user = request.user;
     if(user.role !== 'admin') return new Response(JSON.stringify({message: "Only admin can add portfolio"}), {status: 403})
 
-    const {image, title, short_description, description, slug} = await request.json();
-    if(!title, !short_description, !description) return new Response(JSON.stringify({message: "All Fields are required!"}), {status: 401})
+    const {image, pdf, title, short_description, slug} = await request.json();
+    if(!title, !short_description) return new Response(JSON.stringify({message: "All Fields are required!"}), {status: 401})
     let newslug;
     if(!slug) newslug = title.toLowerCase().replace(" ", "-"); else newslug = slug;
 
     const createportfolio = await new Ourportfolio({
-        image, title, short_description, description, slug: newslug
+        image, pdf, title, short_description, slug: newslug
     });
     try {
         await createportfolio.save(); // Add await to ensure the promise is resolved
@@ -39,10 +39,10 @@ const updatePortfolio = async (request) => {
 
     const user = request.user;
     if(user.role !== 'admin') return new Response(JSON.stringify({message: "Only admin can add portfolio"}), {status: 401})
-    const {_id, image, title, short_description, description, slug } = await request.json();
-    if(!_id, !title, !short_description, !description, !slug) return new Response(JSON.stringify({message: "All Feilds are required"}), {status: 403})
+    const {_id, image, pdf, title, short_description, slug } = await request.json();
+    if(!_id, !title, !short_description, !slug) return new Response(JSON.stringify({message: "All Feilds are required"}), {status: 403})
 
-    const updatePortfolio = await Ourportfolio.findByIdAndUpdate(_id, {$set:{image, title, short_description, description, slug}});
+    const updatePortfolio = await Ourportfolio.findByIdAndUpdate(_id, {$set:{image, title, short_description, slug}});
     if(!updatePortfolio) return new Response(JSON.stringify({message: "Failed to update Portfolio"}), {status: 403})
 
     return new Response(JSON.stringify({message: "Portfolio updated Successfully!"}), {status: 200})
