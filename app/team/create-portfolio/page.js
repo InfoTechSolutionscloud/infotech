@@ -64,29 +64,45 @@ const Page = () => {
         }
     };
 
-   const response = await fetch("/api/upload-pdf", {
-    method: "POST",
-    body: formData,
-});
+    // Upload PDF
+    const handlePdfUpload = async () => {
+        if (!pdf) return;
+        
+        // Validate PDF file size and type
+        if (pdf.size > 20 * 1024 * 1024) { // Max file size: 20MB
+            alert("PDF file is too large! Max size is 20MB.");
+            return;
+        }
+        if (pdf.type !== "application/pdf") {
+            alert("Only PDF files are allowed!");
+            return;
+        }
 
-let data;
-try {
-    data = await response.json();
-} catch (e) {
-    console.error("Error parsing response:", e);
-    alert("An error occurred during the file upload.");
-    return;
-}
+        setPending(true);
+        const formData = new FormData();
+        formData.append("pdf", pdf);
 
-if (response.ok) {
-    setPending(false);
-    setPortfolio({ ...portfolio, pdf: data.url });
-} else {
-    console.error("Upload failed:", data.message); 
-    alert(data.message);
-    setPending(false);
-}
+        try {
+            const response = await fetch("/api/upload-pdf", {
+                method: "POST",
+                body: formData,
+            });
 
+            const data = await response.json();
+
+            if (response.ok) {
+                setPending(false);
+                setPortfolio({ ...portfolio, pdf: data.url });
+            } else {
+                alert("PDF upload failed!");
+                setPending(false);
+            }
+        } catch (error) {
+            console.error("Error uploading PDF:", error);
+            alert("Error uploading PDF!");
+            setPending(false);
+        }
+    };
 
     // Create portfolio
     const createPortfolio = async (e) => {
