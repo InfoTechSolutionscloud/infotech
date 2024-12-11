@@ -28,9 +28,23 @@ const nextConfig = {
       },
     ],
   },
+  // We handle PDFs separately in your backend API or other logic
+  async rewrites() {
+    return [
+      {
+        source: '/uploads/images/:path*',
+        destination: '/uploads/images/:path*', // handle image file rewrites if necessary
+      },
+      {
+        source: '/uploads/pdfs/:path*',
+        destination: '/uploads/pdfs/:path*', // handle PDF file rewrites if necessary
+      },
+    ];
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // Additional settings can be added here based on your app's requirements
 };
 
 export default nextConfig;
