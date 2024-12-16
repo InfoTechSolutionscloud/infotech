@@ -15,7 +15,7 @@ export async function POST(request) {
         const base64Pdf = Buffer.from(buffer).toString("base64"); // Corrected variable name for the PDF
 
         // PDF API request
-        const response = await axios.post("https://api.pdfur.com/3/pdf", {
+        const response = await axios.post("https://api.imgur.com/3/pdf", {
             pdf: base64Pdf, // Corrected variable name for PDF
             type: "base64",
         }, {
