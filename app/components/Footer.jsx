@@ -45,12 +45,30 @@ const Footer = () => {
                 Services
               </p>
               <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-200">
-                <p className="hover:opacity-75"> Web Development </p>
-                <p className="hover:opacity-75"> Graphic Design </p>
-                <p className="hover:opacity-75"> Data Entry </p>
-                <p className="hover:opacity-75"> Digital Marketing </p>
-                <p className="hover:opacity-75"> SEO Optimization </p>
-                 <p className="hover:opacity-75"> Medical Billing </p>
+               <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+                        <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                            <li>
+                                <Link href="/" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}> Web Development</Link>
+                            </li>
+                          
+                            <li>
+                                <Link href="/services" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/services') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>Graphic Design</Link>
+                            </li>
+                            <li>
+                                <Link href="/portfolio" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/portfolio') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>Data Entry</Link>
+                            </li>
+                              <li>
+                                <Link href="/blog" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/blog') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>Digital Marketing</Link>
+                            </li>
+                            <li>
+                                <Link href="/about" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/about') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>SEO Optimization</Link>
+                            </li>
+                            <li>
+                                <Link href="/contact" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/contact') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>Medical Billing</Link>
+                            </li>
+        
+                        </ul>
+                    </div>
               </nav>
             </div>
 
