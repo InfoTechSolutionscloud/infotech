@@ -35,15 +35,6 @@ const Footer = () => {
             <Link href="https://join.skype.com/invite/vNwELvlS0ZFG" target="_blank">
                 <Image src={"https://www.svgrepo.com/show/494283/skype-round.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicons' />
               </Link>
-{/*               <Link href="#" target="_blank">
-                <Image src={"https://www.svgrepo.com/show/494287/twitter-round.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicons' />
-              </Link>
-              <Link href="#" target="_blank">
-                <Image src={"https://www.svgrepo.com/show/473769/reddit.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicons' />
-              </Link>
-              <Link href="#" target="_blank">
-                <Image src={"https://www.svgrepo.com/show/494293/youtube-round.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicons' />
-              </Link> */}
             </div>
             </div>
           </div>
