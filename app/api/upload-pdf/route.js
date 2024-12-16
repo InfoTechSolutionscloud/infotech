@@ -5,33 +5,34 @@ import { NextResponse } from "next/server";
 export async function POST(request) {
     try {
         const formData = await request.formData();
-        const imageFile = formData.get("image");
+        const pdfFile = formData.get("pdf");
 
-        if (!imageFile) {
+        if (!pdfFile) {
             return NextResponse.json({ message: "No image uploaded" }, { status: 400 });
         }
 
         // Convert the image file to a buffer
-        const buffer = await imageFile.arrayBuffer();
-        const base64Image = Buffer.from(buffer).toString("base64");
+        const buffer = await pdfFile.arrayBuffer();
+        const base64pdf = Buffer.from(buffer).toString("base64");
 
-        // Imgur API request
-        const response = await axios.post("https://api.imgur.com/3/image", {
-            image: base64Image,
+      const response = await axios.post("https://api.pdfur.com/3/pdf", {
+            pdf: base64Pdf, // Corrected variable name for PDF
             type: "base64",
         }, {
             headers: {
-                Authorization: `Client-ID ${process.env.IMGUR_CLIENT_ID}`,
+                Authorization: `Client-ID ${process.env.PDFUR_CLIENT_ID}`,
             },
         });
 
+        // Check if the API response was successful
         if (response.data.success) {
-            return NextResponse.json({ message: "Image uploaded successfully", url: response.data.data.link }, { status: 200 });
+            return NextResponse.json({ message: "PDF uploaded successfully", url: response.data.data.link }, { status: 200 });
         } else {
-            return NextResponse.json({ message: "Image upload failed" }, { status: 500 });
+            return NextResponse.json({ message: "PDF upload failed" }, { status: 500 });
         }
     } catch (error) {
-        console.error(error.message);
-        return NextResponse.json({ message: "Error uploading image", error: error.message }, { status: 500 });
+        // Log the error for debugging
+        console.error("Error uploading PDF:", error.message);
+        return NextResponse.json({ message: "Error uploading PDF", error: error.message }, { status: 500 });
     }
 }
