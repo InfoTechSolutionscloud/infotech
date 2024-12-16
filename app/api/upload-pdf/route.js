@@ -8,7 +8,7 @@ export async function POST(request) {
         const pdfFile = formData.get("pdf");
 
         if (!pdfFile) {
-            return NextResponse.json({ message: "No image uploaded" }, { status: 400 });
+            return NextResponse.json({ message: "No PDF uploaded" }, { status: 400 });
         }
 
         // Convert the image file to a buffer
