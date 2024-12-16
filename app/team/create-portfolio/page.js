@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import Image from "next/image";
+import PDF from "next/image";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
