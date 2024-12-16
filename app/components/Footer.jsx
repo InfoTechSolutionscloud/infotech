@@ -52,19 +52,19 @@ const Footer = () => {
                             </li>
                           
                             <li>
-                                <Link href="/services" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/services') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>Graphic Design</Link>
+                                <Link href="/graphic-design" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/graphic-design') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>Graphic Design</Link>
                             </li>
                             <li>
-                                <Link href="/portfolio" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/portfolio') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>Data Entry</Link>
+                                <Link href="/data-entry" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/data-entry') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>Data Entry</Link>
                             </li>
                               <li>
-                                <Link href="/blog" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/blog') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>Digital Marketing</Link>
+                                <Link href="/digital-marketing" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/digital-marketing') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>Digital Marketing</Link>
                             </li>
                             <li>
-                                <Link href="/about" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/about') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>SEO Optimization</Link>
+                                <Link href="/content-writing" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/content-writing') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>SEO Optimization</Link>
                             </li>
                             <li>
-                                <Link href="/contact" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/contact') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>Medical Billing</Link>
+                                <Link href="/Medical%20Billing" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/Medical%20Billing') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>Medical Billing</Link>
                             </li>
         
                         </ul>
