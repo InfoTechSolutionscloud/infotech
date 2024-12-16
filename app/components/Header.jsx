@@ -33,14 +33,15 @@ const Header = () => {
                             <li>
                                 <Link href="/" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>Home</Link>
                             </li>
-                            <li>
-                                <Link href="/blog" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/blog') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>Blog</Link>
-                            </li>
+                          
                             <li>
                                 <Link href="/services" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/services') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>Services</Link>
                             </li>
                             <li>
                                 <Link href="/portfolio" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/portfolio') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>Portfolio</Link>
+                            </li>
+                              <li>
+                                <Link href="/blog" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/blog') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>Blog</Link>
                             </li>
                             <li>
                                 <Link href="/about" className={`block py-2 pr-4 pl-3  border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ${isActive('/about') ? "text-white" : "text-gray-400"} hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700`}>About</Link>
