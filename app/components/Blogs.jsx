@@ -51,11 +51,11 @@ const Blogs = ({qty, title="Our Latest"}) => {
                     animate="visible"
                     variants={headingVariants}
                 >
-                    {title} <span className="text-secondary-400">Blogs!</span>
+                    {title} <span className="text-secondary-400">Blog!</span>
                 </motion.h3>
                 <div className="flex justify-center gap-4 flex-wrap">
                     {data.length == 0 && (
-                        <p className="text-white  text-center text-lg">No Blogs found</p>
+                        <p className="text-white  text-center text-lg">No Blog found</p>
                     )}
                     {data.length > 0 && data.slice(0, qty || data.length).map((item, index) => (
                         <motion.div
