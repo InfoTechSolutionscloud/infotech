@@ -1,5 +1,4 @@
-import fs from "fs";
-import path from "path";
+import axios from "axios";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
@@ -11,38 +10,28 @@ export async function POST(request) {
             return NextResponse.json({ message: "No PDF uploaded" }, { status: 400 });
         }
 
-        // Get the original file name
-        const fileName = pdfFile.name;
+        // Convert the PDF file to a buffer
+        const buffer = await pdfFile.arrayBuffer();
+        const base64Pdf = Buffer.from(buffer).toString("base64"); // Corrected variable name for the PDF
 
-        // Define the upload directory (make sure this directory exists on the server)
-        const uploadDir = path.join(process.cwd(), "uploads"); // This will store files in the "uploads" directory
+        // PDF API request
+        const response = await axios.post("https://api.pdfur.com/3/pdf", {
+            pdf: base64Pdf, // Corrected variable name for PDF
+            type: "base64",
+        }, {
+            headers: {
+                Authorization: `Client-ID ${process.env.PDFUR_CLIENT_ID}`,
+            },
+        });
 
-        // Ensure the directory exists
-        if (!fs.existsSync(uploadDir)) {
-            fs.mkdirSync(uploadDir, { recursive: true });
+        // Check if the API response was successful
+        if (response.data.success) {
+            return NextResponse.json({ message: "PDF uploaded successfully", url: response.data.data.link }, { status: 200 });
+        } else {
+            return NextResponse.json({ message: "PDF upload failed" }, { status: 500 });
         }
-
-        // Create a write stream to store the uploaded PDF file
-        const filePath = path.join(uploadDir, fileName);
-
-        const writableStream = fs.createWriteStream(filePath);
-
-        // Pipe the uploaded PDF to the local server
-        pdfFile.stream().pipe(writableStream);
-
-        writableStream.on("finish", () => {
-            return NextResponse.json({
-                message: "PDF uploaded successfully",
-                url: `/uploads/${fileName}`, // You can return the file URL if needed
-            }, { status: 200 });
-        });
-
-        writableStream.on("error", (error) => {
-            console.error("Error saving PDF file:", error.message);
-            return NextResponse.json({ message: "Error uploading PDF", error: error.message }, { status: 500 });
-        });
-        
     } catch (error) {
+        // Log the error for debugging
         console.error("Error uploading PDF:", error.message);
         return NextResponse.json({ message: "Error uploading PDF", error: error.message }, { status: 500 });
     }
