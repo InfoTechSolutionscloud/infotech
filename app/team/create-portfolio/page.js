@@ -114,13 +114,13 @@ const Page = () => {
     };
 
     // Download PDF
-    const handleDownload = () => {
-        if (!portfolio.pdf) return;
-        const link = document.createElement('a');
-        link.href = portfolio.pdf;
-        link.download = "portfolio.pdf";
-        link.click();
-    };
+    // const handleDownload = () => {
+    //     if (!portfolio.pdf) return;
+    //     const link = document.createElement('a');
+    //     link.href = portfolio.pdf;
+    //     link.download = "portfolio.pdf";
+    //     link.click();
+    // };
 
     return (
         <div className="bg-gray-900 w-full p-5 px-10">
@@ -156,14 +156,14 @@ const Page = () => {
                 >
                     {pending ? "Uploading..." : "Upload PDF"}
                 </button>
-                {portfolio.pdf && (
-                    <button
-                        onClick={handleDownload}
-                        className="bg-green-500 text-white px-4 py-2 rounded-md mt-3"
-                    >
-                        Download PDF
-                    </button>
-                )}
+                // {portfolio.pdf && (
+                //     <button
+                //         onClick={handleDownload}
+                //         className="bg-green-500 text-white px-4 py-2 rounded-md mt-3"
+                //     >
+                //         Download PDF
+                //     </button>
+                // )}
             </div>
 
             {/* Portfolio Form */}
