@@ -25,9 +25,9 @@ const Hero = () => {
           >
             Have an Idea? Make It Digital with{" "}
          <span className="text-secondary-400">
-  <span style={{ color: 'rgba(59, 130, 246, 0.5)' }}>I</span>
+  <span style={{ color: 'rgb(59 236 246 / 87%)' }}>I</span>
   nfo
-  <span style={{ color: 'rgba(59, 130, 246, 0.5)' }}>t</span>
+  <span style={{ color: 'rgb(59 236 246 / 87%)' }}>t</span>
   ech
 </span>!
           </h1>
