@@ -48,41 +48,37 @@ const Footer = () => {
                <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                         <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
  <li>                         
-<Link href="/services/web-development" className="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700">
+<Link href="/services/web-development"className="hover:opacity-75">
   Web Development
 </Link>
  </li>
-                          <li>
-  <Link href="/services/graphic-design" className="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700">
+ <li>
+  <Link href="/services/graphic-design" className="hover:opacity-75">
     Graphic Design
   </Link>
 </li>
 <li>
-  <Link href="/services/data-entry" className="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700">
+  <Link href="/services/data-entry" className="hover:opacity-75">
     Data Entry
   </Link>
 </li>
 <li>
-  <Link href="/services/digital-marketing" className="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700">
+  <Link href="/services/digital-marketing" className="hover:opacity-75">
     Digital Marketing
   </Link>
 </li>
 <li>
-  <Link href="/services/seo-optimization" className="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700">
+  <Link href="/services/seo-optimization" className="hover:opacity-75">
     SEO Optimization
   </Link>
 </li>
 <li>
-  <Link href="/services/medical-billing" className="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white hover:bg-transparent border-gray-700">
+  <Link href="/services/medical-billing" className="hover:opacity-75">
     Medical Billing
   </Link>
 </li>
-
-
-
-        
-                        </ul>
-                    </div>
+</ul>
+       </div>
               </nav>
             </div>
 
