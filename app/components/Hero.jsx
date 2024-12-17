@@ -24,7 +24,12 @@ const Hero = () => {
             transition={{ duration: 1 }}
           >
             Have an Idea? Make It Digital with{" "}
-            <span className="text-secondary-400">Infotech</span>!
+         <span className="text-secondary-400">
+  <span style={{ color: 'rgba(59, 130, 246, 0.5)' }}>I</span>
+  nfo
+  <span style={{ color: 'rgba(59, 130, 246, 0.5)' }}>t</span>
+  ech
+</span>!
           </h1>
           <p
             className="mt-6 text-lg lg:text-xl font-medium raleway text-gray-200 text-justify md:text-left"
