@@ -26,14 +26,18 @@ const Footer = () => {
               <Link href="https://www.linkedin.com/company/infotech-solutions-company/" target="_blank">
                 <Image src={"https://www.svgrepo.com/show/494278/linkedin-round.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicon' />
               </Link>
-              <Link href="https://wa.link/fl12of" target="_blank">
-                <Image src={"https://www.svgrepo.com/show/358411/whatsapp-alt.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicon' />
-              </Link>
+            
              
             </div>
             <div className="flex mt-2 space-x-4 text-gray-200">
+             <Link href="https://wa.link/fl12of" target="_blank">
+                <Image src={"https://www.svgrepo.com/show/358411/whatsapp-alt.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicon' />
+              </Link>
             <Link href="https://join.skype.com/invite/vNwELvlS0ZFG" target="_blank">
                 <Image src={"https://www.svgrepo.com/show/494283/skype-round.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicons' />
+              </Link>
+                <Link href="https://www.youtube.com/@Infotechinstitutecompany">
+                <Image src={"https://www.svgrepo.com/show/358411/youtube-alt.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicon' />
               </Link>
             </div>
             </div>
@@ -49,28 +53,30 @@ const Footer = () => {
 <Link href="/services/web-development"className="hover:opacity-75">
   Web Development
 </Link>
+        
+ <Link href="/services/medical-billing" className="hover:opacity-75">
+    Medical Billing
+  </Link>
+
+   <Link href="/services/digital-marketing" className="hover:opacity-75">
+    Digital Marketing
+  </Link>
 
   <Link href="/services/graphic-design" className="hover:opacity-75">
     Graphic Design
-  </Link>
-
-  <Link href="/services/data-entry" className="hover:opacity-75">
-    Data Entry
-  </Link>
-
-  <Link href="/services/digital-marketing" className="hover:opacity-75">
-    Digital Marketing
   </Link>
 
   <Link href="/services/seo-optimization" className="hover:opacity-75">
     SEO Optimization
   </Link>
 
-  <Link href="/services/medical-billing" className="hover:opacity-75">
-    Medical Billing
+  <Link href="/services/video-editing" className="hover:opacity-75">
+    Video Editing
   </Link>
-
-    </nav>
+   <Link href="/services/content-writing" className="hover:opacity-75">
+  Content Writing
+  </Link>
+ </nav>
             </div>
 
             <div>
