@@ -44,7 +44,7 @@ const Footer = () => {
               <p className="font-medium text-white">
                 Services
               </p>
-            
+         <nav className=" text-gray-200">    
    <ul>
  <li>                         
 <Link href="/services/web-development"className="hover:opacity-75">
@@ -77,7 +77,7 @@ const Footer = () => {
   </Link>
 </li>
 </ul>
-    
+    </nav>
             </div>
 
             <div>
