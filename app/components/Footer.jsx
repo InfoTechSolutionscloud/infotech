@@ -45,38 +45,31 @@ const Footer = () => {
                 Services
               </p>
       <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-200"> 
-   <ul>
- <li>                         
+                         
 <Link href="/services/web-development"className="hover:opacity-75">
   Web Development
 </Link>
- </li>
- <li>
+
   <Link href="/services/graphic-design" className="hover:opacity-75">
     Graphic Design
   </Link>
-</li>
-<li>
+
   <Link href="/services/data-entry" className="hover:opacity-75">
     Data Entry
   </Link>
-</li>
-<li>
+
   <Link href="/services/digital-marketing" className="hover:opacity-75">
     Digital Marketing
   </Link>
-</li>
-<li>
+
   <Link href="/services/seo-optimization" className="hover:opacity-75">
     SEO Optimization
   </Link>
-</li>
-<li>
+
   <Link href="/services/medical-billing" className="hover:opacity-75">
     Medical Billing
   </Link>
-</li>
-</ul>
+
     </nav>
             </div>
 
