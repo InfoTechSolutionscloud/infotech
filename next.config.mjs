@@ -26,6 +26,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'imgur.com',
       },
+       {
+        protocol: 'https',
+        hostname: 'www.svgrepo.com', 
+      },
     ],
   },
   // We handle PDFs separately in your backend API or other logic
