@@ -37,7 +37,7 @@ const Footer = () => {
                 <Image src={"https://www.svgrepo.com/show/494283/skype-round.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicons' />
               </Link>
                 <Link href="https://www.youtube.com/@Infotechinstitutecompany">
-                <Image src={"https://www.svgrepo.com/show/521051/youtube-round.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicon' />
+                <Image src={"https://www.svgrepo.com/show/494293/youtube-round.svg"} width={30} height={30} className='filter invert hover:hue-rotate-90' alt='socialicons' />
               </Link>
             </div>
             </div>
