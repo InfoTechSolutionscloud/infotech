@@ -32,9 +32,7 @@ const Hero = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-We are a leading technology agency that specializes in providing the best services for businesses to stay ahead of the competition. 
-            From website development to mobile app development, we have the expertise to transform your business. 
-            Join us and let's create something amazing together.
+We are a leading technology agency that specializes in providing the best services for businesses to stay ahead of the competition. From website development to mobile app development, and now medical billing solutions, we have the expertise to transform your business. Whether you're a healthcare provider looking to streamline your billing processes or an entrepreneur seeking to launch a new venture, we're here to help. Join us and let's create something amazing together.
           </p>
           <motion.div
             initial={{ y: "100vh", opacity: 0 }}
@@ -52,21 +50,21 @@ We are a leading technology agency that specializes in providing the best servic
             </button>
           </motion.div>
         </motion.div>
-        <motion.div
+     {/*         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1 }}
           className="w-1/2 md:block hidden"
         >
-           <p
-            className="mt-6 text-lg lg:text-xl font-medium raleway text-gray-200 text-justify md:text-left"
-            initial={{ y: "100vh", opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
-          >
-We are a leading technology agency that specializes in providing the best services for businesses to stay ahead of the competition. From website development to mobile app development, and now medical billing solutions, we have the expertise to transform your business. Whether you're a healthcare provider looking to streamline your billing processes or an entrepreneur seeking to launch a new venture, we're here to help. Join us and let's create something amazing together.
-          </p>
-        </motion.div>
+          <Image
+            src={"/techimage.webp"}
+            width={600}
+            height={600}
+            alt={"tech"}
+            priority
+            className="rounded-md shadow-2xl shadow-white"
+          />
+        </motion.div> */}
       </div>
     </Template>
   );
