@@ -66,33 +66,35 @@ const Page = () => {
     };
 
     // Upload PDF
-    const handlePdfUpload = async () => {
-        if (!pdf) return;
-        setPending(true);
-        const formData = new FormData();
-        formData.append("pdf", pdf);
+ const handlePdfUpload = async () => {
+    if (!pdf) return;
+    setPending(true);
+    const formData = new FormData();
+    formData.append("pdf", pdf);
 
-        try {
-            const response = await fetch("/api/upload-pdf", {
-                method: "POST",
-                body: formData,
-            });
+    try {
+        const response = await fetch("/api/upload-pdf", {
+            method: "POST",
+            body: formData,
+        });
 
+        if (response.ok) {
             const data = await response.json();
-
-            if (response.ok) {
-                setPending(false);
-                setPortfolio({ ...portfolio, pdf: data.url });
-            } else {
-                alert("PDF upload failed!");
-                setPending(false);
-            }
-        } catch (error) {
-            console.error("Error uploading PDF:", error);
-            alert("Error uploading PDF!");
+            setPending(false);
+            setPortfolio({ ...portfolio, pdf: data.url });
+            console.log("PDF uploaded successfully", data.url);
+        } else {
+            const errorData = await response.json();
+            alert(`PDF upload failed: ${errorData.message}`);
             setPending(false);
         }
-    };
+    } catch (error) {
+        console.error("Error uploading PDF:", error);
+        alert("Error uploading PDF!");
+        setPending(false);
+    }
+};
+
 
     // Create portfolio
     const createPortfolio = async (e) => {
