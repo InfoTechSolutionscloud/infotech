@@ -41,3 +41,12 @@ videos/*
 !videos/*.js
 !videos/*.ts
 public/_next-video
+
+# Exclude the uploads folder and its contents
+/uploads/*
+
+# Allow specific file types or files in the uploads folder
+!uploads/*.json
+!uploads/*.js
+!uploads/*.ts
+!uploads/*.pdf
