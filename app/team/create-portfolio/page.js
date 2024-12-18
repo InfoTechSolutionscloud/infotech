@@ -66,9 +66,9 @@ const Page = () => {
     };
 
     // Upload PDF
- const handlePdfUpload = async () => {
+const handlePdfUpload = async () => {
     if (!pdf) return;
-    setPending(true);
+
     const formData = new FormData();
     formData.append("pdf", pdf);
 
@@ -80,18 +80,16 @@ const Page = () => {
 
         if (response.ok) {
             const data = await response.json();
-            setPending(false);
             setPortfolio({ ...portfolio, pdf: data.url });
-            console.log("PDF uploaded successfully", data.url);
+            console.log("PDF uploaded successfully", data);
         } else {
             const errorData = await response.json();
+            console.error("Error response:", errorData);
             alert(`PDF upload failed: ${errorData.message}`);
-            setPending(false);
         }
     } catch (error) {
         console.error("Error uploading PDF:", error);
         alert("Error uploading PDF!");
-        setPending(false);
     }
 };
 
