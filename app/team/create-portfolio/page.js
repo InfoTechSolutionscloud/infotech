@@ -149,7 +149,7 @@ const Page = () => {
             {/* PDF Upload Section */}
             <div className="flex flex-col justify-center items-center gap-y-1 py-2">
                 <label className="text-white font-semibold mr-2 luto">Upload PDF</label>
-                <input type="file" className="text-white" onChange={handlePdfChange} />
+                <input type="file" name="pdf" className="text-white" onChange={handlePdfChange} />
                 <button
                     onClick={handlePdfUpload}
                     className="bg-blue-500 text-white px-4 py-2 rounded-md"
