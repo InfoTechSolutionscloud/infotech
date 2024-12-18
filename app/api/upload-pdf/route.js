@@ -8,34 +8,46 @@ export async function POST(request) {
         const formData = await request.formData();
         const pdfFile = formData.get("pdf");
 
-        // Check if a PDF file was provided
         if (!pdfFile) {
             return NextResponse.json({ message: "No PDF uploaded" }, { status: 400 });
         }
 
+        console.log("Received PDF file:", pdfFile);
+
         // Generate a unique filename for the PDF
         const timestamp = Date.now();
         const fileName = `upload-${timestamp}-${pdfFile.name}`;
-        
-        // Define the directory where files will be stored (public folder)
+
+        // Define the upload directory in public folder
         const uploadDir = path.join(process.cwd(), "public", "uploads");
-        
+
+        // Log the directory path to verify
+        console.log("Upload directory:", uploadDir);
+
         // Ensure the directory exists
         if (!fs.existsSync(uploadDir)) {
+            console.log("Creating uploads directory...");
             fs.mkdirSync(uploadDir, { recursive: true });
         }
 
-        // Create a file path
+        // Construct the file path
         const filePath = path.join(uploadDir, fileName);
 
-        // Read the file buffer from the FormData
+        // Get the file buffer and write to disk
         const fileBuffer = Buffer.from(await pdfFile.arrayBuffer());
 
-        // Write the file to the server
+        // Save the file
         fs.writeFileSync(filePath, fileBuffer);
 
-        // Send the relative file path as a URL
-        const fileUrl = `/uploads/${fileName}`; // Public URL
+        // Check if file was saved
+        if (fs.existsSync(filePath)) {
+            console.log("File successfully saved at:", filePath);
+        } else {
+            console.error("Failed to save file at:", filePath);
+        }
+
+        // Provide the public URL
+        const fileUrl = `/uploads/${fileName}`;
 
         return NextResponse.json({ message: "PDF uploaded successfully", url: fileUrl }, { status: 200 });
     } catch (error) {
