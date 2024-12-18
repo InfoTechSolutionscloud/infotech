@@ -25,10 +25,16 @@ export async function POST(request) {
         console.log("Upload directory:", uploadDir);
 
         // Ensure the directory exists
-        if (!fs.existsSync(uploadDir)) {
-            console.log("Creating uploads directory...");
-            fs.mkdirSync(uploadDir, { recursive: true });
-        }
+if (!fs.existsSync(uploadDir)) {
+    console.log("Creating uploads directory...");
+    try {
+        fs.mkdirSync(uploadDir, { recursive: true });
+        console.log("Directory created successfully.");
+    } catch (err) {
+        console.error("Error creating directory:", err);
+        return NextResponse.json({ message: "Error creating directory" }, { status: 500 });
+    }
+}
 
         // Construct the file path
         const filePath = path.join(uploadDir, fileName);
