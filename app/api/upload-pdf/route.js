@@ -7,6 +7,7 @@ export async function POST(request) {
         const formData = await request.formData();
         const pdfFile = formData.get("pdf");
 
+        // Check if PDF is uploaded
         if (!pdfFile) {
             return NextResponse.json({ message: "No PDF uploaded" }, { status: 400 });
         }
@@ -18,7 +19,7 @@ export async function POST(request) {
 
         const timestamp = Date.now();
         const fileName = `upload-${timestamp}-${pdfFile.name}`;
-        const uploadDir = path.join(process.cwd(), "public", "uploads"); // Save in public/uploads
+        const uploadDir = path.join(process.cwd(), "public", "uploads");
 
         // Ensure directory exists
         await fs.mkdir(uploadDir, { recursive: true });
@@ -31,7 +32,10 @@ export async function POST(request) {
 
         return NextResponse.json({ message: "PDF uploaded successfully", filePath: `/uploads/${fileName}` }, { status: 200 });
     } catch (error) {
-        console.error("Error uploading PDF:", error.message);
+        // Log error with more details
+        console.error("Error uploading PDF:", error);
+
+        // Send a detailed error response
         return NextResponse.json({ message: "Error uploading PDF", error: error.message }, { status: 500 });
     }
 }
