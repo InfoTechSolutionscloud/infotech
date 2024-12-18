@@ -42,11 +42,11 @@ videos/*
 !videos/*.ts
 public/_next-video
 
-# Exclude the uploads folder and its contents
-/uploads/*
+# Exclude files inside the uploads folder
+/public/uploads/*
 
-# Allow specific file types or files in the uploads folder
-!uploads/*.json
-!uploads/*.js
-!uploads/*.ts
-!uploads/*.pdf
+# Allow specific file types or files inside the uploads folder
+!public/uploads/*.json
+!public/uploads/*.js
+!public/uploads/*.ts
+!public/uploads/*.pdf
