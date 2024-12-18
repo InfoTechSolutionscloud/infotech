@@ -1,44 +1,35 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 
 export async function POST(request) {
     try {
-        // Get the form data
         const formData = await request.formData();
         const pdfFile = formData.get("pdf");
 
-        // Check if a PDF file was provided
         if (!pdfFile) {
             return NextResponse.json({ message: "No PDF uploaded" }, { status: 400 });
         }
 
-        // Generate a unique filename for the PDF
-        const timestamp = Date.now();
-        const fileName = `upload-${timestamp}-${pdfFile.name}`;
-        
-        // Define the directory where files will be stored
-        const uploadDir = path.join(process.cwd(), "uploads");
-        
-        // Ensure the directory exists
-        if (!fs.existsSync(uploadDir)) {
-            fs.mkdirSync(uploadDir, { recursive: true });
+        // Validate the uploaded file is a PDF
+        if (!pdfFile.type || !pdfFile.type.includes("pdf")) {
+            return NextResponse.json({ message: "Invalid file type" }, { status: 400 });
         }
 
-        // Create a file stream to write the PDF to disk
+        const timestamp = Date.now();
+        const fileName = `upload-${timestamp}-${pdfFile.name}`;
+        const uploadDir = path.join(process.cwd(), "public", "uploads"); // Save in public/uploads
+
+        // Ensure directory exists
+        await fs.mkdir(uploadDir, { recursive: true });
+
         const filePath = path.join(uploadDir, fileName);
-        const fileStream = fs.createWriteStream(filePath);
         const fileBuffer = Buffer.from(await pdfFile.arrayBuffer());
 
-        // Write the file to the server
-        fileStream.write(fileBuffer);
-        fileStream.end();
+        // Write file to the disk
+        await fs.writeFile(filePath, fileBuffer);
 
-        // Save file information to a database (example implementation)
-        // Here you can use your database logic, such as saving `fileName` and `filePath`
-        // Example: await db.save({ fileName, filePath });
-
-        return NextResponse.json({ message: "PDF uploaded successfully", filePath }, { status: 200 });
+        return NextResponse.json({ message: "PDF uploaded successfully", filePath: `/uploads/${fileName}` }, { status: 200 });
     } catch (error) {
         console.error("Error uploading PDF:", error.message);
         return NextResponse.json({ message: "Error uploading PDF", error: error.message }, { status: 500 });
