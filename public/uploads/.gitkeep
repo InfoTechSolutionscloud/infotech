@@ -1,3 +1,0 @@
-git add uploads/.gitkeep
-git commit -m "Added uploads folder with .gitkeep"
-git push
