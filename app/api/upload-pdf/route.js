@@ -1,63 +1,30 @@
-import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-
 export async function POST(request) {
     try {
-        // Get the form data
         const formData = await request.formData();
         const pdfFile = formData.get("pdf");
 
         if (!pdfFile) {
+            console.error("No PDF file uploaded.");
             return NextResponse.json({ message: "No PDF uploaded" }, { status: 400 });
         }
 
-        console.log("Received PDF file:", pdfFile);
-
-        // Generate a unique filename for the PDF
         const timestamp = Date.now();
         const fileName = `upload-${timestamp}-${pdfFile.name}`;
 
-        // Define the upload directory in public folder
         const uploadDir = path.join(process.cwd(), "public", "uploads");
 
-        // Log the directory path to verify
-        console.log("Upload directory:", uploadDir);
-
-        // Ensure the directory exists
-if (!fs.existsSync(uploadDir)) {
-    console.log("Creating uploads directory...");
-    try {
-        fs.mkdirSync(uploadDir, { recursive: true });
-        console.log("Directory created successfully.");
-    } catch (err) {
-        console.error("Error creating directory:", err);
-        return NextResponse.json({ message: "Error creating directory" }, { status: 500 });
-    }
-}
-
-        // Construct the file path
-        const filePath = path.join(uploadDir, fileName);
-
-        // Get the file buffer and write to disk
-        const fileBuffer = Buffer.from(await pdfFile.arrayBuffer());
-
-        // Save the file
-        fs.writeFileSync(filePath, fileBuffer);
-
-        // Check if file was saved
-        if (fs.existsSync(filePath)) {
-            console.log("File successfully saved at:", filePath);
-        } else {
-            console.error("Failed to save file at:", filePath);
+        if (!fs.existsSync(uploadDir)) {
+            fs.mkdirSync(uploadDir, { recursive: true });
         }
 
-        // Provide the public URL
-        const fileUrl = `/uploads/${fileName}`;
+        const filePath = path.join(uploadDir, fileName);
+        const fileBuffer = Buffer.from(await pdfFile.arrayBuffer());
+        fs.writeFileSync(filePath, fileBuffer);
 
+        const fileUrl = `/uploads/${fileName}`;
         return NextResponse.json({ message: "PDF uploaded successfully", url: fileUrl }, { status: 200 });
     } catch (error) {
-        console.error("Error uploading PDF:", error);
+        console.error("Error in PDF upload:", error);
         return NextResponse.json({ message: "Error uploading PDF", error: error.message }, { status: 500 });
     }
 }
