@@ -20,27 +20,27 @@ export async function POST(request) {
         // Define the directory where files will be stored
         const uploadDir = path.join(process.cwd(), "uploads");
         
+        // Log the directory path for debugging
+        console.log("Upload directory:", uploadDir);
+        
         // Ensure the directory exists
         if (!fs.existsSync(uploadDir)) {
+            console.log("Creating uploads directory...");
             fs.mkdirSync(uploadDir, { recursive: true });
         }
 
-        // Create a file stream to write the PDF to disk
+        // Create a file path
         const filePath = path.join(uploadDir, fileName);
-        const fileStream = fs.createWriteStream(filePath);
+
+        // Read the file buffer from the FormData
         const fileBuffer = Buffer.from(await pdfFile.arrayBuffer());
 
         // Write the file to the server
-        fileStream.write(fileBuffer);
-        fileStream.end();
-
-        // Save file information to a database (example implementation)
-        // Here you can use your database logic, such as saving `fileName` and `filePath`
-        // Example: await db.save({ fileName, filePath });
+        fs.writeFileSync(filePath, fileBuffer);
 
         return NextResponse.json({ message: "PDF uploaded successfully", filePath }, { status: 200 });
     } catch (error) {
-        console.error("Error uploading PDF:", error.message);
+        console.error("Error uploading PDF:", error);
         return NextResponse.json({ message: "Error uploading PDF", error: error.message }, { status: 500 });
     }
 }
