@@ -40,8 +40,8 @@ const nextConfig = {
         destination: '/uploads/images/:path*', // handle image file rewrites if necessary
       },
       {
-        source: '/uploads/pdfs/:path*',
-        destination: '/uploads/pdfs/:path*', // handle PDF file rewrites if necessary
+        source: '/uploads/pdf/:path*',
+        destination: '/uploads/pdf/:path*', // handle PDF file rewrites if necessary
       },
     ];
   },
