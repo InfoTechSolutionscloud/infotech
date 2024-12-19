@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -26,9 +26,9 @@ module.exports = {
         protocol: 'https',
         hostname: 'imgur.com',
       },
-      {
+       {
         protocol: 'https',
-        hostname: 'www.svgrepo.com',
+        hostname: 'www.svgrepo.com', 
       },
     ],
   },
@@ -45,11 +45,8 @@ module.exports = {
       },
     ];
   },
-  api: {
-    bodyParser: {
-      sizeLimit: '10mb', // Adjust the size limit as per your need
-    },
-  },
+
+
   eslint: {
     ignoreDuringBuilds: true,
   },
