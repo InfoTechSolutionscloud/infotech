@@ -1,15 +1,45 @@
-// pages/api/serve-pdf.js
+// pages/api/upload-pdf.js
+
 import fs from 'fs';
 import path from 'path';
-import { NextApiResponse } from 'next';
 
 export default async function handler(req, res) {
-  const { path: filePath } = req.query; // Get the file path from the URL
+  if (req.method === 'POST') {
+    try {
+      // Get file from request
+      const formData = await req.formData();
+      const pdfFile = formData.get('pdf');
+      
+      if (!pdfFile) {
+        return res.status(400).json({ message: 'No PDF uploaded' });
+      }
 
-  const file = path.resolve(process.cwd(), 'public/uploads/pdf', filePath);
-  if (fs.existsSync(file)) {
-    res.sendFile(file); // Serve the file
+      // Define path and save the file
+      const timestamp = Date.now();
+      const fileName = `upload-${timestamp}-${pdfFile.name}`;
+      const uploadDir = path.join(process.cwd(), 'public/uploads/pdf');
+
+      // Ensure the uploads directory exists
+      if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir, { recursive: true });
+      }
+
+      const filePath = path.join(uploadDir, fileName);
+      const fileBuffer = Buffer.from(await pdfFile.arrayBuffer());
+
+      // Save the PDF file
+      fs.writeFileSync(filePath, fileBuffer);
+
+      return res.status(200).json({
+        message: 'PDF uploaded successfully',
+        url: `/uploads/pdf/${fileName}`,
+      });
+    } catch (error) {
+      console.error('Error uploading PDF:', error);
+      return res.status(500).json({ message: 'Error uploading PDF', error: error.message });
+    }
   } else {
-    res.status(404).json({ message: 'File not found' });
+    // Method not allowed for non-POST requests
+    return res.status(405).json({ message: 'Method Not Allowed' });
   }
 }
