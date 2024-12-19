@@ -45,6 +45,15 @@ const nextConfig = {
       },
     ];
   },
+  // next.config.js
+module.exports = {
+    api: {
+        bodyParser: {
+            sizeLimit: '10mb', // Adjust the size limit as per your need
+        },
+    },
+};
+
   eslint: {
     ignoreDuringBuilds: true,
   },
