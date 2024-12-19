@@ -67,13 +67,8 @@ const Page = () => {
 
     // Upload PDF
 const handlePdfUpload = async () => {
-    if (!pdf) {
-        alert("No PDF file selected!");
-        return;
-    }
-
+    if (!pdf) return;
     setPending(true);
-
     const formData = new FormData();
     formData.append("pdf", pdf);
 
@@ -86,20 +81,18 @@ const handlePdfUpload = async () => {
         const data = await response.json();
 
         if (response.ok) {
-            setPortfolio((prevPortfolio) => ({ ...prevPortfolio, pdf: data.url }));
-            alert("PDF uploaded successfully!");
+            setPending(false);
+            setPortfolio({ ...portfolio, pdf: data.url });
         } else {
-            console.error("Error from server:", data.message || "Unknown error");
-            alert(`PDF upload failed! ${data.message || "Please try again."}`);
+            alert("PDF upload failed!");
+            setPending(false);
         }
     } catch (error) {
-        console.error("Network error uploading PDF:", error);
-        alert("Error uploading PDF! Please check your internet connection.");
-    } finally {
+        console.error("Error uploading PDF:", error);
+        alert("Error uploading PDF!");
         setPending(false);
     }
 };
-
 
 
 
