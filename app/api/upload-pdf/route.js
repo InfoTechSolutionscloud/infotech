@@ -18,33 +18,33 @@ export async function POST(request) {
         const timestamp = Date.now();
         const fileName = `upload-${timestamp}-${pdfFile.name}`;
 
-        // Define the upload directory in the public folder
-        const uploadDir = path.join(process.cwd(), "public", "uploads");
+        // Define the upload directory in the project's root folder (ensures compatibility with deployment environments)
+        const uploadDir = path.join(process.cwd(), "uploads");
 
-        // Ensure the directory exists
-        if (!fs.existsSync(uploadDir)) {
-            console.log("Creating uploads directory...");
-            fs.mkdirSync(uploadDir, { recursive: true });
+        // Ensure the directory exists or create it
+        try {
+            if (!fs.existsSync(uploadDir)) {
+                console.log("Creating uploads directory...");
+                fs.mkdirSync(uploadDir, { recursive: true });
+            }
+        } catch (dirError) {
+            console.error("Failed to create uploads directory:", dirError);
+            return NextResponse.json({ message: "Error creating uploads directory" }, { status: 500 });
         }
 
         // Construct the file path
         const filePath = path.join(uploadDir, fileName);
 
         // Get the file buffer and write to disk
-        const fileBuffer = Buffer.from(await pdfFile.arrayBuffer());
-
-        // Save the file
-        fs.writeFileSync(filePath, fileBuffer);
-
-        // Check if file was saved
-        if (fs.existsSync(filePath)) {
-            console.log("File successfully saved at:", filePath);
-        } else {
-            console.error("Failed to save file at:", filePath);
+        try {
+            const fileBuffer = Buffer.from(await pdfFile.arrayBuffer());
+            fs.writeFileSync(filePath, fileBuffer);
+        } catch (writeError) {
+            console.error("Error writing file to disk:", writeError);
             return NextResponse.json({ message: "Error saving PDF file" }, { status: 500 });
         }
 
-        // Provide the public URL
+        // Provide the public URL (modify according to your deployment setup)
         const fileUrl = `/uploads/${fileName}`;
 
         return NextResponse.json({ message: "PDF uploaded successfully", url: fileUrl }, { status: 200 });
