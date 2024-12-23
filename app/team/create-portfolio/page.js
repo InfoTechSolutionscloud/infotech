@@ -65,34 +65,34 @@ const Page = () => {
         }
     };
 
-    // Upload PDF
-const handlePdfUpload = async () => {
-    if (!pdf) return;
-    setPending(true);
-    const formData = new FormData();
-    formData.append("pdf", pdf);
+//     // Upload PDF
+// const handlePdfUpload = async () => {
+//     if (!pdf) return;
+//     setPending(true);
+//     const formData = new FormData();
+//     formData.append("pdf", pdf);
 
-    try {
-        const response = await fetch("/api/upload-pdf", {
-            method: "POST",
-            body: formData,
-        });
+//     try {
+//         const response = await fetch("/api/upload-pdf", {
+//             method: "POST",
+//             body: formData,
+//         });
 
-        const data = await response.json();
+//         const data = await response.json();
 
-        if (response.ok) {
-            setPending(false);
-            setPortfolio({ ...portfolio, pdf: data.url });
-        } else {
-            alert("PDF upload failed!");
-            setPending(false);
-        }
-    } catch (error) {
-        console.error("Error uploading PDF:", error);
-        alert("Error uploading PDF!");
-        setPending(false);
-    }
-};
+//         if (response.ok) {
+//             setPending(false);
+//             setPortfolio({ ...portfolio, pdf: data.url });
+//         } else {
+//             alert("PDF upload failed!");
+//             setPending(false);
+//         }
+//     } catch (error) {
+//         console.error("Error uploading PDF:", error);
+//         alert("Error uploading PDF!");
+//         setPending(false);
+//     }
+// };
 
 
 
@@ -115,14 +115,14 @@ const handlePdfUpload = async () => {
         setPortfolio({ ...portfolio, description: content });
     };
 
-    // Download PDF
-    const handleDownload = () => {
-        if (!portfolio.pdf) return;
-        const link = document.createElement('a');
-        link.href = portfolio.pdf;
-        link.download = "portfolio.pdf";
-        link.click();
-    };
+    // // Download PDF
+    // const handleDownload = () => {
+    //     if (!portfolio.pdf) return;
+    //     const link = document.createElement('a');
+    //     link.href = portfolio.pdf;
+    //     link.download = "portfolio.pdf";
+    //     link.click();
+    // };
 
     return (
         <div className="bg-gray-900 w-full p-5 px-10">
@@ -149,24 +149,24 @@ const handlePdfUpload = async () => {
             </div>
 
             {/* PDF Upload Section */}
-            <div className="flex flex-col justify-center items-center gap-y-1 py-2">
-                <label className="text-white font-semibold mr-2 luto">Upload PDF</label>
-                <input type="file" name="pdf" className="text-white" onChange={handlePdfChange} />
-                <button
-                    onClick={handlePdfUpload}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md"
-                >
-                    {pending ? "Uploading..." : "Upload PDF"}
-                </button>
-                {portfolio.pdf && (
-                    <button
-                        onClick={handleDownload}
-                        className="bg-green-500 text-white px-4 py-2 rounded-md mt-3"
-                    >
-                        Download PDF
-                    </button>
-                )}
-            </div>
+            // <div className="flex flex-col justify-center items-center gap-y-1 py-2">
+            //     <label className="text-white font-semibold mr-2 luto">Upload PDF</label>
+            //     <input type="file" name="pdf" className="text-white" onChange={handlePdfChange} />
+            //     <button
+            //         onClick={handlePdfUpload}
+            //         className="bg-blue-500 text-white px-4 py-2 rounded-md"
+            //     >
+            //         {pending ? "Uploading..." : "Upload PDF"}
+            //     </button>
+            //     {portfolio.pdf && (
+            //         <button
+            //             onClick={handleDownload}
+            //             className="bg-green-500 text-white px-4 py-2 rounded-md mt-3"
+            //         >
+            //             Download PDF
+            //         </button>
+            //     )}
+            // </div>
 
             {/* Portfolio Form */}
             <form onSubmit={(e) => createPortfolio(e)} className="w-full md:w-2/3 py-5 mx-auto">
