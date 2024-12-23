@@ -5,12 +5,14 @@ import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import Image from "next/image";
 
+
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const Page = () => {
     const [portfolio, setPortfolio] = useState({
         title: "",
         image: "",
+        pdf: "",
         short_description: "",
         description: "",
         slug: "",
@@ -18,11 +20,19 @@ const Page = () => {
     const [message, setMessage] = useState();
     const [pending, setPending] = useState();
     const [image, setImage] = useState(null);
+    const [pdf, setPdf] = useState(null);
 
     // Handle file change for image
     const handleFileChange = (event) => {
         if (event.target.files && event.target.files[0]) {
             setImage(event.target.files[0]);
+        }
+    };
+
+    // Handle file change for PDF
+    const handlePdfChange = (event) => {
+        if (event.target.files && event.target.files[0]) {
+            setPdf(event.target.files[0]);
         }
     };
 
@@ -55,6 +65,37 @@ const Page = () => {
         }
     };
 
+    // Upload PDF
+const handlePdfUpload = async () => {
+    if (!pdf) return;
+    setPending(true);
+    const formData = new FormData();
+    formData.append("pdf", pdf);
+
+    try {
+        const response = await fetch("/api/upload-pdf", {
+            method: "POST",
+            body: formData,
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            setPending(false);
+            setPortfolio({ ...portfolio, pdf: data.url });
+        } else {
+            alert("PDF upload failed!");
+            setPending(false);
+        }
+    } catch (error) {
+        console.error("Error uploading PDF:", error);
+        alert("Error uploading PDF!");
+        setPending(false);
+    }
+};
+
+
+
     // Create portfolio
     const createPortfolio = async (e) => {
         e.preventDefault();
@@ -72,6 +113,15 @@ const Page = () => {
     // Handle description change
     const handleContentChange = (content) => {
         setPortfolio({ ...portfolio, description: content });
+    };
+
+    // Download PDF
+    const handleDownload = () => {
+        if (!portfolio.pdf) return;
+        const link = document.createElement('a');
+        link.href = portfolio.pdf;
+        link.download = "portfolio.pdf";
+        link.click();
     };
 
     return (
@@ -96,6 +146,26 @@ const Page = () => {
                 >
                     {pending ? "Uploading..." : "Upload"}
                 </button>
+            </div>
+
+            {/* PDF Upload Section */}
+            <div className="flex flex-col justify-center items-center gap-y-1 py-2">
+                <label className="text-white font-semibold mr-2 luto">Upload PDF</label>
+                <input type="file" name="pdf" className="text-white" onChange={handlePdfChange} />
+                <button
+                    onClick={handlePdfUpload}
+                    className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                >
+                    {pending ? "Uploading..." : "Upload PDF"}
+                </button>
+                {portfolio.pdf && (
+                    <button
+                        onClick={handleDownload}
+                        className="bg-green-500 text-white px-4 py-2 rounded-md mt-3"
+                    >
+                        Download PDF
+                    </button>
+                )}
             </div>
 
             {/* Portfolio Form */}
