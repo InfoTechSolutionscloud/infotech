@@ -48,6 +48,7 @@ const Services = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =>
       )}
       {data && (
         <div className="w-full max-w-7xl px-4 lg:px-0">
+          
           {/* Title Animation */}
           <motion.h3
             initial={{ opacity: 0, y: shouldAnimate ? -50 : 0 }}
@@ -109,7 +110,8 @@ const Services = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =>
             </Slider>
           ) : (
             // Display when animate is false
-            <div className="flex flex-wrap justify-center">
+           
+            <div className="flex flex-wrap justify-center gap-4">
               {data.services.slice(0, qty || data.services.length).map((item) => (
                 <div
                   key={item.id} // Ensure unique key is `item.id`
