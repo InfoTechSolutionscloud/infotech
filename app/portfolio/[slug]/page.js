@@ -89,7 +89,7 @@ const page = async ({ params }) => {
                                         {data.portfolio.short_description}
                                     </p>
                                         <Link 
-  href="https://api.whatsapp.com/send?phone=923282296963&text=Hello!%20I%20want%20to%20know%20more%20about%20your%20services." 
+  href="https://api.whatsapp.com/send?phone=923282296963&text=Hello!%20I%20want%20to%20know%20more%20about%20your%20Portfolio." 
   className="bg-secondary-600 rounded-md text-white px-6 py-3 inline-block"
   target="_blank" 
   rel="noopener noreferrer"
