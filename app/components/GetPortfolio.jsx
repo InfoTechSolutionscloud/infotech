@@ -83,7 +83,7 @@ const GetPortfolio = ({portfolioText}) => {
                             <h2
                                 className="font-heading mb-4 font-bold tracking-tight text-white text-3xl sm:text-5xl"
                             >
-                                Need this portfolio? Just Order Now!
+                                Need this portfolio? WhatsApp Now!
                             </h2>
                         </div>
                     </motion.div>
