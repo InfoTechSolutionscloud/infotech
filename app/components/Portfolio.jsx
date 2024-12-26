@@ -109,7 +109,7 @@ const Portfolio = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =
             </Slider>
           ) : (
             // Display when animate is false
-            <div className="flex flex-wrap justify-center">
+            <div className="flex flex-wrap justify-center gap-4">
               {data.portfolio.slice(0, qty || data.portfolio.length).map((item) => (
                 <div
                   key={item.id} // Ensure unique key is `item.id`
