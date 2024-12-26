@@ -26,29 +26,11 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'imgur.com',
       },
-       {
-        protocol: 'https',
-        hostname: 'www.svgrepo.com', 
-      },
     ],
   },
-  // We handle PDFs separately in your backend API or other logic
-  async rewrites() {
-    return [
-      {
-        source: '/uploads/images/:path*',
-        destination: '/uploads/images/:path*', // handle image file rewrites if necessary
-      },
-      {
-        source: '/uploads/pdf/:path*',
-        destination: '/uploads/pdf/:path*', // handle PDF file rewrites if necessary
-      },
-    ];
-  },
-
-
   eslint: {
     ignoreDuringBuilds: true,
   },
-  // Additional settings can be added here based on your app's requirements
 };
+
+export default nextConfig;
