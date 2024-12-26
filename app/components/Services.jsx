@@ -111,7 +111,7 @@ const Services = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =>
           ) : (
             // Display when animate is false
            
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {data.services.slice(0, qty || data.services.length).map((item) => (
                 <div
                   key={item.id} // Ensure unique key is `item.id`
