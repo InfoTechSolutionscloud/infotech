@@ -117,7 +117,7 @@ const Services = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =>
                   key={item.id} // Ensure unique key is `item.id`
                   className="p-4 w-full md:w-1/3" >
                   <div
-                    className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 bg-cover bg-center h-[300px]"
+                    className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 bg-cover bg-center h-[400px]"
            
                     style={{ backgroundImage: `url(${item.image})` }}
                   >
