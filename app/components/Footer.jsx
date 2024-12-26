@@ -54,7 +54,7 @@ const Footer = () => {
   Web Development
 </Link>
         
- <Link href="/services/medical-billing" className="hover:opacity-75">
+ <Link href="/services/Medical%20Billing" className="hover:opacity-75">
     Medical Billing
   </Link>
 
