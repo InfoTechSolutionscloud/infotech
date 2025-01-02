@@ -1,4 +1,3 @@
-"use client";
 import { motion } from "framer-motion";
 import useSWR from "swr";
 import Slider from "react-slick";
@@ -35,16 +34,18 @@ const Portfolio = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =
     ],
   };
 
-  // Determine if animations should be applied
   const shouldAnimate = animate && data && data.portfolio.length > 3;
 
   return (
-    <div id="portfolio" className="flex flex-col items-center justify-center py-20 bg-gradient-to-tr from-gray-700/25 via-secondary-900 to-gray-700/25 overflow-hidden">
-      {isLoading && (
-        <div className="animate-spin w-10 h-10 mx-auto"></div>
-      )}
+    <div
+      id="portfolio"
+      className="flex flex-col items-center justify-center py-20 bg-gradient-to-tr from-gray-700/25 via-secondary-900 to-gray-700/25 overflow-hidden"
+    >
+      {isLoading && <div className="animate-spin w-10 h-10 mx-auto"></div>}
       {error && (
-        <div className="text-xl text-white font-semibold text-center">{error.response.data.message}</div>
+        <div className="text-xl text-white font-semibold text-center">
+          {error.response.data.message}
+        </div>
       )}
       {data && (
         <div className="w-full max-w-7xl px-4 lg:px-0">
@@ -56,7 +57,8 @@ const Portfolio = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =
             viewport={{ once: true, amount: 0.5 }}
             className="text-3xl lg:text-4xl font-bold lato text-white text-center"
           >
-            {titleSimple}<span className="text-secondary-400">{hititle}</span>
+            {titleSimple}
+            <span className="text-secondary-400">{hititle}</span>
           </motion.h3>
 
           {/* Description Animation */}
@@ -66,7 +68,8 @@ const Portfolio = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =
             transition={{ duration: shouldAnimate ? 0.8 : 0, delay: shouldAnimate ? 0.3 : 0 }}
             className="text-center text-sm text-white mb-10 mt-2 raleway"
           >
-            {tagline}<span className="bg-secondary-500 text-black p-2">{hitagline}</span>
+            {tagline}
+            <span className="bg-secondary-500 text-black p-2">{hitagline}</span>
           </motion.p>
 
           {/* Slider or Static Cards */}
@@ -74,7 +77,7 @@ const Portfolio = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =
             <Slider {...settings}>
               {data.portfolio.slice(0, qty || data.portfolio.length).map((item, index) => (
                 <motion.article
-                  key={item.id} // Ensure unique key is `item.id`
+                  key={item.id}
                   className="p-4"
                   initial={{ opacity: 0, scale: shouldAnimate ? 0.8 : 1 }}
                   animate={{ opacity: 1, scale: shouldAnimate ? 1 : undefined }}
@@ -83,6 +86,7 @@ const Portfolio = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =
                   <div
                     className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 bg-cover bg-center"
                     style={{ backgroundImage: `url(${item.image})` }}
+                    onClick={() => openModal(item.image)}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-primary-950 via-primary-900/40"></div>
                     <motion.a
@@ -108,16 +112,13 @@ const Portfolio = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =
               ))}
             </Slider>
           ) : (
-            // Display when animate is false
             <div className="flex flex-wrap justify-center gap-4">
               {data.portfolio.slice(0, qty || data.portfolio.length).map((item) => (
-                <div
-                  key={item.id} // Ensure unique key is `item.id`
-                  className="p-4 w-full md:w-1/3" >
+                <div key={item.id} className="p-4 w-full md:w-1/3">
                   <div
                     className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 bg-cover bg-center h-[400px]"
-                  
                     style={{ backgroundImage: `url(${item.image})` }}
+                    onClick={() => openModal(item.image)}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-primary-950 via-primary-900/40"></div>
                     <a
@@ -136,8 +137,70 @@ const Portfolio = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =
           )}
         </div>
       )}
+
+      {/* Modal for Image Zoom */}
+      <div id="myModal" className="modal" onClick={closeModal}>
+        <span className="close" onClick={closeModal}>&times;</span>
+        <img className="modal-content" id="img01" />
+      </div>
     </div>
   );
+
+  // Open modal to zoom the image
+  function openModal(imgSrc) {
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("img01");
+    modal.style.display = "block";
+    modalImg.src = imgSrc; // Set the clicked image to the modal
+  }
+
+  // Close the modal
+  function closeModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+  }
 };
 
 export default Portfolio;
+
+// Styles for Modal Image Zoom (Add CSS in a global file or inline style tag)
+
+<style jsx>{`
+  /* Modal - Fullscreen View */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    transition: transform 0.25s ease; /* For smooth zoom-in */
+  }
+
+  /* Close Button */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+`}</style>
