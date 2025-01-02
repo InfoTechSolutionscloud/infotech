@@ -28,7 +28,7 @@ export default function Home() {
         <Buttonline title={"Explore Our Services"} link={"/services"} />
       </ScrollAnimation>
       <ScrollAnimation>
-        <Portfolio />
+        <Portfolio  titleSimple={"What we "} hititle={"Offer!"} tagline={"We provide a variety of work! Here are "} hitagline={"Top Portfolio"} animate={true} / />
         <Buttonline title={"View All Portfolios"} link={"/portfolio"} />
       </ScrollAnimation>
       <ScrollAnimation>
