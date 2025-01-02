@@ -136,27 +136,8 @@ const Portfolio = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =
           )}
         </div>
       )}
-  {/* Modal for Image Zoom */}
-      <div id="myModal" className="modal" onClick={closeModal}>
-        <span className="close" onClick={closeModal}>&times;</span>
-        <img className="modal-content" id="img01" style={{ maxWidth: '80%', maxHeight: '80%', margin: 'auto' }} />
-      </div>
-      
     </div>
   );
-    // Open modal to zoom the image
-  function openModal(imgSrc) {
-    var modal = document.getElementById("myModal");
-    var modalImg = document.getElementById("img01");
-    modal.style.display = "block";
-    modalImg.src = imgSrc; // Set the clicked image to the modal
-  }
-
-  // Close the modal
-  function closeModal() {
-    var modal = document.getElementById("myModal");
-    modal.style.display = "none";
-  }
 };
 
 export default Portfolio;
