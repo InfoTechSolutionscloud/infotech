@@ -83,7 +83,6 @@ const Portfolio = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =
                   <div
                     className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 bg-cover bg-center"
                     style={{ backgroundImage: `url(${item.image})` }}
-                    onClick={() => openModal(item.image)} // Open modal on click
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-primary-950 via-primary-900/40"></div>
                     <motion.a
@@ -117,8 +116,8 @@ const Portfolio = ({ qty, titleSimple, hititle, tagline, hitagline, animate }) =
                   className="p-4 w-full md:w-1/3" >
                   <div
                     className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 bg-cover bg-center h-[400px]"
+                  
                     style={{ backgroundImage: `url(${item.image})` }}
-                    onClick={() => openModal(item.image)} // Open modal on click
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-primary-950 via-primary-900/40"></div>
                     <a
