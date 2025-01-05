@@ -32,7 +32,9 @@ const Hero = () => {
 </span>!
           </h1>
           <p
-            className="mt-6 text-lg lg:text-xl font-medium raleway text-gray-200 text-justify md:text-left"
+{/*             className="mt-6 text-lg lg:text-xl font-medium raleway text-gray-200 text-justify md:text-left" */}
+            className="flex flex-col md:flex-row items-center justify-center min-h-screen w-full px-4 md:px-12"
+
             initial={{ y: "100vh", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
