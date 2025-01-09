@@ -11,7 +11,7 @@ const Hero = () => {
         id="herosection"
         className="flex md:flex-row flex-col   bg-[url('/bg.webp')] bg-left min-h-screen w-full px-8 lg:px-20 "
       >
-        <motion.div
+        
           initial={{ y: "10vh", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}
@@ -41,7 +41,7 @@ const Hero = () => {
           >
 We are a leading technology agency that specializes in providing the best services for businesses to stay ahead of the competition. From website development to mobile app development, and now medical billing solutions, we have the expertise to transform your business. Whether you're a healthcare provider looking to streamline your billing processes or an entrepreneur seeking to launch a new venture, we're here to help. Join us and let's create something amazing together.
           </p>
-          <motion.div
+        
             initial={{ y: "100vh", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
@@ -55,8 +55,7 @@ We are a leading technology agency that specializes in providing the best servic
             >
               Connect Us!
             </button>
-          </motion.div>
-        </motion.div>
+       
      {/*         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
