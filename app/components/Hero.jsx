@@ -8,50 +8,46 @@ const Hero = () => {
     <Template>
       <div
         id="herosection"
-        className="flex items-center justify-center bg-[url('/bg.webp')] bg-left min-h-screen w-full px-8 lg:px-20"
+        className="flex items-center justify-center bg-gradient-to-r from-secondary-950 to-secondary-900 min-h-screen w-full px-8 lg:px-20 relative overflow-hidden"
       >
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50 z-0"></div>
+
         <motion.div
           initial={{ y: "10vh", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}
-          className="flex flex-col filter backdrop:blur-xl items-center text-center w-full max-w-3xl"
+          className="relative z-10 text-center max-w-3xl text-white"
         >
           <h1
-            className="text-5xl lg:text-7xl font-bold lato text-white"
+            className="text-5xl lg:text-8xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-600"
             initial={{ y: "100vh", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
             Have an Idea? Make It Digital with{" "}
-            <span className="text-secondary-400">
-              <span style={{ color: "rgb(59 236 246 / 87%)" }}>I</span>nfo
-              <span style={{ color: "rgb(59 236 246 / 87%)" }}>t</span>ech
-            </span>
-            !
+            <span className="text-secondary-400">InfoTech!</span>
           </h1>
+
           <p
-            className="mt-6 text-lg lg:text-xl font-medium raleway text-gray-200"
+            className="mt-6 text-lg lg:text-xl font-medium text-gray-300 leading-relaxed"
             initial={{ y: "100vh", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            We are a leading technology agency that specializes in providing the
-            best services for businesses to stay ahead of the competition. From
-            website development to mobile app development, and now medical
-            billing solutions, we have the expertise to transform your business.
-            Whether you're a healthcare provider looking to streamline your
-            billing processes or an entrepreneur seeking to launch a new
-            venture, we're here to help. Join us and let's create something
-            amazing together.
+            We are a leading technology agency that specializes in providing
+            cutting-edge services to help businesses stay ahead of the curve.
+            Let's build something amazing together!
           </p>
+
           <motion.div
             initial={{ y: "100vh", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
-            className="w-full mt-8"
+            className="mt-8"
           >
             <button
-              className="border-secondary-400 text-secondary-300 bg-secondary-950 hover:text-gray-900 hover:bg-secondary-400 transition-all duration-300 border-2 px-6 py-3 rounded-md"
+              className="border-secondary-400 text-secondary-300 bg-secondary-950 hover:text-gray-900 hover:bg-secondary-400 transition-all duration-300 border-2 px-8 py-4 rounded-md shadow-lg shadow-teal-400/50 hover:shadow-teal-500/70 glow-effect"
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1 }}
@@ -60,6 +56,10 @@ const Hero = () => {
             </button>
           </motion.div>
         </motion.div>
+
+        {/* Decorative Elements */}
+        <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-teal-400 opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-cyan-600 opacity-20 animate-bounce"></div>
       </div>
     </Template>
   );
