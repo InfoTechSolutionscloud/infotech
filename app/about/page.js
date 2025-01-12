@@ -1,3 +1,4 @@
+"use client";
 import React from 'react'
 import WhyChooseUs from '../components/WhyChooseUs'
 import Image from 'next/image';
@@ -40,4 +41,4 @@ Let's work together to make your business shine online!</p>
     )
 }
 
-export default page
+export default page  
