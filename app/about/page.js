@@ -1,10 +1,18 @@
+"use client";
 import React from "react";
+import { motion } from "framer-motion";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Image from "next/image";
 import CustomHead from "../components/CustomHead";
 
 const AboutPage = () => {
   const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/about`;
+
+  // Animation Variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
 
   return (
     <>
@@ -18,8 +26,14 @@ const AboutPage = () => {
       <div className="bg-black min-h-screen">
         <section className="bg-gradient-to-tr from-gray-900 via-primary-900 to-gray-800 px-4 py-16 lg:py-24">
           <div className="max-w-screen-xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-            {/* Text Section */}
-            <div className="text-gray-200 font-light space-y-6">
+            {/* Animated Text Section */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              className="text-gray-200 font-light space-y-6"
+            >
               <h2 className="text-5xl font-extrabold text-white tracking-tight merriweather">
                 Welcome to Infotech
               </h2>
@@ -43,10 +57,16 @@ const AboutPage = () => {
                 provide efficient medical billing services tailored to your
                 needs. Let's work together to make your business shine online!
               </p>
-            </div>
+            </motion.div>
 
-            {/* Image Section */}
-            <div className="grid grid-cols-2 gap-6">
+            {/* Animated Image Section */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              className="grid grid-cols-2 gap-6"
+            >
               <Image
                 width={300}
                 height={300}
@@ -61,7 +81,7 @@ const AboutPage = () => {
                 src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png"
                 alt="Office Content 2"
               />
-            </div>
+            </motion.div>
           </div>
         </section>
 
