@@ -1,65 +1,81 @@
-import CustomHead from '@/app/components/CustomHead'
-import Link from 'next/link'
-import React from 'react'
+import React from 'react';
+import CustomHead from '@/app/components/CustomHead';
+import Link from 'next/link';
 
 const page = () => {
-    const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/legal/general`;
+  const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/faq`;
 
+  return (
+    <>
+      <CustomHead
+        title="FAQs - InfoTech"
+        description="Find answers to commonly asked questions about InfoTech Solutions. Learn more about our services, AI projects, e-commerce solutions, and more."
+        keywords="faq, questions, InfoTech Solutions"
+        fullUrl={fullUrl}
+      />
 
-    return (
-        <>
-        <CustomHead title={"Privacy Policy"} description={"Here is infotech's policy that can help you to parfectly comply with all rules and conditions with infotech"} keywords={"privacypolicy, legal"} fullUrl={fullUrl} />
-            <div className='bg-gray-950 p-5 px-2 md:px-20 text-gray-300 raleway '>
-                <h1 className='text-4xl text-white merriweather font-bold py-2'>Privacy Policy</h1>
-                <p className='text-sm text-white raleway'>Last Updated: 26/08/2024</p>
+      <div className="bg-gray-950 p-5 px-2 md:px-20 text-gray-300 raleway min-h-screen">
+        <h1 className="text-4xl text-white merriweather font-bold py-2">FAQs</h1>
+        <p className="text-sm text-white raleway">Last Updated: 26/08/2024</p>
 
-                <h2 className='text-2xl text-white merriweather pt-5 font-semibold py-2'>1. Introduction</h2>
-                <p>Welcome to Infotech (“we”, “our”, “us”). We value your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and disclose your personal information when you visit our website and use our services.</p>
+        <section className="mt-8 space-y-8">
+          {/* FAQ 1 */}
+          <div>
+            <h2 className="text-2xl text-teal-400 font-semibold merriweather">Where is InfoTech Solutions located?</h2>
+            <p className="text-gray-300 mt-2">The company is based in Hala, Sindh, Pakistan.</p>
+          </div>
 
-                <h2 className='text-2xl text-white merriweather pt-5 font-semibold py-2'>2. Information We Collect</h2>
-                <ul>
-                    <li>Personal Information: Name, email address, phone number, billing information, and other details necessary to provide our services.</li>
-                    <li>Technical Information: IP address, browser type, operating system, and data about your interaction with our site.</li>
-                    <li>Cookies: Information collected through cookies and similar tracking technologies.</li>
-                </ul>
+          {/* FAQ 2 */}
+          <div>
+            <h2 className="text-2xl text-teal-400 font-semibold merriweather">Can InfoTech Solutions help with e-commerce websites?</h2>
+            <p className="text-gray-300 mt-2">
+              Yes, InfoTech Solutions specializes in creating tailored e-commerce platforms designed to meet your business needs.
+            </p>
+          </div>
 
-                <h2 className='text-2xl text-white merriweather pt-5 font-semibold py-2'>3. How We Use Your Information</h2>
-                <p>We use the information we collect for the following purposes:</p>
-                <ul>
-                    <li>To provide, operate, and maintain our services.</li>
-                    <li>To improve, personalize, and expand our website.</li>
-                    <li>To understand and analyze how you use our website.</li>
-                    <li>To process transactions and send related information.</li>
-                    <li>To communicate with you, including customer service, support, and promotional messages.</li>
-                </ul>
+          {/* FAQ 3 */}
+          <div>
+            <h2 className="text-2xl text-teal-400 font-semibold merriweather">Do they work on AI-based projects?</h2>
+            <p className="text-gray-300 mt-2">
+              Yes, they have extensive experience in developing and integrating AI tools and solutions across various projects.
+            </p>
+          </div>
 
-                <h2 className='text-2xl text-white merriweather pt-5 font-semibold py-2'>4. Sharing Your Information</h2>
-                <p>We may share your personal information with third parties under the following circumstances:</p>
-                <ul>
-                    <li>Service Providers: We may share your data with third-party vendors who provide services on our behalf, such as payment processing, data analysis, and customer service.</li>
-                    <li>Legal Requirements: We may disclose your information if required by law, regulation, or legal process.</li>
-                </ul>
+          {/* FAQ 4 */}
+          <div>
+            <h2 className="text-2xl text-teal-400 font-semibold merriweather">Do we work with all types of businesses?</h2>
+            <p className="text-gray-300 mt-2">
+              Yes, we collaborate with businesses across diverse industries, including retail, healthcare, and more.
+            </p>
+          </div>
 
-                <h2 className='text-2xl text-white merriweather pt-5 font-semibold py-2'>5. Data Security</h2>
-                <p>We take reasonable measures to protect your personal information from unauthorized access, use, or disclosure. However, no method of transmission over the Internet or electronic storage is 100% secure.</p>
+          {/* FAQ 5 */}
+          <div>
+            <h2 className="text-2xl text-teal-400 font-semibold merriweather">Is customization available for their services?</h2>
+            <p className="text-gray-300 mt-2">
+              Absolutely, InfoTech Solutions provides personalized services to ensure each project aligns with the client’s unique requirements.
+            </p>
+          </div>
 
-                <h2 className='text-2xl text-white merriweather pt-5 font-semibold py-2'>6. Your Rights</h2>
-                <p>Depending on your location, you may have the following rights regarding your personal information:</p>
-                <ul>
-                    <li>Access, update, or delete your personal information.</li>
-                    <li>Object to or restrict the processing of your data.</li>
-                    <li>Data portability.</li>
-                    <li>Withdraw consent at any time.</li>
-                </ul>
+          {/* FAQ 6 */}
+          <div>
+            <h2 className="text-2xl text-teal-400 font-semibold merriweather">Do you provide ongoing support after project completion?</h2>
+            <p className="text-gray-300 mt-2">
+              Yes, InfoTech Solutions offers continuous support and maintenance to ensure long-term success.
+            </p>
+          </div>
 
-                <h2 className='text-2xl text-white merriweather pt-5 font-semibold py-2'>7. Changes to This Policy</h2>
-                <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+          {/* FAQ 7 */}
+          <div>
+            <h2 className="text-2xl text-teal-400 font-semibold merriweather">How can I get a price quote?</h2>
+            <p className="text-gray-300 mt-2">
+              Fill out the contact form on our website for details. <Link href="/contact" className="text-teal-400 hover:underline">Contact Us!</Link>
+            </p>
+          </div>
+        </section>
+      </div>
+    </>
+  );
+};
 
-                <h2 className='text-2xl text-white merriweather pt-5 font-semibold py-2'>8. Contact Us</h2>
-                <p>If you have any questions about this Privacy Policy, please contact us <Link href="/contact">Here!</Link></p>
-            </div>
-        </>
-    )
-}
-
-export default page
+export default page;
