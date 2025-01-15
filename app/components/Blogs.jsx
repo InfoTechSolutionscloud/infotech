@@ -43,7 +43,8 @@ const Blogs = ({qty, title="Our Latest"}) => {
             <Loading />
         )}
 
-        {data && (<section className="py-24  bg-gradient-to-r from-secondary-950 to-secondary-900 min-h-screen w-full px-8 lg:px-20">
+        {data && (<section className="py-24 bg-gradient-to-r from-[#1e293b] to-[#0f172a] min-h-screen w-full px-8 lg:px-20">
+
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <motion.h3
                     className="text-3xl text-center py-2 pb-20 lg:text-4xl font-bold lato text-white"
