@@ -47,14 +47,15 @@ const Hero = () => {
             transition={{ duration: 1 }}
             className="mt-8"
           >
-            <button
-              className="border-secondary-400 text-secondary-300 bg-secondary-950 hover:text-gray-900 hover:bg-secondary-400 transition-all duration-300 border-2 px-8 py-4 rounded-md shadow-lg shadow-teal-400/50 hover:shadow-teal-500/70 glow-effect"
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1 }}
-            >
-              Connect Us!
-            </button>
+          <button
+  className="border-secondary-400 text-secondary-300 bg-secondary-950 hover:text-gray-900 hover:bg-secondary-400 transition-all duration-300 border-2 px-8 py-4 rounded-md shadow-lg shadow-teal-400/50 hover:shadow-teal-500/70 glow-effect pt-6"
+  initial={{ scale: 0.5, opacity: 0 }}
+  animate={{ scale: 1, opacity: 1 }}
+  transition={{ duration: 1 }}
+>
+  Connect Us!
+</button>
+
           </motion.div>
         </motion.div>
 
