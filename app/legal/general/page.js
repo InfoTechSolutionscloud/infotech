@@ -27,7 +27,7 @@ Let's work together to make your business shine online!
 </p>
 
         <section className="mt-8 space-y-8">
-   <h1 className="text-4xl text-white merriweather font-bold py-2">FAQs</h1>
+   <h1 className="text-2xl text-white merriweather font-bold py-2">FAQs</h1>
           {/* FAQ 1 */}
           <div>
             <h2 className="text-2xl text-teal-400 font-semibold merriweather">Where is InfoTech Solutions located?</h2>
