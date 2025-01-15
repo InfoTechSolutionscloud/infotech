@@ -94,9 +94,9 @@ const Footer = () => {
             <div>
               <p className="font-medium text-white">FAQ</p>
               <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-200">
-                <Link href="/faq/general" className="hover:opacity-75">General Questions</Link>
-                <Link href="/faq/pricing" className="hover:opacity-75">Pricing & Plans</Link>
-                <Link href="/faq/support" className="hover:opacity-75">Support & Help</Link>
+                <Link href="/legal/general" className="hover:opacity-75">General Questions</Link>
+                <Link href="/legal/pricing" className="hover:opacity-75">Pricing & Plans</Link>
+                <Link href="/legal/support" className="hover:opacity-75">Support & Help</Link>
               </nav>
             </div>
           </div>
