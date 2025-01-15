@@ -3,7 +3,7 @@ import CustomHead from '@/app/components/CustomHead';
 import Link from 'next/link';
 
 const page = () => {
-  const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/faq`;
+  const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/legal/general`;
 
   return (
     <>
