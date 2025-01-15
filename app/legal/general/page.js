@@ -15,10 +15,19 @@ const page = () => {
       />
 
       <div className="bg-gray-950 p-5 px-2 md:px-20 text-gray-300 raleway min-h-screen">
-        <h1 className="text-4xl text-white merriweather font-bold py-2">FAQs</h1>
-        <p className="text-sm text-white raleway">Last Updated: 26/08/2024</p>
+        <h1 className="text-4xl text-white merriweather font-bold py-2">General Questions</h1>
+       
+
+           <h2 className='text-2xl text-white merriweather pt-5 font-semibold py-2'>1. Introduction</h2>
+                <p>Welcome to Infotech
+Our company is your friendly tech partner that makes digital solutions simple. Our team helps businesses grow online through website design & development, digital marketing & SEO, logo & graphic design, video production & editing, and medical billing services.
+What makes us special? We're a close-knit team that gives your project the attention it deserves. We're big enough to handle major projects but small enough to care about every detail.
+We can build you a custom website that looks great and works smoothly, get your business found online through SEO and marketing, create eye-catching designs that make your brand stand out, produce professional videos that tell your story, and provide efficient medical billing services tailored to your needs. We speak plain language, solve real problems, and keep up with the latest tech trends so you don't have to.
+Let's work together to make your business shine online!
+</p>
 
         <section className="mt-8 space-y-8">
+   <h1 className="text-4xl text-white merriweather font-bold py-2">FAQs</h1>
           {/* FAQ 1 */}
           <div>
             <h2 className="text-2xl text-teal-400 font-semibold merriweather">Where is InfoTech Solutions located?</h2>
