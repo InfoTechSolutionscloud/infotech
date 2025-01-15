@@ -64,10 +64,10 @@ const page = () => {
           <div className="mt-10 text-gray-300">
             <h2 className="text-2xl font-semibold text-teal-400">Other Ways to Reach Us</h2>
             <p className="mt-4">
-              <strong>Phone:</strong> <span className="text-teal-400">+1 (800) 123-4567</span>
+              <strong>Phone:</strong> <span className="text-teal-400">+92 328 2296963</span>
             </p>
             <p className="mt-2">
-              <strong>Email:</strong> <span className="text-teal-400">support@infotech.com</span>
+              <strong>Email:</strong> <span className="text-teal-400">info@infotechsolutions.cloud</span>
             </p>
             <p className="mt-2">
               <strong>Address:</strong> 123 Tech Street, Hala, Sindh, Pakistan
