@@ -29,7 +29,7 @@ const page = () => {
             <p className="text-gray-300 mt-2">For quick help, you can:</p>
             <ul className="list-disc pl-6 text-gray-300">
               <li><Link href="/contact" className="text-teal-400 hover:underline">Fill out the contact form</Link></li>
-              <li>Email us at <a href="mailto:support@infotech.com" className="text-teal-400">support@infotech.com</a></li>
+              <li>Email us at <a href="mailto:support@infotech.com" className="text-teal-400">info@infotechsolutions.cloud</a></li>
             </ul>
           </div>
 
