@@ -104,9 +104,7 @@ const Footer = () => {
         <p className="mt-8 text-xs text-gray-200">
           © 2024 Infotech Inc. All rights reserved.
         </p>
-        {/* Decorative Elements */}
-        <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-teal-400 opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-cyan-600 opacity-20 animate-bounce"></div>
+   
       </div>
     </footer>
   )
