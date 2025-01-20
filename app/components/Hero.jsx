@@ -20,7 +20,7 @@ const Hero = () => {
           className="relative z-10 text-center max-w-3xl text-white"
         >
 <h1
-  className="text-5xl lg:text-7xl font-bold lato text-center md:text-left w-full text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-600 pb-5 "
+  className="text-5xl lg:text-7xl font-bold lato text-center md:text-left lg:pl-16 w-full text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-600"
   initial={{ y: "100vh", opacity: 0 }}
   animate={{ y: 0, opacity: 1 }}
   transition={{ duration: 1 }}
@@ -28,6 +28,7 @@ const Hero = () => {
   Have an Idea? Make It Digital with{" "}
   <span className="text-secondary-400">InfoTech!</span>
 </h1>
+
 
 
           <p
